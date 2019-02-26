@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/beans/" targetNamespace="http://www.example.org/beans/" elementFormDefault="qualified">
+    <complexType name="StatutActiviteAvis">
+    	<sequence>
+            <element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+            <element name="statutActiviteAvis" type="string"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Saison">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomSaison" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Duree">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="dureeConseillee" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="TypeActivite">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="typeActivite" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Pays">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomPays" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Region">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomRegion" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="pays" type="tns:Pays" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Departement">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomDepartement" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="region" type="tns:Region" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Ville">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomVille" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="codePostal" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="description" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="nbHabitant" type="int" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="coordonnee" type="tns:CoordonneeGPS"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="photoVille" type="tns:Photo" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="departement" type="tns:Departement" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CoordonneeGPS">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="latitude" type="double" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="longitude" type="double" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Photo">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomPhoto" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="provenancePhoto" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="typePhoto" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="Utilisateur">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="civilite" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="nom" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="prenom" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="pseudo" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="adresseMail" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="salt" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="motDePasseSecurise" type="string"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="dateInscription" type="dateTime"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="telephone" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="dateNaissance" type="date" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="adresse" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="codePostal" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="ville" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="pays" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="envoiMailInformatif" type="boolean"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="administrateur" type="boolean" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="photoUtilisateur" type="tns:Photo" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="FormulaireContact">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomNa" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="adresseMailNa" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="objet" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="message" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="utilisateur" type="tns:Utilisateur"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="dateFormContact" type="dateTime" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Avis">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="commentaire" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="appreciation" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="datePosteAvis" type="dateTime" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="dateModerationAdminAvis" type="dateTime"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="dateMiseEnLigneAvis" type="dateTime"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="utilisateur" type="tns:Utilisateur"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="statutAvis" type="tns:StatutActiviteAvis" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Activite">
+    	<sequence>
+    		<element name="id" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nomActivite" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="description" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="adresse" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="lienHoraireOuverture" type="string"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="dateDemandeAjout" type="dateTime"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="dateModerationAdmin" type="dateTime"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="dateMiseEnLigne" type="dateTime"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="listTypeActivite" type="tns:TypeActivite"
+    			minOccurs="1" maxOccurs="unbounded">
+    		</element>
+    		<element name="duree" type="tns:Duree" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="saison" type="tns:Saison" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="statutActivite" type="tns:StatutActiviteAvis"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="coordonnee" type="tns:CoordonneeGPS"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="listPhotoActivite" type="tns:Photo"
+    			minOccurs="1" maxOccurs="unbounded">
+    		</element>
+    		<element name="utilisateur" type="tns:Utilisateur"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="ville" type="tns:Ville" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="listAvis" type="tns:Avis" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+</schema>

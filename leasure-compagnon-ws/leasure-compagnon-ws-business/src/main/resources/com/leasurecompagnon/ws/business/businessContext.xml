@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+        xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+           	http://www.springframework.org/schema/jee
+       		http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <bean id="txManagerLeasureCompagnon" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSourceLeasureCompagnon"/>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="com.leasurecompagnon.ws.business.impl.manager.AbstractManager"/>		
+		<property name="targetMethod" value="setPlatformTransactionManager"/>
+		<property name="arguments">
+           <list>
+               <ref bean="txManagerLeasureCompagnon"/>
+           </list>
+		</property>
+	</bean>	
+	
+	<!-- Dao Factory -->
+	<bean id="DaoFactory" class="com.leasurecompagnon.ws.consumer.impl.DaoFactoryImpl"/>
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="com.leasurecompagnon.ws.business.impl.manager.AbstractManager"/>		
+		<property name="targetMethod" value="setDaoFactory"/>
+		<property name="arguments">
+        	<list>
+                <ref bean="DaoFactory"/>
+            </list>
+		</property>
+	</bean>
+</beans>

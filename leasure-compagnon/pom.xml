@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- =============================================================== -->
+	<!-- Informations du projet -->
+	<!-- =============================================================== -->
+	
+	<!-- ===== Informations Maven ===== -->			
+	<groupId>com.leasurecompagnon.appliweb</groupId>
+	<artifactId>leasure-compagnon</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- ===== Informations générales ===== -->
+	<name>leasure-compagnon</name>
+	<url>Site disponible uniquement en local pour le moment</url>
+	<description>
+		Ce site web permet de regrouper les meilleures activités à faire à l’échelle de plusieurs villes du département (en l’occurrence, la Haute-Savoie).
+		Ce site est réalisé dans le cadre du dernier projet du parcours diplômant développeur d'application Java via OpenClassrooms.
+	</description>
+	<organization>
+		<name>André Monnier - Etudiant OpenClassrooms</name>
+		<url>Site disponible uniquement en local pour le moment</url>
+	</organization>	
+	
+    <!-- =============================================================== -->
+    <!-- Propriétés -->
+    <!-- =============================================================== -->
+	<properties>
+		<projectName>Leasure Compagnon</projectName>
+  		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring.version>5.1.4.RELEASE</spring.version>
+     	<struts2.version>2.5.20</struts2.version>		
+        <cxf.version>3.2.5</cxf.version>
+	</properties>
+
+    <!-- =============================================================== -->
+    <!-- Modules -->
+    <!-- =============================================================== -->
+	<modules>
+		<module>leasure-compagnon-webapp</module>
+		<module>leasure-compagnon-business</module>
+		<module>leasure-compagnon-consumer</module>
+		<module>leasure-compagnon-model</module>
+		<module>leasure-compagnon-technical</module>
+	</modules>
+	
+    <!-- =============================================================== -->
+    <!-- Gestion des dépendances -->
+    <!-- =============================================================== -->
+	<dependencyManagement> 
+		<dependencies>
+			<!-- ===== Modules ===== -->    	
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>leasure-compagnon-webapp</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>leasure-compagnon-business</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>leasure-compagnon-consumer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>leasure-compagnon-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>		
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>leasure-compagnon-technical</artifactId>
+				<version>${project.version}</version>
+			</dependency>		
+			
+			<!-- ===== Bibliothèques tierces ===== -->
+			
+			<!-- API de validation de Bean (JSR 380).
+			On va privilégier la JSR 380 qui est plus récente que la JSR 303 -->
+			<dependency>
+			    <groupId>javax.validation</groupId>
+			    <artifactId>validation-api</artifactId>
+			    <version>2.0.1.Final</version>
+			</dependency>
+			
+	        <!-- Implémentation de référence de l'API de validation de Bean. On va
+	        privilégier hibernate-validator à bval-jsr -->
+			<dependency>
+			    <groupId>org.hibernate.validator</groupId>
+			    <artifactId>hibernate-validator</artifactId>
+			    <version>6.0.2.Final</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.hibernate.validator</groupId>
+			    <artifactId>hibernate-validator-annotation-processor</artifactId>
+			    <version>6.0.2.Final</version>
+			</dependency>
+
+			<!-- Dépendances vis-à-vis des expression Language liées à la JSR 380 -->
+			<dependency>
+			    <groupId>javax.el</groupId>
+			    <artifactId>javax.el-api</artifactId>
+			    <version>3.0.0</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.glassfish.web</groupId>
+			    <artifactId>javax.el</artifactId>
+			    <version>2.2.6</version>
+			</dependency>	
+			
+			<!-- Bibliothèque permettant de créer une servlet utile lors de la compilation. 
+			Elle ne doit pas figurée dans les WAR générés car elle entrerait en conflit avec 
+			celle fournie par le serveur d'application Java EE lors de l'éxécution-->
+			<dependency>
+	            <groupId>javax.servlet</groupId>
+	            <artifactId>javax.servlet-api</artifactId>
+	            <version>3.1.0</version>
+	            <scope>provided</scope>	
+            </dependency>	
+            
+	        <!-- Bibliothèque comportant des fonctionnalités utiles
+	        pour les nombres, chaîne de caractères, etc,... -->
+			<dependency>
+		        <groupId>org.apache.commons</groupId>
+		        <artifactId>commons-lang3</artifactId>
+		        <version>3.6</version>
+         	</dependency>
+	      
+	         <!-- Bibliothèque comportant des fonctionnalités
+	         additionnelles pour les collections. -->
+	         <dependency>
+		         <groupId>org.apache.commons</groupId>
+		         <artifactId>commons-collections4</artifactId>
+		         <version>4.1</version>
+	         </dependency>  
+	         
+	         <!-- Dépendance vis-à-vis du Framework Spring -->
+	         <dependency>
+		         <groupId>org.springframework</groupId>
+		         <artifactId>spring-framework-bom</artifactId>
+		         <version>${spring.version}</version>
+		         <type>pom</type>
+		         <scope>import</scope>
+	       	</dependency>
+	       		      
+	        <!-- Dépendance vis-à-vis du Framework Apache Struts -->
+	        <dependency>
+	        	<groupId>org.apache.struts</groupId>
+	        	<artifactId>struts2-bom</artifactId>
+	        	<version>${struts2.version}</version>
+	        	<type>pom</type>
+	        	<scope>import</scope>  
+	        </dependency>
+			<dependency>
+				<groupId>org.apache.struts.xwork</groupId>
+				<artifactId>xwork-core</artifactId>
+				<version>2.3.34</version>
+			</dependency>	       	
+	       		       		       
+	        <!-- JSR-250 utilisée dans le cadre de l'injection de dépendances avec Spring -->
+	        <dependency>
+	            <groupId>javax.annotation</groupId>
+	            <artifactId>javax.annotation-api</artifactId>
+	            <version>1.2</version>
+	        </dependency>
+	      
+	        <!-- JSR-330 utilisée dans le cadre de l'injection de dépendances avec Spring -->
+	        <dependency>
+	            <groupId>javax.inject</groupId>
+	            <artifactId>javax.inject</artifactId>
+	            <version>1</version>
+	        </dependency>	
+	        
+			<!-- Gestion des logs avec Log4j2. Spring et Struts n'utilisent pas les mêmes systèmes de log.
+			Struts utilise Apache Log4j2 tandis que Spring utilise Apache Commons Logging. On va rediriger
+			les logs de Commons Logging vers Log4j2. Pour cela, on utilise la bibliothèque Commons Logging Bridge :
+			log4j-jcl -->
+	        <dependency>
+	            <groupId>commons-logging</groupId>
+	            <artifactId>commons-logging</artifactId>
+	            <version>1.2</version>
+	        </dependency>
+    	    <dependency>
+	            <groupId>org.apache.logging.log4j</groupId>
+	            <artifactId>log4j-api</artifactId>
+	            <version>2.11.1</version>
+	            <scope>compile</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.apache.logging.log4j</groupId>
+	            <artifactId>log4j-core</artifactId>
+	            <version>2.11.1</version>
+	            <scope>runtime</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.apache.logging.log4j</groupId>
+	            <artifactId>log4j-jcl</artifactId>
+	            <version>2.11.1</version>
+	            <scope>runtime</scope>
+	        </dependency>
+	                         	
+			<!-- Dépendance vers Apache Commons validator -->
+			<dependency>
+			    <groupId>commons-validator</groupId>
+			    <artifactId>commons-validator</artifactId>
+			    <version>1.6</version>
+			</dependency>   
+			
+			<!-- Dépendances vers apache-cxf -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-databinding-jaxb</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>	
+		   	<dependency>
+		        <groupId>org.apache.cxf</groupId>
+		        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+		        <version>${cxf.version}</version>
+		    </dependency> 
+	       	<dependency>
+		        <groupId>org.apache.cxf</groupId>
+		        <artifactId>cxf-rt-transports-http</artifactId>
+		        <version>${cxf.version}</version>
+   			</dependency> 				  					                           	 				
+		</dependencies>
+	</dependencyManagement>		
+	
+    <!-- =============================================================== -->
+    <!-- Profiles -->
+    <!-- =============================================================== -->
+    <profiles>
+    	<!-- Profil utilisé pour télécharger les WSDL à partir de leur URL et ensuite générer les classes Java via le plugin Apache-CXF depuis le module Consumer -->
+    	<profile>
+    		<id>download-wsdl-generate-sources-web-services</id>
+    	</profile>
+    </profiles>	
+    
+	<!-- =============================================================== -->
+    <!-- Build -->
+    <!-- =============================================================== --> 
+    <build>
+    	<!-- ===== Gestion des plugins ===== -->
+    	<pluginManagement>
+	    	<plugins>
+    			<!-- Packaging JAR -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+          
+                <!-- Compilation des sources Java -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <showDeprecation>true</showDeprecation>
+                       	<showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+                       
+                <!-- Packaging WAR -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+    
+                <!-- Assemblage -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                
+                <!-- Download Maven plugin -->
+                <plugin>
+                	<groupId>com.googlecode.maven-download-plugin</groupId>
+			        <artifactId>download-maven-plugin</artifactId>
+			        <version>1.4.1</version>
+                </plugin>
+
+                <!-- Apache-cxf plugin-->
+                <plugin>
+			        <groupId>org.apache.cxf</groupId>
+			        <artifactId>cxf-codegen-plugin</artifactId>
+			        <version>${cxf.version}</version>
+		        </plugin>                                           	    		
+	    	</plugins>
+    	</pluginManagement>
+    </build>     
+</project>

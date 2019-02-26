@@ -1,0 +1,7 @@
+Documentation/
+OC_P12_Diagrammes_UML/
+target/
+.classpath
+.project
+.settings/
+.springBeans

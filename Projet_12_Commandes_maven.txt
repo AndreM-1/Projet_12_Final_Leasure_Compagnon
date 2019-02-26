@@ -1,0 +1,37 @@
+2 projets sont à créer dans le cadre du P12.
+
+Création du serveur de services :
+
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws -Dversion=1.0-SNAPSHOT
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-webapp -Dpackage=com.leasurecompagnon.ws.webapp
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-batch -Dpackage=com.leasurecompagnon.ws.batch
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-business -Dpackage=com.leasurecompagnon.ws.business
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-consumer -Dpackage=com.leasurecompagnon.ws.consumer
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-model -Dpackage=com.leasurecompagnon.ws.model
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.ws -DartifactId=leasure-compagnon-ws-technical -Dpackage=com.leasurecompagnon.ws.technical
+
+
+Création de l'appli web :
+
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon -Dversion=1.0-SNAPSHOT
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon-webapp -Dpackage=com.leasurecompagnon.appliweb.webapp
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon-business -Dpackage=com.leasurecompagnon.appliweb.business
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon-consumer -Dpackage=com.leasurecompagnon.appliweb.consumer
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon-model -Dpackage=com.leasurecompagnon.appliweb.model
+
+mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1 -DgroupId=com.leasurecompagnon.appliweb -DartifactId=leasure-compagnon-technical -Dpackage=com.leasurecompagnon.appliweb.technical
+
+
+mvn clean package -P with-sources site
+mvn javadoc:aggregate
+mvn clean package -P with-sources site site:stage

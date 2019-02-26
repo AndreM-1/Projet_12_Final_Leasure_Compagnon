@@ -1,0 +1,28 @@
+package com.leasurecompagnon.ws.business.contract;
+
+import com.leasurecompagnon.ws.business.contract.manager.DepartementManager;
+import com.leasurecompagnon.ws.business.contract.manager.DureeManager;
+import com.leasurecompagnon.ws.business.contract.manager.PaysManager;
+import com.leasurecompagnon.ws.business.contract.manager.RegionManager;
+import com.leasurecompagnon.ws.business.contract.manager.SaisonManager;
+import com.leasurecompagnon.ws.business.contract.manager.VilleManager;
+
+/**
+ * Factory des Managers
+ * @author André Monnier
+ */
+public interface ManagerFactory {
+
+	VilleManager getVilleManager();
+
+	PaysManager getPaysManager();
+
+	RegionManager getRegionManager();
+
+	DepartementManager getDepartementManager();
+
+	DureeManager getDureeManager();
+
+	SaisonManager getSaisonManager();
+
+}
