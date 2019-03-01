@@ -55,6 +55,6 @@ public class DepartementDaoImpl extends AbstractDaoImpl implements DepartementDa
 		if(vListDepartement.size()!=0)
 			return vListDepartement.get(0);
 		else
-			throw new NotFoundException("Aucun département ne correspondant à l'id demandé");
+			throw new NotFoundException("Aucun département ne correspond à l'id demandé");
 	}
 }

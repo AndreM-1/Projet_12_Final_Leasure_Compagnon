@@ -49,6 +49,6 @@ public class PaysDaoImpl extends AbstractDaoImpl implements PaysDao{
 		if(vListPays.size()!=0)
 			return vListPays.get(0);
 		else
-			throw new NotFoundException("Aucun pays ne correspondant à l'id demandé");
+			throw new NotFoundException("Aucun pays ne correspond à l'id demandé");
 	}
 }

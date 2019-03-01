@@ -3,11 +3,15 @@ package com.leasurecompagnon.ws.consumer.impl;
 import javax.inject.Inject;
 
 import com.leasurecompagnon.ws.consumer.contract.DaoFactory;
+import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DepartementDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.PaysDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.RegionDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.SaisonDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.TypeActiviteDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.UtilisateurDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.VilleDao;
 
 /**
@@ -32,6 +36,18 @@ public class DaoFactoryImpl implements DaoFactory{
 	
 	@Inject
 	private SaisonDao saisonDao;
+	
+	@Inject
+	private TypeActiviteDao typeActiviteDao;
+	
+	@Inject
+	private UtilisateurDao utilisateurDao;
+	
+	@Inject
+	private ActiviteDao activiteDao;
+	
+	@Inject
+	private AvisDao avisDao;
 
 	
 	@Override
@@ -62,5 +78,25 @@ public class DaoFactoryImpl implements DaoFactory{
 	@Override
 	public SaisonDao getSaisonDao() {
 		return saisonDao;
+	}
+
+	@Override
+	public TypeActiviteDao getTypeActiviteDao() {
+		return typeActiviteDao;
+	}
+
+	@Override
+	public UtilisateurDao getUtilisateurDao() {
+		return utilisateurDao;
+	}
+
+	@Override
+	public ActiviteDao getActiviteDao() {
+		return activiteDao;
+	}
+
+	@Override
+	public AvisDao getAvisDao() {
+		return avisDao;
 	}
 }

@@ -55,6 +55,6 @@ public class RegionDaoImpl extends AbstractDaoImpl implements RegionDao {
 		if(vListRegion.size()!=0)
 			return vListRegion.get(0);
 		else
-			throw new NotFoundException("Aucune région ne correspondant à l'id demandé");
+			throw new NotFoundException("Aucune région ne correspond à l'id demandé");
 	}
 }

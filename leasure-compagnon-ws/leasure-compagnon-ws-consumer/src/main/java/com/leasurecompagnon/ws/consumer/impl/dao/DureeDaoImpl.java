@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.DureeRM;
 import com.leasurecompagnon.ws.model.bean.catalogue.Duree;
+import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 @Named
@@ -35,5 +36,19 @@ public class DureeDaoImpl extends AbstractDaoImpl implements DureeDao {
 			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
 		}
 		return vListDuree;	
+	}
+	
+	@Override
+	public Duree getDuree(int dureeId) throws NotFoundException {
+		LOGGER.info("Méthode getDuree(int dureeId)");
+		String vSQL="SELECT * FROM public.duree WHERE id ="+dureeId+ " ORDER BY id ASC";
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		RowMapper<Duree> vRowMapper=new DureeRM();
+		List<Duree> vListDuree=vJdbcTemplate.query(vSQL, vRowMapper);
+		
+		if(vListDuree.size()!=0)
+			return vListDuree.get(0);
+		else
+			throw new NotFoundException("Aucune durée ne correspond à l'id demandé");
 	}
 }

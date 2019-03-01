@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.leasurecompagnon.ws.consumer.contract.dao.SaisonDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.SaisonRM;
 import com.leasurecompagnon.ws.model.bean.catalogue.Saison;
+import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 @Named
@@ -35,5 +36,19 @@ public class SaisonDaoImpl extends AbstractDaoImpl implements SaisonDao {
 			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
 		}
 		return vListSaison;	
+	}
+	
+	@Override
+	public Saison getSaison(int saisonId) throws NotFoundException {
+		LOGGER.info("Méthode getSaison(int saisonId)");
+		String vSQL="SELECT * FROM public.saison WHERE id ="+saisonId+ " ORDER BY id ASC";
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		RowMapper<Saison> vRowMapper=new SaisonRM();
+		List<Saison> vListSaison=vJdbcTemplate.query(vSQL, vRowMapper);
+		
+		if(vListSaison.size()!=0)
+			return vListSaison.get(0);
+		else
+			throw new NotFoundException("Aucune saison ne correspond à l'id demandé");
 	}
 }
