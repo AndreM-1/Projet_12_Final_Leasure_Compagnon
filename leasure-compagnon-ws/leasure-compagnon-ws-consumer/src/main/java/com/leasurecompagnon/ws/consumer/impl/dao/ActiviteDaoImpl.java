@@ -255,4 +255,61 @@ public class ActiviteDaoImpl extends AbstractDaoImpl implements ActiviteDao {
 		else
 			throw new NotFoundException("Aucune activité ne correspond à la chaîne de caractères recherchée en fonction du statut demandé");
 	}
+	
+	@Override
+	public List<Activite> getListActiviteVille(String nomVille, String statutActivite) throws NotFoundException {
+		LOGGER.info("Méthode getListActiviteVille(String nomVille, String statutActivite)");
+		//Utilisation d'une sous-requête pour une fois (on aurait tout aussi bien pu utiliser une jointure interne).
+		String vSQL="SELECT * FROM public.activite WHERE ville_id = (SELECT id FROM public.ville WHERE nom_ville = :nomVille)";
+		
+		switch(statutActivite) {
+		case "ECDM" :
+			vSQL+=" AND statut_activite_avis_id = 1";
+			break;
+		case "VR" :
+			vSQL+=" AND statut_activite_avis_id IN (2,3)";
+			break;
+		case "MEL" :
+			vSQL+=" AND statut_activite_avis_id = 4";
+			break;
+		default :
+			LOGGER.info("Pas de traitement à effectuer dans la boucle switch");
+		}
+		vSQL+=" ORDER BY date_mise_en_ligne DESC, id DESC";
+		LOGGER.info("vSQL = "+vSQL);
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		//On va prendre le même nom pour cet identifiant.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("nomVille", nomVille);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		RowMapper<Activite> vRowMapper=new ActiviteRM(typeActiviteDao,dureeDao,saisonDao,statutActiviteDao,coordonneeGPSDao,photoDao,utilisateurDao,villeDao,avisDao);
+		List<Activite> vListActivite = vJdbcTemplate.query(vSQL,vParams,vRowMapper);
+		
+		if(vListActivite.size()!=0)
+			return vListActivite;
+		else
+			throw new NotFoundException("Aucune activité avec le statut désiré pour la ville demandée ou aucune activité pour la ville demandée");
+	}
+	
+	@Override
+	public Activite getActivite(String nomActivite) throws NotFoundException {
+		LOGGER.info("Méthode getActivite(String nomActivite)");
+		String vSQL="SELECT * FROM public.activite WHERE nom_activite = :nomActivite ORDER BY id ASC";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		//On va prendre le même nom pour cet identifiant.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("nomActivite", nomActivite);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		RowMapper<Activite> vRowMapper=new ActiviteRM(typeActiviteDao,dureeDao,saisonDao,statutActiviteDao,coordonneeGPSDao,photoDao,utilisateurDao,villeDao,avisDao);
+		List<Activite> vListActivite = vJdbcTemplate.query(vSQL,vParams,vRowMapper);
+		
+		if(vListActivite.size()!=0)
+			return vListActivite.get(0);
+		else
+			throw new NotFoundException("Aucune activité ne correspond au nom demandé");	
+	}
 }

@@ -567,6 +567,63 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
+            <xsd:element name="getListActiviteVilleNom">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="nomVille" type="xsd:string"
+            				minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="statutActivite"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getListActiviteVilleNomResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="activite" type="Q1:Activite" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getListActiviteVilleNomFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="faultMessageErreur"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getActiviteNom">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="nomActivite" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getActiviteNomResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="activite" type="Q1:Activite" minOccurs="1" maxOccurs="1"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getActiviteNomFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="faultMessageErreur"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getListVilleRequest">
@@ -767,6 +824,24 @@
   <wsdl:message name="getListActiviteRechercheFault">
   	<wsdl:part name="parameters" element="tns:getListActiviteRechercheFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomRequest">
+  	<wsdl:part name="parameters" element="tns:getListActiviteVilleNom"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomResponse">
+  	<wsdl:part name="parameters" element="tns:getListActiviteVilleNomResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomFault">
+  	<wsdl:part name="parameters" element="tns:getListActiviteVilleNomFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomRequest">
+  	<wsdl:part name="parameters" element="tns:getActiviteNom"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomResponse">
+  	<wsdl:part name="parameters" element="tns:getActiviteNomResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomFault">
+  	<wsdl:part name="parameters" element="tns:getActiviteNomFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="CatalogueService">
     <wsdl:operation name="getListVille">
       <wsdl:input message="tns:getListVilleRequest"/>
@@ -875,6 +950,16 @@
     	<wsdl:output message="tns:getListActiviteRechercheResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:getListActiviteRechercheFault"></wsdl:fault>
         </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+    	<wsdl:input message="tns:getListActiviteVilleNomRequest"></wsdl:input>
+    	<wsdl:output message="tns:getListActiviteVilleNomResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:getListActiviteVilleNomFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+    	<wsdl:input message="tns:getActiviteNomRequest"></wsdl:input>
+    	<wsdl:output message="tns:getActiviteNomResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:getActiviteNomFault"></wsdl:fault>
+        </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP"
   	type="tns:CatalogueService">
@@ -890,11 +975,10 @@
   		</wsdl:output>
   		<wsdl:fault name="fault">
   			<soap:fault use="literal" name="fault" />
-  		</wsdl:fault>  		
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListPays">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -906,8 +990,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListRegion">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -919,8 +1002,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListDepartement">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -932,8 +1014,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListDuree">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -945,8 +1026,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListSaison">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -958,8 +1038,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListTypeActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -971,8 +1050,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getVille">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -984,8 +1062,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getDuree">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -997,8 +1074,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getSaison">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1010,8 +1086,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getTypeActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1023,8 +1098,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1036,8 +1110,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListActiviteVille">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1049,8 +1122,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListActiviteVilleTA">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1062,8 +1134,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1075,8 +1146,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListActiviteUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1088,8 +1158,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ajoutActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1101,8 +1170,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListAvisUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1114,8 +1182,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListNomVille">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1127,8 +1194,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListNomActivite">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1140,6 +1206,30 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListVilleRecherche">
+  		<soap:operation soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="getListActiviteRecherche">
+  		<soap:operation soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="getListActiviteVilleNom">
   		<soap:operation
   			soapAction="" />
   		<wsdl:input>
@@ -1152,7 +1242,7 @@
   			<soap:fault use="literal" name="fault" />
   		</wsdl:fault>
   	</wsdl:operation>
-  	<wsdl:operation name="getListActiviteRecherche">
+  	<wsdl:operation name="getActiviteNom">
   		<soap:operation
   			soapAction="" />
   		<wsdl:input>

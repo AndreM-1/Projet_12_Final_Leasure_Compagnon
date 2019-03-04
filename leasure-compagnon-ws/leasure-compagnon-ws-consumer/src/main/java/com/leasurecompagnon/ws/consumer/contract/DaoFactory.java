@@ -4,7 +4,9 @@ import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DepartementDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.FormulaireContactDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.PaysDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.PhotoDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.RegionDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.SaisonDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.TypeActiviteDao;
@@ -36,5 +38,9 @@ public interface DaoFactory {
 	ActiviteDao getActiviteDao();
 
 	AvisDao getAvisDao();
+
+	FormulaireContactDao getFormulaireContactDao();
+
+	PhotoDao getPhotoDao();
 
 }

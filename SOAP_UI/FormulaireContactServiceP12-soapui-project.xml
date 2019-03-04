@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a103c510-8b92-40bf-8089-8344546dbc05" activeEnvironment="Default" name="FormulaireContactServiceP12" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="48400485-17d9-4ebc-86e6-cf15832c0f1e" wsaVersion="NONE" name="FormulaireContactServiceSOAP" type="wsdl" bindingName="{http://www.example.org/FormulaireContactService/}FormulaireContactServiceSOAP" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FormulaireContactService" targetNamespace="http://www.example.org/FormulaireContactService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/FormulaireContactService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/FormulaireContactService/" xmlns:Q1="http://www.example.org/beans/">
+      <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?xsd=../beans.xsd"/>
+      <xsd:element name="envoiFormulaireContact">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomNa" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="adresseMailNa" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="objet" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="envoiFormulaireContactResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="envoiFormulaireContactFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContact">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContactResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="formulaireContact" type="Q1:FormulaireContact"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContactFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="envoiFormulaireContactRequest">
+    <wsdl:part element="tns:envoiFormulaireContact" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactFault">
+    <wsdl:part element="tns:getListFormulaireContactFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactRequest">
+    <wsdl:part element="tns:getListFormulaireContact" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactResponse">
+    <wsdl:part element="tns:getListFormulaireContactResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactResponse">
+    <wsdl:part element="tns:envoiFormulaireContactResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactFault">
+    <wsdl:part element="tns:envoiFormulaireContactFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FormulaireContactService">
+    <wsdl:operation name="envoiFormulaireContact">
+      <wsdl:input message="tns:envoiFormulaireContactRequest"></wsdl:input>
+      <wsdl:output message="tns:envoiFormulaireContactResponse"></wsdl:output>
+      <wsdl:fault message="tns:envoiFormulaireContactFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <wsdl:input message="tns:getListFormulaireContactRequest"></wsdl:input>
+      <wsdl:output message="tns:getListFormulaireContactResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListFormulaireContactFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FormulaireContactServiceSoapBinding" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FormulaireContactServiceSOAP" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FormulaireContactService">
+    <wsdl:port binding="tns:FormulaireContactServiceSOAP" name="FormulaireContactServiceSOAP">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="FormulaireContactServiceService">
+    <wsdl:port binding="tns:FormulaireContactServiceSoapBinding" name="FormulaireContactServicePort">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?xsd=../beans.xsd</con:url><con:content><![CDATA[<schema elementFormDefault="qualified" targetNamespace="http://www.example.org/beans/" xmlns:tns="http://www.example.org/beans/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="StatutActiviteAvis">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="statutActiviteAvis" type="string"></element>
+    </sequence>
+  </complexType>
+  <complexType name="Saison">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomSaison" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Duree">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="dureeConseillee" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="TypeActivite">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="typeActivite" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Pays">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomPays" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Region">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomRegion" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="pays" type="tns:Pays"/>
+    </sequence>
+  </complexType>
+  <complexType name="Departement">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomDepartement" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="region" type="tns:Region"/>
+    </sequence>
+  </complexType>
+  <complexType name="Ville">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomVille" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="codePostal" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="description" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="nbHabitant" type="int"></element>
+      <element maxOccurs="1" minOccurs="1" name="coordonnee" type="tns:CoordonneeGPS"></element>
+      <element maxOccurs="1" minOccurs="1" name="photoVille" type="tns:Photo"></element>
+      <element maxOccurs="1" minOccurs="1" name="departement" type="tns:Departement"/>
+    </sequence>
+  </complexType>
+  <complexType name="CoordonneeGPS">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="latitude" type="double"></element>
+      <element maxOccurs="1" minOccurs="1" name="longitude" type="double"/>
+    </sequence>
+  </complexType>
+  <complexType name="Photo">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomPhoto" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="provenancePhoto" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="typePhoto" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Utilisateur">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="civilite" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="nom" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="prenom" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="pseudo" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="adresseMail" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="salt" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="motDePasseSecurise" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateInscription" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="telephone" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateNaissance" type="date"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresse" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="codePostal" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="ville" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="pays" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="envoiMailInformatif" type="boolean"></element>
+      <element maxOccurs="1" minOccurs="1" name="administrateur" type="boolean"></element>
+      <element maxOccurs="1" minOccurs="0" name="photoUtilisateur" type="tns:Photo"/>
+    </sequence>
+  </complexType>
+  <complexType name="FormulaireContact">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="0" name="nomNa" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresseMailNa" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="objet" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="message" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateFormContact" type="dateTime"/>
+    </sequence>
+  </complexType>
+  <complexType name="Avis">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="commentaire" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="appreciation" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="datePosteAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateModerationAdminAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateMiseEnLigneAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="statutAvis" type="tns:StatutActiviteAvis"/>
+    </sequence>
+  </complexType>
+  <complexType name="Activite">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomActivite" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="description" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresse" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="lienHoraireOuverture" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateDemandeAjout" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateModerationAdmin" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateMiseEnLigne" type="dateTime"></element>
+      <element maxOccurs="unbounded" minOccurs="1" name="listTypeActivite" type="tns:TypeActivite"></element>
+      <element maxOccurs="1" minOccurs="1" name="duree" type="tns:Duree"></element>
+      <element maxOccurs="1" minOccurs="1" name="saison" type="tns:Saison"></element>
+      <element maxOccurs="1" minOccurs="1" name="statutActivite" type="tns:StatutActiviteAvis"></element>
+      <element maxOccurs="1" minOccurs="0" name="coordonnee" type="tns:CoordonneeGPS"></element>
+      <element maxOccurs="unbounded" minOccurs="1" name="listPhotoActivite" type="tns:Photo"></element>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="ville" type="tns:Ville"></element>
+      <element maxOccurs="unbounded" minOccurs="0" name="listAvis" type="tns:Avis"/>
+    </sequence>
+  </complexType>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint></con:endpoints><con:operation id="8d2e2fb6-0d42-40f3-9352-4fdce54bfd83" isOneWay="false" action="" name="envoiFormulaireContact" bindingOperationName="envoiFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bea77408-1633-4a0d-a2c6-c142d6661811" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <for:envoiFormulaireContact>\r
+         <nomNa>?</nomNa>\r
+         <adresseMailNa>?</adresseMailNa>\r
+         <objet>?</objet>\r
+         <message>?</message>\r
+         <utilisateurId>?</utilisateurId>\r
+      </for:envoiFormulaireContact>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/envoiFormulaireContactRequest"/></con:call></con:operation><con:operation id="bcd524ab-f530-43f7-a1d2-ef6dd52c5c2c" isOneWay="false" action="" name="getListFormulaireContact" bindingOperationName="getListFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b47c112e-3a0c-41a0-b34b-2b823479515c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <for:getListFormulaireContact/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/getListFormulaireContactRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="0a70c518-189b-47a5-a611-8d951d3ef162" wsaVersion="NONE" name="FormulaireContactServiceSoapBinding" type="wsdl" bindingName="{http://www.example.org/FormulaireContactService/}FormulaireContactServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FormulaireContactService" targetNamespace="http://www.example.org/FormulaireContactService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/FormulaireContactService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/FormulaireContactService/" xmlns:Q1="http://www.example.org/beans/">
+      <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?xsd=../beans.xsd"/>
+      <xsd:element name="envoiFormulaireContact">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomNa" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="adresseMailNa" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="objet" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="envoiFormulaireContactResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="envoiFormulaireContactFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContact">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContactResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="formulaireContact" type="Q1:FormulaireContact"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListFormulaireContactFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="envoiFormulaireContactRequest">
+    <wsdl:part element="tns:envoiFormulaireContact" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactFault">
+    <wsdl:part element="tns:getListFormulaireContactFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactRequest">
+    <wsdl:part element="tns:getListFormulaireContact" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactResponse">
+    <wsdl:part element="tns:getListFormulaireContactResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactResponse">
+    <wsdl:part element="tns:envoiFormulaireContactResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactFault">
+    <wsdl:part element="tns:envoiFormulaireContactFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FormulaireContactService">
+    <wsdl:operation name="envoiFormulaireContact">
+      <wsdl:input message="tns:envoiFormulaireContactRequest"></wsdl:input>
+      <wsdl:output message="tns:envoiFormulaireContactResponse"></wsdl:output>
+      <wsdl:fault message="tns:envoiFormulaireContactFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <wsdl:input message="tns:getListFormulaireContactRequest"></wsdl:input>
+      <wsdl:output message="tns:getListFormulaireContactResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListFormulaireContactFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FormulaireContactServiceSoapBinding" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FormulaireContactServiceSOAP" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FormulaireContactService">
+    <wsdl:port binding="tns:FormulaireContactServiceSOAP" name="FormulaireContactServiceSOAP">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="FormulaireContactServiceService">
+    <wsdl:port binding="tns:FormulaireContactServiceSoapBinding" name="FormulaireContactServicePort">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?xsd=../beans.xsd</con:url><con:content><![CDATA[<schema elementFormDefault="qualified" targetNamespace="http://www.example.org/beans/" xmlns:tns="http://www.example.org/beans/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="StatutActiviteAvis">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="statutActiviteAvis" type="string"></element>
+    </sequence>
+  </complexType>
+  <complexType name="Saison">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomSaison" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Duree">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="dureeConseillee" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="TypeActivite">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="typeActivite" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Pays">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomPays" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Region">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomRegion" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="pays" type="tns:Pays"/>
+    </sequence>
+  </complexType>
+  <complexType name="Departement">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomDepartement" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="region" type="tns:Region"/>
+    </sequence>
+  </complexType>
+  <complexType name="Ville">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomVille" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="codePostal" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="description" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="nbHabitant" type="int"></element>
+      <element maxOccurs="1" minOccurs="1" name="coordonnee" type="tns:CoordonneeGPS"></element>
+      <element maxOccurs="1" minOccurs="1" name="photoVille" type="tns:Photo"></element>
+      <element maxOccurs="1" minOccurs="1" name="departement" type="tns:Departement"/>
+    </sequence>
+  </complexType>
+  <complexType name="CoordonneeGPS">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="latitude" type="double"></element>
+      <element maxOccurs="1" minOccurs="1" name="longitude" type="double"/>
+    </sequence>
+  </complexType>
+  <complexType name="Photo">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomPhoto" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="provenancePhoto" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="typePhoto" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Utilisateur">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="civilite" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="nom" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="prenom" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="pseudo" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="adresseMail" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="salt" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="motDePasseSecurise" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateInscription" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="telephone" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateNaissance" type="date"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresse" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="codePostal" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="ville" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="pays" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="envoiMailInformatif" type="boolean"></element>
+      <element maxOccurs="1" minOccurs="1" name="administrateur" type="boolean"></element>
+      <element maxOccurs="1" minOccurs="0" name="photoUtilisateur" type="tns:Photo"/>
+    </sequence>
+  </complexType>
+  <complexType name="FormulaireContact">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="0" name="nomNa" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresseMailNa" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="objet" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="message" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateFormContact" type="dateTime"/>
+    </sequence>
+  </complexType>
+  <complexType name="Avis">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="commentaire" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="appreciation" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="datePosteAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateModerationAdminAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateMiseEnLigneAvis" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="statutAvis" type="tns:StatutActiviteAvis"/>
+    </sequence>
+  </complexType>
+  <complexType name="Activite">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="id" type="int"/>
+      <element maxOccurs="1" minOccurs="1" name="nomActivite" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="description" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="adresse" type="string"></element>
+      <element maxOccurs="1" minOccurs="0" name="lienHoraireOuverture" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateDemandeAjout" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateModerationAdmin" type="dateTime"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateMiseEnLigne" type="dateTime"></element>
+      <element maxOccurs="unbounded" minOccurs="1" name="listTypeActivite" type="tns:TypeActivite"></element>
+      <element maxOccurs="1" minOccurs="1" name="duree" type="tns:Duree"></element>
+      <element maxOccurs="1" minOccurs="1" name="saison" type="tns:Saison"></element>
+      <element maxOccurs="1" minOccurs="1" name="statutActivite" type="tns:StatutActiviteAvis"></element>
+      <element maxOccurs="1" minOccurs="0" name="coordonnee" type="tns:CoordonneeGPS"></element>
+      <element maxOccurs="unbounded" minOccurs="1" name="listPhotoActivite" type="tns:Photo"></element>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="ville" type="tns:Ville"></element>
+      <element maxOccurs="unbounded" minOccurs="0" name="listAvis" type="tns:Avis"/>
+    </sequence>
+  </complexType>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint></con:endpoints><con:operation id="6ff94742-d1e5-42f9-89d8-9096c0bff889" isOneWay="false" action="" name="envoiFormulaireContact" bindingOperationName="envoiFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="eb935741-1880-417a-9b4f-f1fe31a05ea9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <for:envoiFormulaireContact>\r
+         <nomNa>?</nomNa>\r
+         <adresseMailNa>?</adresseMailNa>\r
+         <objet>?</objet>\r
+         <message>?</message>\r
+         <utilisateurId>?</utilisateurId>\r
+      </for:envoiFormulaireContact>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/envoiFormulaireContactRequest"/></con:call></con:operation><con:operation id="35b5c521-73b9-4ec1-95e0-17f268e7ca1c" isOneWay="false" action="" name="getListFormulaireContact" bindingOperationName="getListFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="86a76be1-65da-4662-8b16-cca4d8132ab7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <for:getListFormulaireContact/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/getListFormulaireContactRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

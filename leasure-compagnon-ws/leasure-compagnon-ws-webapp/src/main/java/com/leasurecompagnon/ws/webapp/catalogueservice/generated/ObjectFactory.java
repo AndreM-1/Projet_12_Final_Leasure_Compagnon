@@ -557,4 +557,52 @@ public class ObjectFactory {
         return new GetListActiviteRechercheFault();
     }
 
+    /**
+     * Create an instance of {@link GetListActiviteVilleNom }
+     * 
+     */
+    public GetListActiviteVilleNom createGetListActiviteVilleNom() {
+        return new GetListActiviteVilleNom();
+    }
+
+    /**
+     * Create an instance of {@link GetListActiviteVilleNomResponse }
+     * 
+     */
+    public GetListActiviteVilleNomResponse createGetListActiviteVilleNomResponse() {
+        return new GetListActiviteVilleNomResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetListActiviteVilleNomFault }
+     * 
+     */
+    public GetListActiviteVilleNomFault createGetListActiviteVilleNomFault() {
+        return new GetListActiviteVilleNomFault();
+    }
+
+    /**
+     * Create an instance of {@link GetActiviteNom }
+     * 
+     */
+    public GetActiviteNom createGetActiviteNom() {
+        return new GetActiviteNom();
+    }
+
+    /**
+     * Create an instance of {@link GetActiviteNomResponse }
+     * 
+     */
+    public GetActiviteNomResponse createGetActiviteNomResponse() {
+        return new GetActiviteNomResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetActiviteNomFault }
+     * 
+     */
+    public GetActiviteNomFault createGetActiviteNomFault() {
+        return new GetActiviteNomFault();
+    }
+
 }

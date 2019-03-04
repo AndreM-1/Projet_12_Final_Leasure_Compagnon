@@ -436,6 +436,49 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="getListActiviteVilleNom">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomVille" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListActiviteVilleNomResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListActiviteVilleNomFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNom">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomActivite" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNomResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="activite" type="Q1:Activite"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNomFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getListPaysResponse">
@@ -476,6 +519,12 @@
   </wsdl:message>
   <wsdl:message name="getSaisonFault">
     <wsdl:part element="tns:getSaisonFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomRequest">
+    <wsdl:part element="tns:getActiviteNom" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomFault">
+    <wsdl:part element="tns:getActiviteNomFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListActiviteUtilisateurRequest">
     <wsdl:part element="tns:getListActiviteUtilisateur" name="parameters"></wsdl:part>
@@ -543,6 +592,9 @@
   <wsdl:message name="getListDepartementFault">
     <wsdl:part element="tns:getListDepartementFault" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomResponse">
+    <wsdl:part element="tns:getListActiviteVilleNomResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getListVilleFault">
     <wsdl:part element="tns:getListVilleFault" name="parameters"></wsdl:part>
   </wsdl:message>
@@ -557,6 +609,9 @@
   </wsdl:message>
   <wsdl:message name="getListVilleRechercheRequest">
     <wsdl:part element="tns:getListVilleRecherche" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomResponse">
+    <wsdl:part element="tns:getActiviteNomResponse" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getActiviteFault">
     <wsdl:part element="tns:getActiviteFault" name="parameters"></wsdl:part>
@@ -581,6 +636,9 @@
   </wsdl:message>
   <wsdl:message name="getActiviteRequest">
     <wsdl:part element="tns:getActivite" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomRequest">
+    <wsdl:part element="tns:getListActiviteVilleNom" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListDureeResponse">
     <wsdl:part element="tns:getListDureeResponse" name="parameters"></wsdl:part>
@@ -614,6 +672,9 @@
   </wsdl:message>
   <wsdl:message name="getTypeActiviteResponse">
     <wsdl:part element="tns:getTypeActiviteResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomFault">
+    <wsdl:part element="tns:getListActiviteVilleNomFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListDureeRequest">
     <wsdl:part element="tns:getListDuree" name="parameters"></wsdl:part>
@@ -746,6 +807,16 @@
       <wsdl:input message="tns:getListActiviteRechercheRequest"></wsdl:input>
       <wsdl:output message="tns:getListActiviteRechercheResponse"></wsdl:output>
       <wsdl:fault message="tns:getListActiviteRechercheFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <wsdl:input message="tns:getListActiviteVilleNomRequest"></wsdl:input>
+      <wsdl:output message="tns:getListActiviteVilleNomResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListActiviteVilleNomFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <wsdl:input message="tns:getActiviteNomRequest"></wsdl:input>
+      <wsdl:output message="tns:getActiviteNomResponse"></wsdl:output>
+      <wsdl:fault message="tns:getActiviteNomFault" name="fault"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP" type="tns:CatalogueService">
@@ -1014,6 +1085,30 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CatalogueServiceSoapBinding" type="tns:CatalogueService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1270,6 +1365,30 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getListActiviteRecherche">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
@@ -1727,7 +1846,22 @@
          <statutActivite>MEL</statutActivite>\r
       </cat:getListActiviteRecherche>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteRechercheRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="e8be3264-b576-481d-a138-49e0ceda4bfe" wsaVersion="NONE" name="CatalogueServiceSoapBinding" type="wsdl" bindingName="{http://www.example.org/CatalogueService/}CatalogueServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CatalogueService" targetNamespace="http://www.example.org/CatalogueService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/CatalogueService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteRechercheRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a51d03ce-22b4-49e0-b8e1-b7f2be44f6c6" isOneWay="false" action="" name="getListActiviteVilleNom" bindingOperationName="getListActiviteVilleNom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f105bf4b-3779-4d60-b979-a09688f0b62b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://www.example.org/CatalogueService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cat:getListActiviteVilleNom>\r
+         <nomVille>Chamonix</nomVille>\r
+         <statutActivite>MEL</statutActivite>\r
+      </cat:getListActiviteVilleNom>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteVilleNomRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="51805b60-8d28-4e01-a185-a9d153cdd16e" isOneWay="false" action="" name="getActiviteNom" bindingOperationName="getActiviteNom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="11e20ee8-6376-43ae-b10d-6542e9a47e83" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://www.example.org/CatalogueService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cat:getActiviteNom>\r
+         <nomActivite>Château d'Annecy</nomActivite>\r
+      </cat:getActiviteNom>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getActiviteNomRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="e8be3264-b576-481d-a138-49e0ceda4bfe" wsaVersion="NONE" name="CatalogueServiceSoapBinding" type="wsdl" bindingName="{http://www.example.org/CatalogueService/}CatalogueServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CatalogueService" targetNamespace="http://www.example.org/CatalogueService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/CatalogueService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.example.org/CatalogueService/" xmlns:Q1="http://www.example.org/beans/">
       <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?xsd=../beans.xsd"/>
@@ -2164,6 +2298,49 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="getListActiviteVilleNom">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomVille" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListActiviteVilleNomResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListActiviteVilleNomFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNom">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nomActivite" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNomResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="activite" type="Q1:Activite"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getActiviteNomFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getListPaysResponse">
@@ -2204,6 +2381,12 @@
   </wsdl:message>
   <wsdl:message name="getSaisonFault">
     <wsdl:part element="tns:getSaisonFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomRequest">
+    <wsdl:part element="tns:getActiviteNom" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomFault">
+    <wsdl:part element="tns:getActiviteNomFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListActiviteUtilisateurRequest">
     <wsdl:part element="tns:getListActiviteUtilisateur" name="parameters"></wsdl:part>
@@ -2271,6 +2454,9 @@
   <wsdl:message name="getListDepartementFault">
     <wsdl:part element="tns:getListDepartementFault" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomResponse">
+    <wsdl:part element="tns:getListActiviteVilleNomResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getListVilleFault">
     <wsdl:part element="tns:getListVilleFault" name="parameters"></wsdl:part>
   </wsdl:message>
@@ -2285,6 +2471,9 @@
   </wsdl:message>
   <wsdl:message name="getListVilleRechercheRequest">
     <wsdl:part element="tns:getListVilleRecherche" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomResponse">
+    <wsdl:part element="tns:getActiviteNomResponse" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getActiviteFault">
     <wsdl:part element="tns:getActiviteFault" name="parameters"></wsdl:part>
@@ -2309,6 +2498,9 @@
   </wsdl:message>
   <wsdl:message name="getActiviteRequest">
     <wsdl:part element="tns:getActivite" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomRequest">
+    <wsdl:part element="tns:getListActiviteVilleNom" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListDureeResponse">
     <wsdl:part element="tns:getListDureeResponse" name="parameters"></wsdl:part>
@@ -2342,6 +2534,9 @@
   </wsdl:message>
   <wsdl:message name="getTypeActiviteResponse">
     <wsdl:part element="tns:getTypeActiviteResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomFault">
+    <wsdl:part element="tns:getListActiviteVilleNomFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListDureeRequest">
     <wsdl:part element="tns:getListDuree" name="parameters"></wsdl:part>
@@ -2474,6 +2669,16 @@
       <wsdl:input message="tns:getListActiviteRechercheRequest"></wsdl:input>
       <wsdl:output message="tns:getListActiviteRechercheResponse"></wsdl:output>
       <wsdl:fault message="tns:getListActiviteRechercheFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <wsdl:input message="tns:getListActiviteVilleNomRequest"></wsdl:input>
+      <wsdl:output message="tns:getListActiviteVilleNomResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListActiviteVilleNomFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <wsdl:input message="tns:getActiviteNomRequest"></wsdl:input>
+      <wsdl:output message="tns:getActiviteNomResponse"></wsdl:output>
+      <wsdl:fault message="tns:getActiviteNomFault" name="fault"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP" type="tns:CatalogueService">
@@ -2742,6 +2947,30 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CatalogueServiceSoapBinding" type="tns:CatalogueService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -2998,6 +3227,30 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getListActiviteRecherche">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
@@ -3455,4 +3708,19 @@
          <statutActivite>?</statutActivite>\r
       </cat:getListActiviteRecherche>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteRechercheRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteRechercheRequest"/></con:call></con:operation><con:operation id="fde6835a-9099-4a59-98c1-8883308d5660" isOneWay="false" action="" name="getListActiviteVilleNom" bindingOperationName="getListActiviteVilleNom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e8a60ced-1abe-4cd1-83ea-67c98a887f25" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://www.example.org/CatalogueService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cat:getListActiviteVilleNom>\r
+         <nomVille>?</nomVille>\r
+         <statutActivite>?</statutActivite>\r
+      </cat:getListActiviteVilleNom>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getListActiviteVilleNomRequest"/></con:call></con:operation><con:operation id="b44b5366-c5d0-41e6-941d-e58c5668a13d" isOneWay="false" action="" name="getActiviteNom" bindingOperationName="getActiviteNom" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a5a4675a-5af5-4a2d-a3f7-da2a6fb7497c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cat="http://www.example.org/CatalogueService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cat:getActiviteNom>\r
+         <nomActivite>?</nomActivite>\r
+      </cat:getActiviteNom>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/CatalogueService/CatalogueService/getActiviteNomRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

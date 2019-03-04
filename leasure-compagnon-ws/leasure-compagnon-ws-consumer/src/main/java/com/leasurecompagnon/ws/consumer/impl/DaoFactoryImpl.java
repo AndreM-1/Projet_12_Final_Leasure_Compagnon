@@ -7,7 +7,9 @@ import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DepartementDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.FormulaireContactDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.PaysDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.PhotoDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.RegionDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.SaisonDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.TypeActiviteDao;
@@ -48,6 +50,12 @@ public class DaoFactoryImpl implements DaoFactory{
 	
 	@Inject
 	private AvisDao avisDao;
+	
+	@Inject
+	private FormulaireContactDao formulaireContactDao;
+	
+	@Inject
+	private PhotoDao photoDao;
 
 	
 	@Override
@@ -98,5 +106,15 @@ public class DaoFactoryImpl implements DaoFactory{
 	@Override
 	public AvisDao getAvisDao() {
 		return avisDao;
+	}
+
+	@Override
+	public FormulaireContactDao getFormulaireContactDao() {
+		return formulaireContactDao;
+	}
+
+	@Override
+	public PhotoDao getPhotoDao() {
+		return photoDao;
 	}
 }

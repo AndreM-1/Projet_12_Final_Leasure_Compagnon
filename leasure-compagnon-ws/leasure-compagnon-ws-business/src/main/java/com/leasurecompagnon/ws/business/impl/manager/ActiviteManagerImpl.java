@@ -113,4 +113,28 @@ public class ActiviteManagerImpl extends AbstractManager implements ActiviteMana
 		}
 		return listActivite;
 	}
+	
+	@Override
+	public List<Activite> getListActiviteVille(String nomVille, String statutActivite) throws NotFoundException {
+		LOGGER.info("Méthode getListActiviteVille(String nomVille, String statutActivite)");
+		try {
+			listActivite=getDaoFactory().getActiviteDao().getListActiviteVille(nomVille, statutActivite);
+		} catch (NotFoundException e) {
+			LOGGER.info(e.getMessage());
+			throw new NotFoundException(e.getMessage());
+		}
+		return listActivite;
+	}
+	
+	@Override
+	public Activite getActivite(String nomActivite) throws NotFoundException {
+		LOGGER.info("Méthode getActivite(String nomActivite)");
+		try {
+			activite=getDaoFactory().getActiviteDao().getActivite(nomActivite);
+		} catch (NotFoundException e) {
+			LOGGER.info(e.getMessage());
+			throw new NotFoundException(e.getMessage());
+		}
+		return activite;
+	}
 }

@@ -8,7 +8,9 @@ import com.leasurecompagnon.ws.business.contract.manager.ActiviteManager;
 import com.leasurecompagnon.ws.business.contract.manager.AvisManager;
 import com.leasurecompagnon.ws.business.contract.manager.DepartementManager;
 import com.leasurecompagnon.ws.business.contract.manager.DureeManager;
+import com.leasurecompagnon.ws.business.contract.manager.FormulaireContactManager;
 import com.leasurecompagnon.ws.business.contract.manager.PaysManager;
+import com.leasurecompagnon.ws.business.contract.manager.PhotoManager;
 import com.leasurecompagnon.ws.business.contract.manager.RegionManager;
 import com.leasurecompagnon.ws.business.contract.manager.SaisonManager;
 import com.leasurecompagnon.ws.business.contract.manager.TypeActiviteManager;
@@ -50,6 +52,12 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	
 	@Inject
 	private AvisManager avisManager;
+	
+	@Inject
+	private FormulaireContactManager formulaireContactManager;
+	
+	@Inject
+	private PhotoManager photoManager;
 
 	
 	@Override
@@ -100,5 +108,15 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	@Override
 	public AvisManager getAvisManager() {
 		return avisManager;
+	}
+
+	@Override
+	public FormulaireContactManager getFormulaireContactManager() {
+		return formulaireContactManager;
+	}
+
+	@Override
+	public PhotoManager getPhotoManager() {
+		return photoManager;
 	}
 }

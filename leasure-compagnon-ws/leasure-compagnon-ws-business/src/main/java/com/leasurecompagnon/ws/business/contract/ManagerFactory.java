@@ -4,7 +4,9 @@ import com.leasurecompagnon.ws.business.contract.manager.ActiviteManager;
 import com.leasurecompagnon.ws.business.contract.manager.AvisManager;
 import com.leasurecompagnon.ws.business.contract.manager.DepartementManager;
 import com.leasurecompagnon.ws.business.contract.manager.DureeManager;
+import com.leasurecompagnon.ws.business.contract.manager.FormulaireContactManager;
 import com.leasurecompagnon.ws.business.contract.manager.PaysManager;
+import com.leasurecompagnon.ws.business.contract.manager.PhotoManager;
 import com.leasurecompagnon.ws.business.contract.manager.RegionManager;
 import com.leasurecompagnon.ws.business.contract.manager.SaisonManager;
 import com.leasurecompagnon.ws.business.contract.manager.TypeActiviteManager;
@@ -36,5 +38,9 @@ public interface ManagerFactory {
 	ActiviteManager getActiviteManager();
 
 	AvisManager getAvisManager();
+
+	FormulaireContactManager getFormulaireContactManager();
+
+	PhotoManager getPhotoManager();
 
 }

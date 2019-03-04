@@ -1238,77 +1238,77 @@
       <element maxOccurs="unbounded" minOccurs="0" name="listAvis" type="tns:Avis"/>
     </sequence>
   </complexType>
-</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint></con:endpoints><con:operation id="16610bdb-22a9-4e48-9b79-70310875e9e9" isOneWay="false" action="" name="authentifierUtilisateur" bindingOperationName="authentifierUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc0c850a-2a80-483e-a605-6fe5bbf07ce5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint></con:endpoints><con:operation id="16610bdb-22a9-4e48-9b79-70310875e9e9" isOneWay="false" action="" name="authentifierUtilisateur" bindingOperationName="authentifierUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc0c850a-2a80-483e-a605-6fe5bbf07ce5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:authentifierUtilisateur>\r
-         <adresseMail>?</adresseMail>\r
-         <motDePasse>?</motDePasse>\r
+         <adresseMail>andre_monnier@yahoo.fr</adresseMail>\r
+         <motDePasse>M0tp@SAdM83!!</motDePasse>\r
       </util:authentifierUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/authentifierUtilisateurRequest"/></con:call></con:operation><con:operation id="404c0006-11e3-4c5b-b946-8ec69db5fba9" isOneWay="false" action="" name="creerCompteUtilisateur" bindingOperationName="creerCompteUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ca4fa8dd-e8ea-4e6d-ba93-a0890033809f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/authentifierUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="404c0006-11e3-4c5b-b946-8ec69db5fba9" isOneWay="false" action="" name="creerCompteUtilisateur" bindingOperationName="creerCompteUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ca4fa8dd-e8ea-4e6d-ba93-a0890033809f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:creerCompteUtilisateur>\r
-         <civilite>?</civilite>\r
-         <nom>?</nom>\r
-         <prenom>?</prenom>\r
-         <pseudo>?</pseudo>\r
-         <adresseMail>?</adresseMail>\r
-         <motDePasse>?</motDePasse>\r
-         <confirmationMotDePasse>?</confirmationMotDePasse>\r
-         <conditionsUtilisation>?</conditionsUtilisation>\r
+         <civilite>Monsieur</civilite>\r
+         <nom>Skywalker</nom>\r
+         <prenom>Luke</prenom>\r
+         <pseudo>LS</pseudo>\r
+         <adresseMail>luke.skywalker@gmail.com</adresseMail>\r
+         <motDePasse>azerty</motDePasse>\r
+         <confirmationMotDePasse>azerty</confirmationMotDePasse>\r
+         <conditionsUtilisation>true</conditionsUtilisation>\r
       </util:creerCompteUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/creerCompteUtilisateurRequest"/></con:call></con:operation><con:operation id="083058d3-ced9-4514-9a55-6820137cdf6e" isOneWay="false" action="" name="getUtilisateur" bindingOperationName="getUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2c153f87-d4f0-4cec-9125-5594d074b07d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/creerCompteUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="083058d3-ced9-4514-9a55-6820137cdf6e" isOneWay="false" action="" name="getUtilisateur" bindingOperationName="getUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2c153f87-d4f0-4cec-9125-5594d074b07d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:getUtilisateur>\r
          <utilisateurId>1</utilisateurId>\r
       </util:getUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/getUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="31a8bd0d-894a-4a15-930b-5b8fb899823d" isOneWay="false" action="" name="updateCoordUtilisateur" bindingOperationName="updateCoordUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ec61117d-cdca-4b51-81a0-7455c190ac4a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/getUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="31a8bd0d-894a-4a15-930b-5b8fb899823d" isOneWay="false" action="" name="updateCoordUtilisateur" bindingOperationName="updateCoordUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ec61117d-cdca-4b51-81a0-7455c190ac4a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:updateCoordUtilisateur>\r
-         <id>?</id>\r
-         <civilite>?</civilite>\r
-         <nom>?</nom>\r
-         <prenom>?</prenom>\r
-         <pseudo>?</pseudo>\r
-         <adresseMail>?</adresseMail>\r
-         <telephone>?</telephone>\r
-         <dateNaissance>?</dateNaissance>\r
-         <adresse>?</adresse>\r
-         <codePostal>?</codePostal>\r
-         <ville>?</ville>\r
-         <pays>?</pays>\r
+         <id>5</id>\r
+         <civilite>Monsieur</civilite>\r
+         <nom>Vader</nom>\r
+         <prenom>Darth Leia</prenom>\r
+         <pseudo>DVDL</pseudo>\r
+         <adresseMail>d.vader@gmail.com</adresseMail>\r
+         <telephone>06-65-65-98-65</telephone>\r
+         <dateNaissance>1977-09-03+02:00</dateNaissance>
+         <adresse>Quartier d'Andor</adresse>\r
+         <codePostal></codePostal>\r
+         <ville>Tatouine</ville>\r
+         <pays>Très loin</pays>\r
       </util:updateCoordUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateCoordUtilisateurRequest"/></con:call></con:operation><con:operation id="ea6f2b4e-4b6e-44b2-adaa-f17a1ebada2c" isOneWay="false" action="" name="updateMdpUtilisateur" bindingOperationName="updateMdpUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="994e6b09-0e0d-4c9b-bd1d-d36a5e574bb6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateCoordUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ea6f2b4e-4b6e-44b2-adaa-f17a1ebada2c" isOneWay="false" action="" name="updateMdpUtilisateur" bindingOperationName="updateMdpUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="994e6b09-0e0d-4c9b-bd1d-d36a5e574bb6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:updateMdpUtilisateur>\r
-         <id>?</id>\r
-         <actuelMdp>?</actuelMdp>\r
-         <nouveauMdp>?</nouveauMdp>\r
-         <confirmationNouveauMdp>?</confirmationNouveauMdp>\r
+         <id>5</id>\r
+         <actuelMdp>azerty</actuelMdp>\r
+         <nouveauMdp>azertyuiop</nouveauMdp>\r
+         <confirmationNouveauMdp>azertyuiop</confirmationNouveauMdp>\r
       </util:updateMdpUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateMdpUtilisateurRequest"/></con:call></con:operation><con:operation id="ea6eac13-7e76-4b96-a83e-2f87d39d2069" isOneWay="false" action="" name="updateParametresUtilisateur" bindingOperationName="updateParametresUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3df41df7-438c-4fd1-80bb-38060c51d3ba" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateMdpUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ea6eac13-7e76-4b96-a83e-2f87d39d2069" isOneWay="false" action="" name="updateParametresUtilisateur" bindingOperationName="updateParametresUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3df41df7-438c-4fd1-80bb-38060c51d3ba" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:updateParametresUtilisateur>\r
-         <id>?</id>\r
-         <envoiMailInformatif>?</envoiMailInformatif>\r
+         <id>5</id>\r
+         <envoiMailInformatif>true</envoiMailInformatif>\r
       </util:updateParametresUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateParametresUtilisateurRequest"/></con:call></con:operation><con:operation id="964083e2-b3cb-42a3-a22e-c827babb59ab" isOneWay="false" action="" name="updatePhotoUtilisateur" bindingOperationName="updatePhotoUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="26f44be3-e89f-4f2e-acdf-58571208a7fe" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updateParametresUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="964083e2-b3cb-42a3-a22e-c827babb59ab" isOneWay="false" action="" name="updatePhotoUtilisateur" bindingOperationName="updatePhotoUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="26f44be3-e89f-4f2e-acdf-58571208a7fe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:updatePhotoUtilisateur>\r
-         <nomPhoto>?</nomPhoto>\r
-         <utilisateurId>?</utilisateurId>\r
+         <nomPhoto>jsp/assets/images/utilisateur/utilisateur-5_2019-03-04.jpg</nomPhoto>\r
+         <utilisateurId>5</utilisateurId>\r
       </util:updatePhotoUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -77,4 +77,21 @@ public interface ActiviteManager {
 	 */
 	List<Activite> getListActiviteRecherche(String nomRecherche, String statutActivite) throws FunctionalException, NotFoundException;
 
+	/**
+	 * Méthode permettant de renvoyer la liste des activités en fonction de leur statut pour une ville donnée.
+	 * @param nomVille : Le nom de la ville.
+	 * @param statutActivite : Le statut de l'activité.
+	 * @return List
+	 * @throws NotFoundException
+	 */
+	List<Activite> getListActiviteVille(String nomVille, String statutActivite) throws NotFoundException;
+
+	/**
+	 * Méthode permettant de renvoyer un objet de type {@link Activite} en fonction de son nom.
+	 * @param nomActivite : Le nom de l'activité.
+	 * @return Un objet de type {@link Activite}
+	 * @throws NotFoundException
+	 */
+	Activite getActivite(String nomActivite) throws NotFoundException;
+
 }

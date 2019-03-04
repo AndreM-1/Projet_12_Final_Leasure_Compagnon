@@ -24,6 +24,8 @@ import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutActiviteFa
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.CatalogueService;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteNomFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteNomFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetDureeFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetDureeFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteFault;
@@ -34,6 +36,8 @@ import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActivite
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteUtilisateurFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleNomFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleNomFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleTAFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListActiviteVilleTAFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetListAvisUtilisateurFault;
@@ -393,6 +397,35 @@ public class CatalogueServiceImpl implements CatalogueService{
 		return listAvis;
 	}
 
+	@Override
+	public List<Activite> getListActiviteVilleNom(String nomVille, String statutActivite)
+			throws GetListActiviteVilleNomFault_Exception {
+		LOGGER.info("Méthode getListActiviteVilleNom(String nomVille, String statutActivite)");
+		try {
+			listActivite=managerFactory.getActiviteManager().getListActiviteVille(nomVille, statutActivite);
+		} catch (NotFoundException nfExc) {
+			LOGGER.info(nfExc.getMessage());
+			GetListActiviteVilleNomFault getListActiviteVilleNomFault = new GetListActiviteVilleNomFault();
+			getListActiviteVilleNomFault.setFaultMessageErreur(nfExc.getMessage());
+			throw new GetListActiviteVilleNomFault_Exception(nfExc.getMessage(),getListActiviteVilleNomFault);
+		}
+		return listActivite;
+	}
+	
+	@Override
+	public Activite getActiviteNom(String nomActivite) throws GetActiviteNomFault_Exception {
+		LOGGER.info("Méthode getActiviteNom(String nomActivite)");
+		try {
+			activite=managerFactory.getActiviteManager().getActivite(nomActivite);
+		} catch (NotFoundException nfExc) {
+			LOGGER.info(nfExc.getMessage());
+			GetActiviteNomFault getActiviteNomFault =new GetActiviteNomFault();
+			getActiviteNomFault.setFaultMessageErreur(nfExc.getMessage());
+			throw new GetActiviteNomFault_Exception(nfExc.getMessage(),getActiviteNomFault);
+		}
+		return activite;
+	}
+	
 	@Override
 	public void ajoutActivite(Activite activite) throws AjoutActiviteFault_Exception {
 		// TODO Auto-generated method stub

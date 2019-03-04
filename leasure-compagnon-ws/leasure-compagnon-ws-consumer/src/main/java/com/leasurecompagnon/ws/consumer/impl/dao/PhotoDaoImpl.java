@@ -6,12 +6,16 @@ import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.leasurecompagnon.ws.consumer.contract.dao.PhotoDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.PhotoRM;
 import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
+import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 
 @Named
@@ -62,5 +66,27 @@ public class PhotoDaoImpl extends AbstractDaoImpl implements PhotoDao{
 			return vListPhoto;
 		else
 			throw new NotFoundException("Aucune photo pour l'activité demandée");	
+	}
+	
+	@Override
+	public void insertPhotoUtilisateur(String nomPhoto,String provenancePhoto,String typePhoto,int utilisateurId) throws FunctionalException {
+		LOGGER.info("Méthode insertPhotoUtilisateur(String nomPhoto,String provenancePhoto,String typePhoto,int utilisateurId)");
+		String vSQL="INSERT INTO public.photo(nom_photo,provenance_photo,type_photo,utilisateur_id) VALUES (:nomPhoto,:provenancePhoto,:typePhoto,:utilisateurId)";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		//On va prendre le même nom pour cet identifiant.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("nomPhoto", nomPhoto);
+		vParams.addValue("provenancePhoto", provenancePhoto);
+		vParams.addValue("typePhoto", typePhoto);
+		vParams.addValue("utilisateurId", utilisateurId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DuplicateKeyException vEx) {
+			LOGGER.info("L'utilisateur a déjà une photo en base de données");
+			throw new FunctionalException("L'utilisateur a déjà une photo en base de données");
+		}
 	}
 }

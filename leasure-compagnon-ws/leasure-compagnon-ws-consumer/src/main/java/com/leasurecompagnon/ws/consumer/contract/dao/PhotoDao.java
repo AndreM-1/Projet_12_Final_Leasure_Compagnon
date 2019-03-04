@@ -3,6 +3,7 @@ package com.leasurecompagnon.ws.consumer.contract.dao;
 import java.util.List;
 
 import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
+import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 
 /**
@@ -35,5 +36,15 @@ public interface PhotoDao {
 	 * @throws NotFoundException
 	 */
 	List<Photo> getListPhotoActivite(int activiteId) throws NotFoundException;
+
+	/**
+	 * Méthode qui permet d'ajouter une photo en base de données pour un utilisateur qui n'a pas de photos de profil.
+	 * @param nomPhoto : Le nom de la photo.
+	 * @param provenancePhoto : La provenance de la photo.
+	 * @param typePhoto : Le type de de la photo.
+	 * @param utilisateurId : L'identifiant de l'utilisateur.
+	 * @throws FunctionalException
+	 */
+	void insertPhotoUtilisateur(String nomPhoto, String provenancePhoto, String typePhoto, int utilisateurId) throws FunctionalException;
 
 }
