@@ -107,6 +107,7 @@ public class ActiviteManagerImpl extends AbstractManager implements ActiviteMana
 		LOGGER.info("nomRecherche = "+nomRecherche);
 		try {
 			listActivite=getDaoFactory().getActiviteDao().getListActiviteRecherche(nomRecherche, statutActivite);
+			LOGGER.info("Taille de la liste d'activités : "+listActivite.size());
 		} catch (NotFoundException e) {
 			LOGGER.info(e.getMessage());
 			throw new NotFoundException(e.getMessage());
