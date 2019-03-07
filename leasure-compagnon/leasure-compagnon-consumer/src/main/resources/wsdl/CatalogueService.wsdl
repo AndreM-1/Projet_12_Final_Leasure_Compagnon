@@ -1,0 +1,2143 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/CatalogueService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CatalogueService" targetNamespace="http://www.example.org/CatalogueService/">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/CatalogueService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:Q1="http://www.example.org/beans/" targetNamespace="http://www.example.org/CatalogueService/">
+            
+  <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue?xsd=../beans.xsd"/>
+            
+  <xsd:element name="getListVille">
+        
+    <xsd:complexType>
+          
+      <xsd:sequence>
+            
+        <xsd:element maxOccurs="1" minOccurs="1" name="nbVille" type="xsd:int"/>
+          
+      </xsd:sequence>
+        
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListVilleResponse">
+        
+    <xsd:complexType>
+          
+      <xsd:sequence>
+            
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="ville" type="Q1:Ville"/>
+          
+      </xsd:sequence>
+        
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListVilleFault">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+      			</xsd:element>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListPays">
+      	
+    <xsd:complexType>
+
+      	</xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListPaysResponse">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="pays" type="Q1:Pays"/>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListPaysFault">
+      	
+    <xsd:complexType>
+			
+      <xsd:sequence>
+				
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+				</xsd:element>
+			
+      </xsd:sequence>
+   		
+    </xsd:complexType>
+      
+  </xsd:element>
+
+
+      
+  <xsd:element name="getListRegion">
+      	
+    <xsd:complexType>
+
+      	</xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListRegionResponse">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="region" type="Q1:Region"/>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListRegionFault">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+      			</xsd:element>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListDepartement">
+      	
+    <xsd:complexType>
+
+      	</xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListDepartementResponse">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="departement" type="Q1:Departement"/>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+            
+  <xsd:element name="getListDepartementFault">
+	            
+    <xsd:complexType>
+		      		
+      <xsd:sequence>
+		
+		      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+		      			</xsd:element>
+		      		
+      </xsd:sequence>
+	      		
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListDuree">
+            	
+    <xsd:complexType>
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListDureeResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="duree" type="Q1:Duree"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListDureeFault">
+ 	            
+    <xsd:complexType>
+		      		
+      <xsd:sequence>
+		      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+		      			</xsd:element>
+		      		
+      </xsd:sequence>
+	      		
+    </xsd:complexType>           
+            
+  </xsd:element>
+            
+  <xsd:element name="getListSaison">
+            	
+    <xsd:complexType>
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListSaisonResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="saison" type="Q1:Saison"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListSaisonFault">
+  	            
+    <xsd:complexType>
+		      		
+      <xsd:sequence>
+		      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+		      			</xsd:element>
+		      		
+      </xsd:sequence>
+	      		
+    </xsd:complexType>             
+            
+  </xsd:element>
+            
+  <xsd:element name="getListTypeActivite">
+            	
+    <xsd:complexType>
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListTypeActiviteResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="typeActivite" type="Q1:TypeActivite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListTypeActiviteFault">
+  	            
+    <xsd:complexType>
+		      		
+      <xsd:sequence>
+		      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+		      			</xsd:element>
+		      		
+      </xsd:sequence>
+	      		
+    </xsd:complexType>             
+            
+  </xsd:element>
+            
+  <xsd:element name="getVille">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="villeId" type="xsd:int"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getVilleResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="ville" type="Q1:Ville"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getVilleFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getDuree">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="dureeId" type="xsd:int"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getDureeResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="duree" type="Q1:Duree"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getDureeFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getSaison">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="saisonId" type="xsd:int"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getSaisonResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="saison" type="Q1:Saison"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getSaisonFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getTypeActivite">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="typeActiviteId" type="xsd:int"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getTypeActiviteResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="typeActivite" type="Q1:TypeActivite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getTypeActiviteFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+        
+            
+  <xsd:element name="getListActivite">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="nbActivite" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVille">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="villeId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleTA">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="villeId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="typeActiviteId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleTAResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleTAFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActivite">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="activiteId" type="xsd:int"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActiviteResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActiviteFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteUtilisateur">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteUtilisateurResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteUtilisateurFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="ajoutActivite">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="ajoutActiviteResponse">
+            	
+    <xsd:complexType>
+
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="ajoutActiviteFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListAvisUtilisateur">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutAvis" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListAvisUtilisateurResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="avis" type="Q1:Avis"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListAvisUtilisateurFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListNomVille">
+            	
+    <xsd:complexType>
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListNomVilleResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="nomVille" type="xsd:string"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListNomVilleFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>  
+            
+  </xsd:element>	          
+            
+            
+  <xsd:element name="getListNomActivite">
+            	
+    <xsd:complexType>
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListNomActiviteResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="nomActivite" type="xsd:string"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListNomActiviteFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>                  
+            
+  </xsd:element>
+            
+  <xsd:element name="getListVilleRecherche">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="nomRecherche" type="xsd:string"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListVilleRechercheResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="ville" type="Q1:Ville"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListVilleRechercheFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteRecherche">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="nomRecherche" type="xsd:string">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteRechercheResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteRechercheFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleNom">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="nomVille" type="xsd:string">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="statutActivite" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleNomResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListActiviteVilleNomFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActiviteNom">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="nomActivite" type="xsd:string"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActiviteNomResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="activite" type="Q1:Activite"/>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getActiviteNomFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+    
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getListPaysResponse">
+    <wsdl:part element="tns:getListPaysResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListTypeActiviteResponse">
+    <wsdl:part element="tns:getListTypeActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteUtilisateurResponse">
+    <wsdl:part element="tns:getListActiviteUtilisateurResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteRechercheRequest">
+    <wsdl:part element="tns:getListActiviteRecherche" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteRechercheFault">
+    <wsdl:part element="tns:getListActiviteRechercheFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomVilleFault">
+    <wsdl:part element="tns:getListNomVilleFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleRequest">
+    <wsdl:part element="tns:getListActiviteVille" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomActiviteFault">
+    <wsdl:part element="tns:getListNomActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDepartementResponse">
+    <wsdl:part element="tns:getListDepartementResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSaisonResponse">
+    <wsdl:part element="tns:getSaisonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTypeActiviteFault">
+    <wsdl:part element="tns:getTypeActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListAvisUtilisateurRequest">
+    <wsdl:part element="tns:getListAvisUtilisateur" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSaisonFault">
+    <wsdl:part element="tns:getSaisonFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomRequest">
+    <wsdl:part element="tns:getActiviteNom" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomFault">
+    <wsdl:part element="tns:getActiviteNomFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteUtilisateurRequest">
+    <wsdl:part element="tns:getListActiviteUtilisateur" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListAvisUtilisateurResponse">
+    <wsdl:part element="tns:getListAvisUtilisateurResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListTypeActiviteRequest">
+    <wsdl:part element="tns:getListTypeActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomActiviteRequest">
+    <wsdl:part element="tns:getListNomActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDureeFault">
+    <wsdl:part element="tns:getListDureeFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteResponse">
+    <wsdl:part element="tns:getActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomActiviteResponse">
+    <wsdl:part element="tns:getListNomActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListRegionResponse">
+    <wsdl:part element="tns:getListRegionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleTARequest">
+    <wsdl:part element="tns:getListActiviteVilleTA" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteUtilisateurFault">
+    <wsdl:part element="tns:getListActiviteUtilisateurFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteRechercheResponse">
+    <wsdl:part element="tns:getListActiviteRechercheResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleResponse">
+    <wsdl:part element="tns:getListVilleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDepartementRequest">
+    <wsdl:part element="tns:getListDepartement" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVilleResponse">
+    <wsdl:part element="tns:getVilleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleRechercheFault">
+    <wsdl:part element="tns:getListVilleRechercheFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListSaisonFault">
+    <wsdl:part element="tns:getListSaisonFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleFault">
+    <wsdl:part element="tns:getListActiviteVilleFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomVilleRequest">
+    <wsdl:part element="tns:getListNomVille" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListSaisonRequest">
+    <wsdl:part element="tns:getListSaison" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSaisonRequest">
+    <wsdl:part element="tns:getSaison" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVilleFault">
+    <wsdl:part element="tns:getVilleFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDepartementFault">
+    <wsdl:part element="tns:getListDepartementFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomResponse">
+    <wsdl:part element="tns:getListActiviteVilleNomResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleFault">
+    <wsdl:part element="tns:getListVilleFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPaysFault">
+    <wsdl:part element="tns:getListPaysFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleTAFault">
+    <wsdl:part element="tns:getListActiviteVilleTAFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutActiviteRequest">
+    <wsdl:part element="tns:ajoutActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleRechercheRequest">
+    <wsdl:part element="tns:getListVilleRecherche" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteNomResponse">
+    <wsdl:part element="tns:getActiviteNomResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteFault">
+    <wsdl:part element="tns:getActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListTypeActiviteFault">
+    <wsdl:part element="tns:getListTypeActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteFault">
+    <wsdl:part element="tns:getListActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutActiviteResponse">
+    <wsdl:part element="tns:ajoutActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListRegionRequest">
+    <wsdl:part element="tns:getListRegion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListRegionFault">
+    <wsdl:part element="tns:getListRegionFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleTAResponse">
+    <wsdl:part element="tns:getListActiviteVilleTAResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiviteRequest">
+    <wsdl:part element="tns:getActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomRequest">
+    <wsdl:part element="tns:getListActiviteVilleNom" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDureeResponse">
+    <wsdl:part element="tns:getListDureeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDureeResponse">
+    <wsdl:part element="tns:getDureeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListSaisonResponse">
+    <wsdl:part element="tns:getListSaisonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTypeActiviteRequest">
+    <wsdl:part element="tns:getTypeActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleResponse">
+    <wsdl:part element="tns:getListActiviteVilleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutActiviteFault">
+    <wsdl:part element="tns:ajoutActiviteFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListNomVilleResponse">
+    <wsdl:part element="tns:getListNomVilleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleRechercheResponse">
+    <wsdl:part element="tns:getListVilleRechercheResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDureeFault">
+    <wsdl:part element="tns:getDureeFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVilleRequest">
+    <wsdl:part element="tns:getListVille" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTypeActiviteResponse">
+    <wsdl:part element="tns:getTypeActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteVilleNomFault">
+    <wsdl:part element="tns:getListActiviteVilleNomFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListDureeRequest">
+    <wsdl:part element="tns:getListDuree" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDureeRequest">
+    <wsdl:part element="tns:getDuree" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVilleRequest">
+    <wsdl:part element="tns:getVille" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPaysRequest">
+    <wsdl:part element="tns:getListPays" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteRequest">
+    <wsdl:part element="tns:getListActivite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListAvisUtilisateurFault">
+    <wsdl:part element="tns:getListAvisUtilisateurFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListActiviteResponse">
+    <wsdl:part element="tns:getListActiviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CatalogueService">
+    <wsdl:operation name="getListVille">
+      <wsdl:input message="tns:getListVilleRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListVilleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListVilleFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListPays">
+      <wsdl:input message="tns:getListPaysRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListPaysResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListPaysFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListRegion">
+      <wsdl:input message="tns:getListRegionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListRegionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListRegionFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDepartement">
+      <wsdl:input message="tns:getListDepartementRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListDepartementResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListDepartementFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDuree">
+      <wsdl:input message="tns:getListDureeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListDureeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListDureeFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListSaison">
+      <wsdl:input message="tns:getListSaisonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListSaisonResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListSaisonFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListTypeActivite">
+      <wsdl:input message="tns:getListTypeActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListTypeActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListTypeActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVille">
+      <wsdl:input message="tns:getVilleRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getVilleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getVilleFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDuree">
+      <wsdl:input message="tns:getDureeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getDureeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getDureeFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSaison">
+      <wsdl:input message="tns:getSaisonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSaisonResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getSaisonFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTypeActivite">
+      <wsdl:input message="tns:getTypeActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getTypeActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getTypeActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActivite">
+      <wsdl:input message="tns:getListActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVille">
+      <wsdl:input message="tns:getListActiviteVilleRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteVilleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteVilleFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleTA">
+      <wsdl:input message="tns:getListActiviteVilleTARequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteVilleTAResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteVilleTAFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActivite">
+      <wsdl:input message="tns:getActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteUtilisateur">
+      <wsdl:input message="tns:getListActiviteUtilisateurRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteUtilisateurResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteUtilisateurFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajoutActivite">
+      <wsdl:input message="tns:ajoutActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ajoutActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ajoutActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListAvisUtilisateur">
+      <wsdl:input message="tns:getListAvisUtilisateurRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListAvisUtilisateurResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListAvisUtilisateurFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomVille">
+      <wsdl:input message="tns:getListNomVilleRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListNomVilleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListNomVilleFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomActivite">
+      <wsdl:input message="tns:getListNomActiviteRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListNomActiviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListNomActiviteFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListVilleRecherche">
+      <wsdl:input message="tns:getListVilleRechercheRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListVilleRechercheResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListVilleRechercheFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteRecherche">
+      <wsdl:input message="tns:getListActiviteRechercheRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteRechercheResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteRechercheFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <wsdl:input message="tns:getListActiviteVilleNomRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListActiviteVilleNomResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListActiviteVilleNomFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <wsdl:input message="tns:getActiviteNomRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getActiviteNomResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getActiviteNomFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CatalogueServiceSOAP" type="tns:CatalogueService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListVille">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListPays">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListRegion">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDepartement">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDuree">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListSaison">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListTypeActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVille">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDuree">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSaison">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTypeActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVille">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleTA">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajoutActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListAvisUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomVille">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomActivite">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListVilleRecherche">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteRecherche">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CatalogueServiceSoapBinding" type="tns:CatalogueService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListVille">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListPays">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListRegion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDepartement">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListDuree">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListSaison">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListTypeActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVille">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDuree">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSaison">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTypeActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVille">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleTA">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajoutActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListAvisUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomVille">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListNomActivite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListVilleRecherche">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteRecherche">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListActiviteVilleNom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiviteNom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogueService">
+    <wsdl:port binding="tns:CatalogueServiceSOAP" name="CatalogueServiceSOAP">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="CatalogueServiceService">
+    <wsdl:port binding="tns:CatalogueServiceSoapBinding" name="CatalogueServicePort">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
