@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+       	http://cxf.apache.org/transports/http/configuration 
+       	http://cxf.apache.org/schemas/configuration/http-conf.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+       	http://www.springframework.org/schema/jee
+       	http://www.springframework.org/schema/jee/spring-jee.xsd
+     	http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd">
+        
+        
+    <!-- On va scanner les annotations dans tous les packages de base com.leasurecompagnon.ws -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.leasurecompagnon.ws"/>
+ 
+ 	<!-- Chargement du fichier properties contenant la configuration des ressources JNDI  -->
+    <bean id="dataSourceLeasureCompagnonTestConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:/db-sileasurecompagnon.properties"/>
+    </bean>
+    
+    <!-- Création de la datasource "dataSourceLeasureCompagnon" -->
+    <bean id="dataSourceLeasureCompagnon"
+          class="org.apache.commons.dbcp2.BasicDataSourceFactory"
+          factory-method="createDataSource"
+          destroy-method="close">
+        <constructor-arg ref="dataSourceLeasureCompagnonTestConfiguration"/>
+    </bean> 
+    
+    <bean id="txManagerLeasureCompagnon" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSourceLeasureCompagnon"/>
+	</bean>  
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="com.leasurecompagnon.ws.business.impl.manager.AbstractManager"/>		
+		<property name="targetMethod" value="setPlatformTransactionManager"/>
+		<property name="arguments">
+           <list>
+               <ref bean="txManagerLeasureCompagnon"/>
+           </list>
+		</property>
+	</bean>	
+	
+	<!-- Manager Factory -->
+	<bean id="ManagerFactory" class="com.leasurecompagnon.ws.business.impl.ManagerFactoryImpl"/>
+	
+	<!-- Dao Factory -->
+	<bean id="DaoFactory" class="com.leasurecompagnon.ws.consumer.impl.DaoFactoryImpl"/>
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="com.leasurecompagnon.ws.business.impl.manager.AbstractManager"/>		
+		<property name="targetMethod" value="setDaoFactory"/>
+		<property name="arguments">
+        	<list>
+                <ref bean="DaoFactory"/>
+            </list>
+		</property>
+	</bean>
+</beans>

@@ -420,7 +420,6 @@ VALUES
 ('jsp/assets/images/utilisateur/utilisateur-1.jpg','Non applicable','Profil utilisateur',1,NULL,NULL),
 ('jsp/assets/images/utilisateur/utilisateur-2.jpg','Non applicable','Profil utilisateur',2,NULL,NULL),
 ('jsp/assets/images/utilisateur/utilisateur-3.jpg','Non applicable','Profil utilisateur',3,NULL,NULL),
-('jsp/assets/images/utilisateur/utilisateur-4.jpg','Non applicable','Profil utilisateur',4,NULL,NULL),
 
 -- photos villes
 ('jsp/assets/images/annecy/annecy-1_2019-02-08.jpg','Libre de droits','Ville',NULL,1,NULL),

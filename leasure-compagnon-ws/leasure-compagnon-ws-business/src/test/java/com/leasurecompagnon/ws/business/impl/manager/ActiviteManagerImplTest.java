@@ -82,7 +82,7 @@ public class ActiviteManagerImplTest {
 
 	/**
 	 * Méthode permettant d'instancier une liste d'activités attendue.
-	 * @return La liste d'activité attendue.
+	 * @return La liste d'activités attendue.
 	 */
 	public static List<Activite> createListActiviteExpected() {
 		Utilisateur vUtilisateur= new Utilisateur();

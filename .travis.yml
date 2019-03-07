@@ -1,0 +1,11 @@
+language: java
+jdk:
+  - oraclejdk8
+sudo: required
+services:
+  - postgresql
+before_script:
+  - cd leasure-compagnon-ws
+script:
+  - mvn test
+  - mvn test -Ptest-business

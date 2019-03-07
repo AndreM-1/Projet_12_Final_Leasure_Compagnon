@@ -14,7 +14,7 @@
      	http://cxf.apache.org/jaxws
         http://cxf.apache.org/schemas/jaxws.xsd">
 
-    <!-- On va scanner les annotations dans tous les packages de base com.bibliotheques.ws -->
+    <!-- On va scanner les annotations dans tous les packages de base com.leasurecompagnon.ws -->
     <context:annotation-config/>
     <context:component-scan base-package="com.leasurecompagnon.ws"/>
 

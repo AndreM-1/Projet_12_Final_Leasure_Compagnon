@@ -22,6 +22,11 @@ import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
+/**
+ * Classe permettant d'effectuer des tests unitaires sur la classe {@link VilleManagerImpl}
+ * @author André Monnier
+ *
+ */
 public class VilleManagerImplTest {
 
 	private static DaoFactory daoFactoryMock=mock(DaoFactory.class);
@@ -55,7 +60,7 @@ public class VilleManagerImplTest {
 
 	/**
 	 * Méthode permettant d'instancier une liste de villes attendue.
-	 * @return La liste d'activité attendue.
+	 * @return La liste de villes attendue.
 	 */
 	public static List<Ville> createListVilleExpected() {
 		Ville vVille = new Ville();
