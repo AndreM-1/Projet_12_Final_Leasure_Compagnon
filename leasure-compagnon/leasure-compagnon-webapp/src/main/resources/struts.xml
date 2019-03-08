@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+	
+		<!-- Définition des intercepteurs -->
+		<interceptors>
+			<!-- Définition de l'intercepteur permettant de bloquer l'accès à la page de connexion et à la page de création de compte pour un utilisateur déjà connecté -->
+			<interceptor name="RefusAPC" class="com.leasurecompagnon.appliweb.webapp.interceptor.RefusAPCInterceptor"/>
+			<interceptor-stack name="RefusAccesPageConnexionStack">
+				<interceptor-ref name="RefusAPC"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<!-- Définition de l'intercepteur permettant de bloquer l'accès aux pages de profil et d'ajout d'activités, de commentaires, etc...,
+			 pour un utilisateur non connecté -->
+			<interceptor name="Auth" class="com.leasurecompagnon.appliweb.webapp.interceptor.AuthInterceptor"></interceptor>
+			<interceptor-stack name="AuthenticatedStack">
+				<interceptor-ref name="Auth"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	
+		<!-- Action par défaut -->
+		<default-action-ref name="index" />
+
+		<!-- Action "index" -->
+		<action name="index" class="com.leasurecompagnon.appliweb.webapp.action.GestionAccueilAction" method="doListVille">
+			<result name="success">/jsp/index.jsp</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>
+			
+	</package>
+</struts>

@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Configuration des adresses des web services -->
+<Context>
+	<Environment
+		name="catalogueServiceAdresse"
+		value="http://localhost:8080/leasure-compagnon-ws-webapp/ws/catalogue"
+		type="java.lang.String"
+	/>
+	
+	<Environment
+		name="formulairecontactServiceAdresse"
+		value="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"
+		type="java.lang.String"
+	/>
+
+	<Environment
+		name="utilisateurServiceAdresse"
+		value="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur"
+		type="java.lang.String"
+	/>
+</Context>
