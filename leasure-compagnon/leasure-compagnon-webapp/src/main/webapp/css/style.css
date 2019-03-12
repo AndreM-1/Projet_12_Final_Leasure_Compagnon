@@ -1,0 +1,264 @@
+/* Police d'écriture : Alice Regular */
+@font-face {
+    font-family: 'aliceregular';
+    src: url('polices/Alice-Regular-webfont.eot');
+    src: url('polices/Alice-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('polices/Alice-Regular-webfont.woff2') format('woff2'),
+         url('polices/Alice-Regular-webfont.woff') format('woff'),
+         url('polices/Alice-Regular-webfont.ttf') format('truetype'),
+         url('polices/Alice-Regular-webfont.svg#aliceregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	margin-top:5px;
+	background-color:#EEEEEE;
+	font-family: 'aliceregular', Arial, sans-serif;
+}
+
+.container{
+	background-color:#FFF;
+}
+
+#barre-navigation{
+	margin-right:0px;
+	border-bottom :1px solid grey;
+	margin-bottom:5px;
+}
+
+
+/***************************************************************************************
+ * Attention à ne pas oublier le deuxième container contenu dans la barre de navigation.
+ * Il faut bien lui mettre une largeur auto sinon il dépassera du premier container.
+ * *************************************************************************************/
+
+#container-barre-navigation{
+	width:auto;
+}
+
+.icon-bar{
+	 background-color:#4C76FF;
+}
+
+.navbar-toggle {
+  padding: 10px;
+  margin: 20px 0 20px 0;
+}
+
+
+.navbar-brand {
+  padding: 0px;
+  height: 74px;
+}
+
+.navbar-brand>img {
+  padding: 10px 0 10px 0; /*Haut-Droite-Bas-Gauche*/
+  width: auto;
+}
+
+.nav >li >a {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+#barre-navigation .bouton-connexion:hover {
+	background-color:#286090;
+}
+
+#barre-navigation .bouton-activite:hover{
+	background-color:#286090;
+}
+
+#barre-navigation li ul li a:hover {
+	background-color:transparent;
+}
+
+#banniere-image{
+	background: url('../jsp/assets/images/fond_ecran_leasure_compagnon_1.jpg') no-repeat;
+	border-radius :5px;
+	height:500px;
+	opacity:0.8;
+	position: relative;
+	box-shadow: 0px 4px 4px #1c1a19;
+}
+
+#zone-recherche{
+	position: absolute;
+	bottom:45%;
+	width: 54%;
+	left : 23%;
+}
+
+#zone-recherche #recherche-avancee a{
+	color:inherit;
+}
+
+/********************************Media query pour le header******************************/
+@media all and (min-width: 992px) and (max-width: 1200px){
+	#zone-recherche{
+		width: 58%;
+		left : 21%;
+	}
+}
+
+@media all and (max-width: 992px){
+	#zone-recherche{
+		width: 72%;
+		left : 14%;
+	}
+}
+/*****************************************************************************************/
+
+section {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	border-bottom :1px solid grey;
+}
+
+.accueil-ville {
+	margin-bottom: 10px;
+}
+
+.accueil-nom-ville{
+	font-size : 2em;
+}
+
+.accueil-description-ville{
+	height:220px;
+	overflow:auto;
+	font-size : 1.2em;
+}
+
+/********************************Media query pour la page d'accueil************************/
+@media all and (min-width: 992px) and (max-width: 1200px) {
+		.accueil-description-ville{
+		font-size : 1.1em;	
+	}
+}
+
+@media all and (min-width: 768px) and (max-width: 992px){
+	.accueil-description-ville{
+		height:140px;
+		font-size : 0.9em;	
+	}
+}
+
+@media all and (min-width: 575px)and (max-width: 768px){
+	.accueil-description-ville{
+		height:90px;
+		font-size : 0.8em;
+	}
+}
+
+@media all and (min-width: 480px) and (max-width: 575px){
+	.accueil-nom-ville{
+	font-size : 1.5em;
+	}
+	.accueil-description-ville{
+		height:75px;
+		font-size : 0.8em;
+	}
+}
+
+@media all and (max-width: 480px){
+	.accueil-nom-ville{
+	font-size : 1em;
+	font-weight :bold
+	}
+	.accueil-description-ville{
+		height:60px;
+		font-size : 0.8em;
+	}
+}
+/*****************************************************************************************/
+
+#row-connexion,#row-creation-compte {
+	margin-left:0px;
+	margin-right:0px;
+}
+
+#div-connexion {
+	border:1px solid grey;
+	margin-top:15px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	box-shadow: 0px 4px 4px #1c1a19;
+}
+
+#nav-profil-utilisateur ul{
+	margin-top:25px;
+	list-style-type:none;
+	display:flex;
+	border-bottom: 1px solid grey;
+	padding-left:0px;
+}
+
+#nav-profil-utilisateur li{
+	margin-right:30px;
+}
+
+#nav-profil-utilisateur a{
+	font-size: 1.5em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+#nav-profil-utilisateur a:hover{
+	color: #181818;
+    border-bottom: 4px solid #181818;
+}
+
+#form-utilisateur-coord, #form-utilisateur-mdp, #form-utilisateur-param {
+	margin-bottom:10px;
+}
+
+#mes-coordonnees, #mon-mot-de-passe, #mes-parametres {
+	border-bottom: 4px solid #181818;
+}
+
+
+/********************************Media query pour pages profil utilisateur****************/
+@media all and (min-width: 653px) and (max-width: 768px){
+	#nav-profil-utilisateur a{
+		font-size: 1.2em;
+	}
+	#nav-profil-utilisateur a:hover{
+		 border-bottom: 3px solid #181818;
+	}
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	border-bottom: 3px solid #181818;	
+	}
+}
+
+@media all and (min-width: 583px) and (max-width: 653px){
+	#nav-profil-utilisateur a{
+		font-size: 1em;
+	}
+	#nav-profil-utilisateur a:hover{
+		 border-bottom: 2px solid #181818;
+	}
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	border-bottom: 2px solid #181818;	
+	}
+}
+
+@media all and (max-width: 583px){
+	#nav-profil-utilisateur a{
+		font-size: 0.8em;
+	}
+	#nav-profil-utilisateur a:hover{
+		 border-bottom: 1px solid #181818;
+	}
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	border-bottom: 1px solid #181818;	
+	}
+}
+/*****************************************************************************************/
+
+footer{
+	margin-bottom:5px;
+	height : 60px;
+	padding-top :20px;
+}

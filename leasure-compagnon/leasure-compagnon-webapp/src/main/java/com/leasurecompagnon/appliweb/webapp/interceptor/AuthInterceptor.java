@@ -27,7 +27,7 @@ public class AuthInterceptor extends AbstractInterceptor{
 		if(invocation.getInvocationContext().getSession().get("user")!=null) {
 			vResult=invocation.invoke();	
 		} else {
-			vResult="refus-acces-page-profil-emprunt";
+			vResult="refus-acces-page-profil";
 		}
 		LOGGER.info("AuthInterceptor - Intercepteur :"+vResult);
 		return vResult;

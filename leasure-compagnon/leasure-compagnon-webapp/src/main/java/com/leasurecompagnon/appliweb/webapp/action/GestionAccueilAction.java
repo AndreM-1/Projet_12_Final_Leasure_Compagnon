@@ -38,6 +38,8 @@ public class GestionAccueilAction extends ActionSupport{
 		return listVille;
 	}
 
+	// ===================== Méthodes ============================
+	
 	/**
 	 * Méthode permettant de renvoyer une liste de villes qui seront affichées sur la page d'accueil.
 	 * @return success /error
@@ -48,10 +50,12 @@ public class GestionAccueilAction extends ActionSupport{
 		try {
 			listVille=managerFactory.getVilleManager().getListVille(-1);
 			LOGGER.info("Nom de la ville : "+listVille.get(0).getNomVille());
-			LOGGER.info("Nom de la ville : "+listVille.get(10).getNomVille());
+			LOGGER.info("Nom de la photo : "+listVille.get(0).getPhotoVille().getNomPhoto());
+			LOGGER.info("Nom de la ville : "+listVille.get(9).getNomVille());
 			vResult=ActionSupport.SUCCESS;
 		} catch (GetListVilleFault_Exception e) {
 			LOGGER.info(e.getMessage());
+			this.addActionError(e.getMessage());
 			vResult=ActionSupport.ERROR;
 		}
 		return vResult;

@@ -88,6 +88,12 @@
 	        <groupId>org.apache.struts</groupId>
 	        <artifactId>struts2-spring-plugin</artifactId>
         </dependency>
+        
+        <!-- Dépendance liée au plugin bootstrap de Struts 2 -->
+        <dependency>
+	        <groupId>com.jgeppert.struts2.bootstrap</groupId>
+	        <artifactId>struts2-bootstrap-plugin</artifactId>
+   		</dependency>  
 
         <!-- Dépendance vers le plugin json de Struts2 afin de gérer le format JSON
         et pouvoir automatiquement sérialiser des objets Java en JSON -->
