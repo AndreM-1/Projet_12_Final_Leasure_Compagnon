@@ -12,6 +12,27 @@
 
 			<section>
 				<s:if test="#session.user">
+					<!-- Photo et pseudo de l'utilisateur -->
+					<div class="row">
+						<div class="col-xs-offset-4 col-xs-4 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 text-center">
+							<s:if test="%{nomPhoto!=null && nomPhoto!=''}">
+								<img src="<s:property value="nomPhoto"/>" class="photo-profil-utilisateur" alt="Photo utilisateur" width=100px height=100px/>
+							</s:if>
+							<s:else>
+								<s:if test="%{civilite=='Monsieur'}">
+									<img src="jsp/assets/images/utilisateur/avatar_profil_homme_anonyme.png" class="photo-profil-utilisateur" 
+									alt="Photo utilisateur anonyme" width=100px height=100px/>
+								</s:if>
+								<s:else>
+									<img src="jsp/assets/images/utilisateur/avatar_profil_femme_anonyme.png"  class="photo-profil-utilisateur" 
+									alt="Photo utilisateur anonyme" width=100px height=100px/>
+								</s:else>
+							</s:else>		
+							<span id="pseudo-utilisateur"><s:property value="pseudo"/></span>
+						</div>
+					</div>					
+				
+				
 					<!-- Menu de navigation -->
 					<nav id="nav-profil-utilisateur">
 						<ul>
@@ -29,6 +50,9 @@
 						<div class="row">
 							<div class="col-sm-12 col-md-12 col-lg-12">
 								<s:hidden name="id" label="Id" />
+								<s:hidden name="pseudo" label="Pseudo" />
+								<s:hidden name="nomPhoto" label="Nom photo" />
+								<s:hidden name="civilite" label="Civilite" />							
 								<s:hidden name="validationFormulaire" label="Validation Formulaire" />
 							 	<s:checkbox type="checkbox" name="envoiMailInformatif" label="Activer/désactiver l'option de réception de mails informatifs" /> 
 					 		</div>

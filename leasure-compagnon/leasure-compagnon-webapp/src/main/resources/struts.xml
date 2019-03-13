@@ -5,7 +5,7 @@
 
 <struts>
 	<package name="default" extends="struts-default">
-	
+		
 		<!-- Définition des intercepteurs -->
 		<interceptors>
 			<!-- Définition de l'intercepteur permettant de bloquer l'accès à la page de connexion et à la page de création de compte pour un utilisateur déjà connecté -->
@@ -59,6 +59,15 @@
 			<result name="input">/jsp/utilisateur/utilisateurcoord.jsp</result>
 			<result name="success">/jsp/utilisateur/utilisateurcoord.jsp</result>
 		</action>
+		
+		<!-- Action "update_photo_util" -->
+		<action name="update_photo_util" class="com.leasurecompagnon.appliweb.webapp.action.GestionProfilUtilisateurAction" method="doUpdatePhotoUtil">
+			<interceptor-ref name="AuthenticatedStack" /> 
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="input">/jsp/utilisateur/utilisateurcoord.jsp</result>
+			<result name="success">/jsp/utilisateur/utilisateurcoord.jsp</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>		
 		
 		<!-- Action "page_utilisateur_mdp" -->
 		<action name="page_utilisateur_mdp" class="com.leasurecompagnon.appliweb.webapp.action.GestionProfilUtilisateurAction"  method="doUpdateMdp">

@@ -218,6 +218,13 @@ section {
 	border-bottom: 4px solid #181818;
 }
 
+.photo-profil-utilisateur{
+	border-radius:60px;
+}
+
+#pseudo-utilisateur{
+	font-size: 1.5em;
+}
 
 /********************************Media query pour pages profil utilisateur****************/
 @media all and (min-width: 653px) and (max-width: 768px){
@@ -229,6 +236,9 @@ section {
 	}
 	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
 	border-bottom: 3px solid #181818;	
+	}
+	#pseudo-utilisateur {
+		font-size: 1em;
 	}
 }
 
@@ -242,6 +252,9 @@ section {
 	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
 	border-bottom: 2px solid #181818;	
 	}
+	#pseudo-utilisateur {
+		font-size: 0.9em;
+	}
 }
 
 @media all and (max-width: 583px){
@@ -253,6 +266,9 @@ section {
 	}
 	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
 	border-bottom: 1px solid #181818;	
+	}
+	#pseudo-utilisateur {
+		display:none;
 	}
 }
 /*****************************************************************************************/

@@ -109,7 +109,7 @@ CREATE TABLE public.utilisateur (
                 salt CHAR(30) NOT NULL,
                 mot_de_passe_securise CHAR(44) NOT NULL,
                 date_inscription TIMESTAMP NOT NULL,
-                telephone CHAR(14),
+                telephone VARCHAR(14),
                 date_naissance DATE,
                 adresse VARCHAR(100),
                 code_postal VARCHAR(10),
