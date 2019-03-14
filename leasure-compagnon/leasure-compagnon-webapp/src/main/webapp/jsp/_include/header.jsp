@@ -33,6 +33,10 @@
 								<li class="divider"></li>
 								<li><s:a action="page_utilisateur_param">Mes Paramètres</s:a></li>
 								<li class="divider"></li>
+								<s:if test="#session.user.administrateur==true">
+									<li><s:a action="visu_formulaire_contact">Formulaires de contact</s:a></li>
+									<li class="divider"></li>
+								</s:if>
 								<li><s:a action="deconnexion">Déconnexion</s:a></li>
 							</ul>
 						</li>

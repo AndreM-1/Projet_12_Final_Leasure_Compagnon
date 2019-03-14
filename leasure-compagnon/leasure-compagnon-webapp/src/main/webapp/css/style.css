@@ -214,7 +214,7 @@ section {
 	margin-bottom:10px;
 }
 
-#mes-coordonnees, #mon-mot-de-passe, #mes-parametres {
+#mes-coordonnees, #mon-mot-de-passe, #mes-parametres, #mes-activites-avis {
 	border-bottom: 4px solid #181818;
 }
 
@@ -226,6 +226,40 @@ section {
 	font-size: 1.5em;
 }
 
+#image-activites, #image-avis {
+	border :1px solid grey;
+	box-shadow: 0px 4px 4px #1c1a19;
+}
+
+#div-activites,#div-avis {
+	margin-bottom : 10px;
+}
+
+#activites-avis-utilisateur, #visu-form-contact-utilisateur {
+	font-size: 1.5em;
+	border-bottom: 3px solid grey;
+	padding-top :5px;
+	padding-bottom :5px;
+}
+
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a  {
+	text-decoration: none;
+	color: #181818;
+}
+
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a : hover {
+	color: #181818;
+}
+
+#appreciation-utilisateur, #commentaire-utilisateur {
+	font-size : 1.2em;
+}
+
+.attr-form-contact{
+	font-style :italic;
+	font-weight:bold;
+}
+
 /********************************Media query pour pages profil utilisateur****************/
 @media all and (min-width: 653px) and (max-width: 768px){
 	#nav-profil-utilisateur a{
@@ -234,7 +268,7 @@ section {
 	#nav-profil-utilisateur a:hover{
 		 border-bottom: 3px solid #181818;
 	}
-	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres, #mes-activites-avis {
 	border-bottom: 3px solid #181818;	
 	}
 	#pseudo-utilisateur {
@@ -249,7 +283,7 @@ section {
 	#nav-profil-utilisateur a:hover{
 		 border-bottom: 2px solid #181818;
 	}
-	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres, #mes-activites-avis {
 	border-bottom: 2px solid #181818;	
 	}
 	#pseudo-utilisateur {
@@ -264,11 +298,14 @@ section {
 	#nav-profil-utilisateur a:hover{
 		 border-bottom: 1px solid #181818;
 	}
-	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres{
+	#mes-coordonnees, #mon-mot-de-passe, #mes-parametres, #mes-activites-avis {
 	border-bottom: 1px solid #181818;	
 	}
 	#pseudo-utilisateur {
 		display:none;
+	}
+	.panel-title {
+		font-size : 1em;
 	}
 }
 /*****************************************************************************************/

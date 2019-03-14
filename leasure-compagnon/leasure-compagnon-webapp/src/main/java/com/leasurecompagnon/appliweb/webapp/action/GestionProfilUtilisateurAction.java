@@ -2,6 +2,7 @@ package com.leasurecompagnon.appliweb.webapp.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -15,7 +16,11 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.leasurecompagnon.appliweb.business.contract.ManagerFactory;
+import com.leasurecompagnon.appliweb.model.bean.catalogue.Activite;
+import com.leasurecompagnon.appliweb.model.bean.catalogue.Avis;
 import com.leasurecompagnon.appliweb.model.bean.utilisateur.Utilisateur;
+import com.leasurecompagnon.appliweb.model.exception.GetListActiviteUtilisateurFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.GetListAvisUtilisateurFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetUtilisateurFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.UpdateCoordUtilisateurFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.UpdateMdpUtilisateurFault_Exception;
@@ -58,6 +63,9 @@ public class GestionProfilUtilisateurAction extends ActionSupport implements Ses
 	private String confirmationNouveauMotDePasse;
 
 	private boolean envoiMailInformatif;
+	
+	private List<Activite> listActivite;
+	private List<Avis> listAvis;
 
 	//Eléments liés  l'upload
 	private File fileUpload;
@@ -214,6 +222,14 @@ public class GestionProfilUtilisateurAction extends ActionSupport implements Ses
 
 	public void setEnvoiMailInformatif(boolean envoiMailInformatif) {
 		this.envoiMailInformatif = envoiMailInformatif;
+	}
+	
+	public List<Activite> getListActivite() {
+		return listActivite;
+	}
+	
+	public List<Avis> getListAvis() {
+		return listAvis;
 	}
 
 	public void setFileUpload(File fileUpload) {
@@ -416,7 +432,7 @@ public class GestionProfilUtilisateurAction extends ActionSupport implements Ses
 	}
 
 	/**
-	 * Méthode permettant de mettre à jour la photo de profil pour d'un {@link Utilisateur}
+	 * Méthode permettant de mettre à jour la photo de profil d'un {@link Utilisateur}
 	 * @return input / success / error
 	 */
 	public String doUpdatePhotoUtil() {
@@ -513,6 +529,78 @@ public class GestionProfilUtilisateurAction extends ActionSupport implements Ses
 					return ActionSupport.ERROR;
 				}
 			}
+		}
+		return vResult;
+	}
+	
+	/**
+	 * Méthode permettant d'afficher le choix entre les activités ou les avis postés par l'utilisateur.
+	 * @return success
+	 */
+	public String doActivitesAvisUtilisateur() {
+		LOGGER.info("Méthode doActivitesAvisUtilisateur()");
+		//Récupération de la variable de session relative à l'utilisateur.
+		Utilisateur vUtilisateurSession= (Utilisateur)this.session.get("user");
+		id=vUtilisateurSession.getId();
+		pseudo=vUtilisateurSession.getPseudo();
+		civilite=vUtilisateurSession.getCivilite();
+		if(vUtilisateurSession.getPhotoUtilisateur()!=null)
+			nomPhoto=vUtilisateurSession.getPhotoUtilisateur().getNomPhoto();
+
+		LOGGER.info("Nom Photo utilisateur : "+nomPhoto);
+		return ActionSupport.SUCCESS;
+	}
+	
+	/**
+	 * Méthode permettant de renvoyer la liste des activités postées par l'utilisateur.
+	 * @return input / success
+	 */
+	public String doListActivitesUtilisateur() {
+		LOGGER.info("Méthode doListActivitesUtilisateur()");
+		String vResult;
+		//Récupération de la variable de session relative à l'utilisateur.
+		Utilisateur vUtilisateurSession= (Utilisateur)this.session.get("user");
+		id=vUtilisateurSession.getId();
+		pseudo=vUtilisateurSession.getPseudo();
+		civilite=vUtilisateurSession.getCivilite();
+		if(vUtilisateurSession.getPhotoUtilisateur()!=null)
+			nomPhoto=vUtilisateurSession.getPhotoUtilisateur().getNomPhoto();
+
+		LOGGER.info("Nom Photo utilisateur : "+nomPhoto);
+		try {
+			listActivite = managerFactory.getActiviteManager().getListActiviteUtilisateur(id, "MEL");
+			vResult=ActionSupport.SUCCESS;
+		} catch (GetListActiviteUtilisateurFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			this.addActionMessage("Vous n'avez posté aucune activité pour le moment");
+			vResult=ActionSupport.INPUT;
+		}
+		return vResult;
+	}
+	
+	/**
+	 * Méthode permettant de renvoyer la liste des avis postés par l'utilisateur.
+	 * @return input / success
+	 */
+	public String doListAvisUtilisateur() {
+		LOGGER.info("Méthode doListAvisUtilisateur()");
+		String vResult;
+		//Récupération de la variable de session relative à l'utilisateur.
+		Utilisateur vUtilisateurSession= (Utilisateur)this.session.get("user");
+		id=vUtilisateurSession.getId();
+		pseudo=vUtilisateurSession.getPseudo();
+		civilite=vUtilisateurSession.getCivilite();
+		if(vUtilisateurSession.getPhotoUtilisateur()!=null)
+			nomPhoto=vUtilisateurSession.getPhotoUtilisateur().getNomPhoto();
+		
+		LOGGER.info("Nom Photo utilisateur : "+nomPhoto);
+		try {
+			listAvis=managerFactory.getAvisManager().getListAvisUtilisateur(id, "MEL");
+			vResult=ActionSupport.SUCCESS;
+		} catch (GetListAvisUtilisateurFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			this.addActionMessage("Vous n'avez posté aucun avis pour le moment");
+			vResult=ActionSupport.INPUT;
 		}
 		return vResult;
 	}
