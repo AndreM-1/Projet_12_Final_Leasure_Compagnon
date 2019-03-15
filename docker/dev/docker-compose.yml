@@ -1,0 +1,14 @@
+version: '2'
+services:
+  sileasurecompagnon.db:
+    image: postgres:9.6
+    ports:
+      - "127.0.0.1:9032:5432"
+    volumes:
+#      - "./data/db:/var/lib/postgresql/data"
+       - "./init/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+    environment:
+      - POSTGRES_DB=db_sileasurecompagnon
+      - POSTGRES_USER=adm_usr_sileasurecompagnon
+      - POSTGRES_PASSWORD=sileasurecompagnon
+      

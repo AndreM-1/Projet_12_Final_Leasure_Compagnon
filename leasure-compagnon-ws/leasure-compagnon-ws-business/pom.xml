@@ -60,11 +60,19 @@
 		    <artifactId>javax.el</artifactId>
 		</dependency>
 		
-        <!-- Pool de connexion Commons DBCP -->
+        <!-- Pool de connexion Commons DBCP pour les tests d'intégrations -->
         <dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
-		</dependency>	
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- Drivers JDBC PostgreSQL pour les tests d'intégrations -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>test</scope>
+        </dependency> 	
 			
 		<!-- Dépendance vis-à-vis du Framework Spring -->
 		<dependency>

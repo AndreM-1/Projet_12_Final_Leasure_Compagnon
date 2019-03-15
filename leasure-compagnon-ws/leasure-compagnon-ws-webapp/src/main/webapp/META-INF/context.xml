@@ -6,7 +6,7 @@
               auth="Container"
               type="javax.sql.DataSource"
 			
-              url="jdbc:postgresql://localhost:5432/db_sileasurecompagnon"
+              url="jdbc:postgresql://192.168.99.100:9032/db_sileasurecompagnon" 
               driverClassName="org.postgresql.Driver"
               username="adm_usr_sileasurecompagnon"
               password="sileasurecompagnon"
