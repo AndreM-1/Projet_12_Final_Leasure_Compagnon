@@ -173,12 +173,12 @@ section {
 }
 /*****************************************************************************************/
 
-#row-connexion,#row-creation-compte {
+#row-connexion,#row-creation-compte, #row-form-contact {
 	margin-left:0px;
 	margin-right:0px;
 }
 
-#div-connexion {
+#div-connexion, #div-form-contact {
 	border:1px solid grey;
 	margin-top:15px;
 	margin-bottom:10px;

@@ -9,7 +9,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.leasurecompagnon.ws.business.contract.ManagerFactory;
 import com.leasurecompagnon.ws.model.bean.formulairecontact.FormulaireContact;
+import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
+import com.leasurecompagnon.ws.webapp.formulairecontactservice.generated.EnvoiFormulaireContactFault;
 import com.leasurecompagnon.ws.webapp.formulairecontactservice.generated.EnvoiFormulaireContactFault_Exception;
 import com.leasurecompagnon.ws.webapp.formulairecontactservice.generated.FormulaireContactService;
 import com.leasurecompagnon.ws.webapp.formulairecontactservice.generated.GetListFormulaireContactFault;
@@ -43,7 +45,14 @@ public class FormulaireContactServiceImpl implements FormulaireContactService{
 	@Override
 	public void envoiFormulaireContact(String nomNa, String adresseMailNa, String objet, String message,
 			int utilisateurId) throws EnvoiFormulaireContactFault_Exception {
-		// TODO Auto-generated method stub
-		
+		LOGGER.info("Méthode envoiFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId)");
+		try {
+			managerFactory.getFormulaireContactManager().insertFormulaireContact(nomNa, adresseMailNa, objet, message,utilisateurId);
+		} catch (FunctionalException fExc) {
+			LOGGER.info(fExc.getMessage());
+			EnvoiFormulaireContactFault envoiFormulaireContactFault = new EnvoiFormulaireContactFault();
+			envoiFormulaireContactFault.setFaultMessageErreur(fExc.getMessage());
+			throw new EnvoiFormulaireContactFault_Exception(fExc.getMessage(),envoiFormulaireContactFault);
+		}
 	}
 }

@@ -275,18 +275,18 @@
       <element maxOccurs="unbounded" minOccurs="0" name="listAvis" type="tns:Avis"/>
     </sequence>
   </complexType>
-</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint></con:endpoints><con:operation id="8d2e2fb6-0d42-40f3-9352-4fdce54bfd83" isOneWay="false" action="" name="envoiFormulaireContact" bindingOperationName="envoiFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bea77408-1633-4a0d-a2c6-c142d6661811" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint></con:endpoints><con:operation id="8d2e2fb6-0d42-40f3-9352-4fdce54bfd83" isOneWay="false" action="" name="envoiFormulaireContact" bindingOperationName="envoiFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bea77408-1633-4a0d-a2c6-c142d6661811" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <for:envoiFormulaireContact>\r
-         <nomNa>?</nomNa>\r
-         <adresseMailNa>?</adresseMailNa>\r
-         <objet>?</objet>\r
-         <message>?</message>\r
-         <utilisateurId>?</utilisateurId>\r
+         <nomNa>Skywalker</nomNa>\r
+         <adresseMailNa>anakyn.skywalker@gmail.com</adresseMailNa>\r
+         <objet>Proposer une nouvelle catégorie</objet>\r
+         <message>L'étoile noir est un très beau site.</message>\r
+         <utilisateurId>1</utilisateurId>\r
       </for:envoiFormulaireContact>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/envoiFormulaireContactRequest"/></con:call></con:operation><con:operation id="bcd524ab-f530-43f7-a1d2-ef6dd52c5c2c" isOneWay="false" action="" name="getListFormulaireContact" bindingOperationName="getListFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b47c112e-3a0c-41a0-b34b-2b823479515c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/FormulaireContactService/FormulaireContactService/envoiFormulaireContactRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bcd524ab-f530-43f7-a1d2-ef6dd52c5c2c" isOneWay="false" action="" name="getListFormulaireContact" bindingOperationName="getListFormulaireContact" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b47c112e-3a0c-41a0-b34b-2b823479515c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:for="http://www.example.org/FormulaireContactService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <for:getListFormulaireContact/>\r

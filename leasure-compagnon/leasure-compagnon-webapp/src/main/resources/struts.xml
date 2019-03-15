@@ -43,6 +43,12 @@
 			<result>/jsp/pages_generiques/conditionsutilisation.jsp</result>
 		</action>		
 		
+		<!-- Action "page_formulaire_contact" -->
+		<action name="page_formulaire_contact" class="com.leasurecompagnon.appliweb.webapp.action.GestionFormulaireContactAction"  method="doEnvoiFormContact">
+			<result name="input">/jsp/formulaire_contact/formulairecontact.jsp</result>
+			<result name="success" type="redirectAction">index</result>
+		</action>	
+		
 		<!-- Action "page_creation_compte" -->
 		<action name="page_creation_compte" class="com.leasurecompagnon.appliweb.webapp.action.GestionCreationCompteAction" method="doCreationCompte">
 			<!-- Référence à l'intercepteur permettant de bloquer l'accès à la page de création de compte pour un utilisateur déjà connecté -->

@@ -49,12 +49,12 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="div-activites">
 							<s:a action="page_utilisateur_activites">
-								<img src="jsp/assets/images/img_activite.png" alt="Image activité" class="img-responsive" id="image-activites">
+								<img src="jsp/assets/images/img_activite_1.jpg" alt="Image activité" class="img-responsive" id="image-activites">
 							</s:a>
 				 		</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="div-avis">
 							<s:a action="page_utilisateur_avis">
-								<img src="jsp/assets/images/img_avis.png" alt="Image avis" class="img-responsive" id="image-avis">
+								<img src="jsp/assets/images/img_avis_1.jpg" alt="Image avis" class="img-responsive" id="image-avis">
 							</s:a>
 				 		</div>
 				 	</div>				
