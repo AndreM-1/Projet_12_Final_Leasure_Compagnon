@@ -173,7 +173,7 @@ section {
 }
 /*****************************************************************************************/
 
-#row-connexion,#row-creation-compte, #row-form-contact {
+#row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville {
 	margin-left:0px;
 	margin-right:0px;
 }
@@ -235,24 +235,24 @@ section {
 	margin-bottom : 10px;
 }
 
-#activites-avis-utilisateur, #visu-form-contact-utilisateur {
+#activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite {
 	font-size: 1.5em;
 	border-bottom: 3px solid grey;
 	padding-top :5px;
 	padding-bottom :5px;
 }
 
-#activites-avis-utilisateur a, #visu-form-contact-utilisateur a  {
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a  {
 	text-decoration: none;
 	color: #181818;
 }
 
-#activites-avis-utilisateur a, #visu-form-contact-utilisateur a : hover {
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a : hover {
 	color: #181818;
 }
 
-#appreciation-utilisateur, #commentaire-utilisateur {
-	font-size : 1.2em;
+#appreciation-utilisateur, #commentaire-utilisateur, #div-activites-ville {
+	font-size : 1.1em;
 }
 
 .attr-form-contact{
@@ -309,6 +309,29 @@ section {
 	}
 }
 /*****************************************************************************************/
+
+#activites-ville {
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:0px;
+	border-bottom:1px solid grey;
+	border-right:1px solid grey;
+	margin-bottom: 10px;
+	box-shadow: 0px 1px 1px #1c1a19;
+}
+
+#section-activites-ville{
+	padding-bottom:10px;
+}
+
+/********************************Media query pour la page permettant d'afficher l'ensemble des activités d'une ville ****************/
+@media all and (max-width: 500px){
+	#div-activites-ville{
+		font-size : 0.9em;
+	}
+}
+/************************************************************************************************************************************/
+
 
 footer{
 	margin-bottom:5px;

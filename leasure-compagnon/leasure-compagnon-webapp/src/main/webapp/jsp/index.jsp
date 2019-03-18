@@ -17,7 +17,9 @@
 						<s:if test="#rowstatus.odd == true">
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-justify">
 								<p class="accueil-nom-ville">
-									<s:a action="">
+									<s:a action="page_activites_ville">
+										<s:param name="villeId" value="id"/>
+										<s:param name="nomVille" value="nomVille"/>
 										<s:property value="nomVille"/>
 									</s:a>
 								</p>
@@ -43,7 +45,9 @@
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-justify">
 								<p class="accueil-nom-ville">
-									<s:a action="">
+									<s:a action="page_activites_ville">
+										<s:param name="villeId" value="id"/>
+										<s:param name="nomVille" value="nomVille"/>
 										<s:property value="nomVille"/>
 									</s:a>
 								</p>
