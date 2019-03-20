@@ -21,6 +21,8 @@ import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutActiviteFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.CatalogueService;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault_Exception;
@@ -424,6 +426,20 @@ public class CatalogueServiceImpl implements CatalogueService{
 			throw new GetActiviteNomFault_Exception(nfExc.getMessage(),getActiviteNomFault);
 		}
 		return activite;
+	}
+	
+	@Override
+	public void ajoutAvis(String commentaire, String appreciation, int utilisateurId, int activiteId)
+			throws AjoutAvisFault_Exception {
+		LOGGER.info("Méthode ajoutAvis(String commentaire, String appreciation, int utilisateurId, int activiteId)");
+		try {
+			managerFactory.getAvisManager().insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+		} catch (FunctionalException fExc) {
+			LOGGER.info(fExc.getMessage());
+			AjoutAvisFault ajoutAvisFault = new AjoutAvisFault();
+			ajoutAvisFault.setFaultMessageErreur(fExc.getMessage());
+			throw new AjoutAvisFault_Exception(fExc.getMessage(),ajoutAvisFault);
+		}
 	}
 	
 	@Override

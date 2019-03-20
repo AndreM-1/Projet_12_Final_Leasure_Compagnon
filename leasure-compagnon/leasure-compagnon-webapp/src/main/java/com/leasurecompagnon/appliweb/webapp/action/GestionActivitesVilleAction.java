@@ -13,12 +13,15 @@ import com.leasurecompagnon.appliweb.model.bean.catalogue.Activite;
 import com.leasurecompagnon.appliweb.model.bean.catalogue.ActiviteAppliWeb;
 import com.leasurecompagnon.appliweb.model.bean.catalogue.Avis;
 import com.leasurecompagnon.appliweb.model.bean.catalogue.TypeActivite;
+import com.leasurecompagnon.appliweb.model.exception.GetActiviteFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleTAFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListTypeActiviteFault_Exception;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Classe d'action permettant de visualiser l'ensemble des activités d'une ville.
+ * Classe d'action permettant de visualiser l'ensemble des activités d'une ville, un type d'actvités
+ * d'une ville, ainsi que le détail d'une activité.
  * @author André Monnier
  *
  */
@@ -39,6 +42,13 @@ public class GestionActivitesVilleAction extends ActionSupport {
 	private int villeId;
 	private String nomVille;
 	private String messageInformatif;
+	private int typeActiviteId;
+	private String typeActivite;
+	private int activiteId;
+	private Activite activite;
+	private ActiviteAppliWeb activiteAppliWeb;
+	private String latitude;
+	private String longitude;
 
 	//Définition du LOGGER
 	private static final Logger LOGGER=(Logger) LogManager.getLogger(GestionActivitesVilleAction.class);
@@ -57,6 +67,10 @@ public class GestionActivitesVilleAction extends ActionSupport {
 		return listTypeActivite;
 	}
 
+	public int getVilleId() {
+		return villeId;
+	}
+
 	public void setVilleId(int villeId) {
 		this.villeId = villeId;
 	}
@@ -72,7 +86,39 @@ public class GestionActivitesVilleAction extends ActionSupport {
 	public String getMessageInformatif() {
 		return messageInformatif;
 	}
+	
+	public void setTypeActiviteId(int typeActiviteId) {
+		this.typeActiviteId = typeActiviteId;
+	}
+	
+	public String getTypeActivite() {
+		return typeActivite;
+	}
 
+	public void setTypeActivite(String typeActivite) {
+		this.typeActivite = typeActivite;
+	}
+	
+	public void setActiviteId(int activiteId) {
+		this.activiteId = activiteId;
+	}
+	
+	public Activite getActivite() {
+		return activite;
+	}
+	
+	public ActiviteAppliWeb getActiviteAppliWeb() {
+		return activiteAppliWeb;
+	}
+	
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+	
 	// ===================== Méthodes ============================
 	
 	/**
@@ -96,13 +142,13 @@ public class GestionActivitesVilleAction extends ActionSupport {
 				for(TypeActivite vTypeActivite : listTypeActivite) {
 					int nbActivite=0;
 
-					//On parcourt cette liste d'activités
+					//On parcourt cette liste d'activités.
 					for(Activite vActivite : listActivite) {		
 						for(TypeActivite vActiviteTypeActivite : vActivite.getListTypeActivite()) {
 							if(vActiviteTypeActivite.getTypeActivite().equals(vTypeActivite.getTypeActivite())) {	
 								ActiviteAppliWeb vActiviteAppliWeb = new ActiviteAppliWeb();
 								double vAppreciationMoyenneDouble=0.0d;
-								//on récupère le bean Activite, le nom de la photo principale, le nombre d'avis et la moyenne des avis.
+								//on récupère le bean Activite, le nom de la photo principale, le nombre d'avis, la moyenne des avis et le type d'activité rattaché.
 								vActiviteAppliWeb.setActivite(vActivite);
 								vActiviteAppliWeb.setNomPhotoPrincipale(vActivite.getListPhotoActivite().get(0).getNomPhoto());	
 								vActiviteAppliWeb.setNombreAvis(vActivite.getListAvis().size());
@@ -138,6 +184,75 @@ public class GestionActivitesVilleAction extends ActionSupport {
 			vResult=ActionSupport.ERROR;
 		}	
 		return vResult;
+	}
+	
+	/**
+	 * Méthode permettant de renvoyer les activités liées à un type d'activité choisi pour une ville donnée.
+	 * @return input / success
+	 */
+	public String doListTypeActivitesVille() {
+		LOGGER.info("Méthode doListTypeActivitesVille()");
+		String vResult;
+		
+		try {
+			//On récupère la liste d'activités d'une ville liée à un type d'activité.
+			listActivite=managerFactory.getActiviteManager().getListActiviteVilleTA(villeId, typeActiviteId, "MEL");
+			
+			listActiviteAppliWeb=new ArrayList<>();
+			
+			//On parcourt cette liste d'activités.
+			for(Activite vActivite : listActivite) {
+				ActiviteAppliWeb vActiviteAppliWeb = new ActiviteAppliWeb();
+				double vAppreciationMoyenneDouble=0.0d;
+				//on récupère le bean Activite, le nom de la photo principale, le nombre d'avis et la moyenne des avis.
+				vActiviteAppliWeb.setActivite(vActivite);
+				vActiviteAppliWeb.setNomPhotoPrincipale(vActivite.getListPhotoActivite().get(0).getNomPhoto());	
+				vActiviteAppliWeb.setNombreAvis(vActivite.getListAvis().size());
+				vAppreciationMoyenneDouble=calculAppreciationMoyenneActivite(vActivite);
+				vActiviteAppliWeb.setAppreciationMoyenneDouble(vAppreciationMoyenneDouble);
+				
+				//On l'ajout à la liste de beans de type ActiviteAppliWeb
+				listActiviteAppliWeb.add(vActiviteAppliWeb);
+			}
+			
+			vResult=ActionSupport.SUCCESS;
+		} catch (GetListActiviteVilleTAFault_Exception e) {
+			LOGGER.info("Pas d'activités disponibles pour ce type d'activité pour le moment.");
+			this.addActionMessage("Pas d'activités disponibles pour ce type d'activité pour le moment.");
+			vResult=ActionSupport.INPUT;
+		}
+		return vResult;
+	}
+	
+	/**
+	 * Méthode permettant de renvoyer l'activité choisie.
+	 * @return success / error
+	 */
+	public String doDetailActivite() {
+		LOGGER.info("Méthode doDetailActivite()");
+		String vResult;
+		
+		try {
+			//On récupère l'activité choisie.
+			activite = managerFactory.getActiviteManager().getActivite(activiteId);
+					
+			activiteAppliWeb = new ActiviteAppliWeb();
+			
+			//on récupère le bean Activite, le nombre d'avis et la moyenne des avis.
+			activiteAppliWeb.setActivite(activite);
+			activiteAppliWeb.setNombreAvis(activite.getListAvis().size());
+			double vAppreciationMoyenneDouble=0.0d;
+			vAppreciationMoyenneDouble=calculAppreciationMoyenneActivite(activite);
+			activiteAppliWeb.setAppreciationMoyenneDouble(vAppreciationMoyenneDouble);		
+			latitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLatitude());
+			longitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLongitude());
+			vResult=ActionSupport.SUCCESS;
+		} catch (GetActiviteFault_Exception e) {
+			LOGGER.info("Aucune activité trouvée. Veuillez nous excuser pour ce problème technique.");
+			this.addActionError("Aucune activité trouvée. Veuillez nous excuser pour ce problème technique.");
+			vResult=ActionSupport.ERROR;
+		}
+		return vResult;	
 	}
 
 	/**

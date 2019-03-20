@@ -1063,6 +1063,55 @@
     </xsd:complexType>
             
   </xsd:element>
+            
+  <xsd:element name="ajoutAvis">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="commentaire" type="xsd:string">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="appreciation" type="xsd:string">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int">
+            			</xsd:element>
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="activiteId" type="xsd:int">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="ajoutAvisResponse">
+            	
+    <xsd:complexType>
+
+            	</xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="ajoutAvisFault">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+
+            			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+            			</xsd:element>
+            		
+      </xsd:sequence>
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
     
 </xsd:schema>
   </wsdl:types>
@@ -1084,6 +1133,10 @@
   </wsdl:message>
   <wsdl:message name="getListActiviteRechercheFault">
     <wsdl:part element="tns:getListActiviteRechercheFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutAvisRequest">
+    <wsdl:part element="tns:ajoutAvis" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListNomVilleFault">
@@ -1194,6 +1247,10 @@
     <wsdl:part element="tns:getListActiviteVilleFault" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="ajoutAvisFault">
+    <wsdl:part element="tns:ajoutAvisFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getListNomVilleRequest">
     <wsdl:part element="tns:getListNomVille" name="parameters">
     </wsdl:part>
@@ -1212,6 +1269,10 @@
   </wsdl:message>
   <wsdl:message name="getListDepartementFault">
     <wsdl:part element="tns:getListDepartementFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutAvisResponse">
+    <wsdl:part element="tns:ajoutAvisResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListActiviteVilleNomResponse">
@@ -1547,6 +1608,14 @@
       <wsdl:fault message="tns:getActiviteNomFault" name="fault">
     </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="ajoutAvis">
+      <wsdl:input message="tns:ajoutAvisRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ajoutAvisResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ajoutAvisFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP" type="tns:CatalogueService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1838,6 +1907,18 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="ajoutAvis">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CatalogueServiceSoapBinding" type="tns:CatalogueService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -2118,6 +2199,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getActiviteNom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajoutAvis">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>

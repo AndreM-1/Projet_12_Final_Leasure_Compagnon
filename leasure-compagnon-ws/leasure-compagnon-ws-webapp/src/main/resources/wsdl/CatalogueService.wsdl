@@ -624,6 +624,39 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
+            <xsd:element name="ajoutAvis">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="commentaire"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="appreciation"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="utilisateurId" type="xsd:int"
+            				minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="activiteId"
+            				type="xsd:int" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ajoutAvisResponse">
+            	<xsd:complexType>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ajoutAvisFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="faultMessageErreur"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getListVilleRequest">
@@ -842,6 +875,15 @@
   <wsdl:message name="getActiviteNomFault">
   	<wsdl:part name="parameters" element="tns:getActiviteNomFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="ajoutAvisRequest">
+  	<wsdl:part name="parameters" element="tns:ajoutAvis"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutAvisResponse">
+  	<wsdl:part name="parameters" element="tns:ajoutAvisResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ajoutAvisFault">
+  	<wsdl:part name="parameters" element="tns:ajoutAvisFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="CatalogueService">
     <wsdl:operation name="getListVille">
       <wsdl:input message="tns:getListVilleRequest"/>
@@ -959,6 +1001,11 @@
     	<wsdl:input message="tns:getActiviteNomRequest"></wsdl:input>
     	<wsdl:output message="tns:getActiviteNomResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:getActiviteNomFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="ajoutAvis">
+    	<wsdl:input message="tns:ajoutAvisRequest"></wsdl:input>
+    	<wsdl:output message="tns:ajoutAvisResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:ajoutAvisFault"></wsdl:fault>
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP"
@@ -1230,8 +1277,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getListActiviteVilleNom">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1243,6 +1289,18 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getActiviteNom">
+  		<soap:operation soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="ajoutAvis">
   		<soap:operation
   			soapAction="" />
   		<wsdl:input>

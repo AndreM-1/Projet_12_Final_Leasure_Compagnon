@@ -605,4 +605,28 @@ public class ObjectFactory {
         return new GetActiviteNomFault();
     }
 
+    /**
+     * Create an instance of {@link AjoutAvis }
+     * 
+     */
+    public AjoutAvis createAjoutAvis() {
+        return new AjoutAvis();
+    }
+
+    /**
+     * Create an instance of {@link AjoutAvisResponse }
+     * 
+     */
+    public AjoutAvisResponse createAjoutAvisResponse() {
+        return new AjoutAvisResponse();
+    }
+
+    /**
+     * Create an instance of {@link AjoutAvisFault }
+     * 
+     */
+    public AjoutAvisFault createAjoutAvisFault() {
+        return new AjoutAvisFault();
+    }
+
 }

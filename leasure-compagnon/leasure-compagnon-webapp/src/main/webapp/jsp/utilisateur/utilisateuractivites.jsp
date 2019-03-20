@@ -53,7 +53,14 @@
 									</div>
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><s:a action=""><s:property value="nomActivite"/></s:a></p></div>
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+												<p>
+													<s:a action="page_detail_activite">
+														<s:param name="activiteId" value="id"></s:param>
+														<s:property value="nomActivite"/>
+													</s:a>																					
+												</p>
+											</div>
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 												<p><s:property value="adresse"/> <s:property value="ville.codePostal"/> <s:property value="ville.nomVille"/></p>
 											</div>	

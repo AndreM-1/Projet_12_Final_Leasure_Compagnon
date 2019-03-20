@@ -19,7 +19,11 @@
 
 			<s:iterator value="listTypeActivite">
 				<h2 id="titre-type-activite">
-					<s:a action="">
+					<s:a action="page_type_activites_ville">
+						<s:param name="villeId" value="villeId"/>
+						<s:param name="nomVille" value="nomVille"/>
+						<s:param name="typeActiviteId" value="id"></s:param>
+						<s:param name="typeActivite" value="typeActivite"></s:param>
 						<s:property value="typeActivite" />
 					</s:a>
 				</h2>			
@@ -38,7 +42,10 @@
 									</div>
 									<div class="col-xs-6 col-sm-7 col-md-7 col-lg-7" id="div-activites-ville">
 										<p class="text-justify">
-											<s:a action=""><s:property value="activite.nomActivite" /></s:a>
+											<s:a action="page_detail_activite">
+												<s:param name="activiteId" value="activite.id"></s:param>
+												<s:property value="activite.nomActivite" />
+											</s:a>
 										</p>
 										<s:if test="%{nombreAvis!=0}">
 											<p class="text-justify">									

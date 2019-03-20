@@ -4,6 +4,7 @@ package com.leasurecompagnon.appliweb.consumer.generated.catalogueservice;
 import javax.xml.bind.annotation.XmlRegistry;
 
 import com.leasurecompagnon.appliweb.model.exception.AjoutActiviteFault;
+import com.leasurecompagnon.appliweb.model.exception.AjoutAvisFault;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteFault;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteNomFault;
 import com.leasurecompagnon.appliweb.model.exception.GetDureeFault;
@@ -628,6 +629,30 @@ public class ObjectFactory {
      */
     public GetActiviteNomFault createGetActiviteNomFault() {
         return new GetActiviteNomFault();
+    }
+
+    /**
+     * Create an instance of {@link AjoutAvis }
+     * 
+     */
+    public AjoutAvis createAjoutAvis() {
+        return new AjoutAvis();
+    }
+
+    /**
+     * Create an instance of {@link AjoutAvisResponse }
+     * 
+     */
+    public AjoutAvisResponse createAjoutAvisResponse() {
+        return new AjoutAvisResponse();
+    }
+
+    /**
+     * Create an instance of {@link AjoutAvisFault }
+     * 
+     */
+    public AjoutAvisFault createAjoutAvisFault() {
+        return new AjoutAvisFault();
     }
 
 }

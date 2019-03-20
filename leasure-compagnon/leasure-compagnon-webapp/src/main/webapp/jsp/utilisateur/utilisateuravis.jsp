@@ -54,8 +54,8 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-												<p class ="text-justify" id="appreciation-utilisateur">Appréciation : 
-													<p>
+												<p class ="text-justify" id="appreciation-utilisateur">Appréciation : </p>
+												<p>
 													<s:if test="%{appreciation=='Excellent'}">
 														<img src="jsp/assets/images/notation/notation_5_etoiles.png" alt ="Image notation 5 étoiles">
 													</s:if>
@@ -71,9 +71,7 @@
 													<s:else>
 														<img src="jsp/assets/images/notation/notation_1_etoile.png" alt ="Image notation 1 étoile">
 													</s:else>
-													</p>
-												</p>
-											
+												</p>																				
 											</div>
 											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 												<p class ="text-justify" id="commentaire-utilisateur">Commentaire : </p>

@@ -173,12 +173,12 @@ section {
 }
 /*****************************************************************************************/
 
-#row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville {
+#row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville, #row-activite, #row-localisation-activite, #row-infos-pratiques-activite, #row-ajout-avis {
 	margin-left:0px;
 	margin-right:0px;
 }
 
-#div-connexion, #div-form-contact {
+#div-connexion, #div-form-contact, #div-ajout-avis {
 	border:1px solid grey;
 	margin-top:15px;
 	margin-bottom:10px;
@@ -235,7 +235,7 @@ section {
 	margin-bottom : 10px;
 }
 
-#activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite {
+#activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite, #titre-description-activite, #localisation-activite, #infos-pratiques-activite, #avis-activite {
 	font-size: 1.5em;
 	border-bottom: 3px solid grey;
 	padding-top :5px;
@@ -320,7 +320,7 @@ section {
 	box-shadow: 0px 1px 1px #1c1a19;
 }
 
-#section-activites-ville{
+#section-activites-ville, ##section-activite {
 	padding-bottom:10px;
 }
 
@@ -332,7 +332,53 @@ section {
 }
 /************************************************************************************************************************************/
 
+#photo-principale-activite, #photo-annexe-activite {
+	padding :1px;
+}
 
+ /* La carte OpenStreetMap DOIT avoir une hauteur sinon elle n'apparaît pas */
+#map-localisation-activite {
+	height:300px;
+}
+
+#row-avis-activite {
+	border-bottom:1px solid grey;
+	margin-left:0px;
+	margin-right:0px;
+	padding-top :5px;
+}
+
+#appreciation-moyenne-activite {
+	padding-left :10px;
+}
+
+.img-avis-activite-util{
+	border-radius:60px;
+}
+
+
+/********************************Media query pour la page permettant d'afficher le détail d'une activité ****************/
+@media all and (min-width: 992px){
+	#para-description-activite {
+		overflow:auto;
+		height:240px;
+	}
+}
+
+@media all and (max-width: 992px){
+	#description-localisation-activite {
+	padding-top : 10px;
+	}
+}
+
+@media all and (max-width: 768px){
+	#appreciation-activite-utilisateur {
+		text-align:center;
+	}
+}
+
+
+/*************************************************************************************************************************/
 footer{
 	margin-bottom:5px;
 	height : 60px;
