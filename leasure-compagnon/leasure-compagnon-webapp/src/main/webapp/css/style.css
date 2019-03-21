@@ -94,6 +94,21 @@ body{
 	color:inherit;
 }
 
+
+/* Positionne la liste des suggestions au-dessous de la zone de saisie */
+#suggestions {
+	visibility:hidden;
+    position: absolute;
+    border: 1px solid black;  
+}
+
+
+/* Modifie la couleur de la suggestion survolée par la souris */
+.suggestion:hover {
+    background-color: #C1C1C1;
+    cursor: pointer;
+}
+
 /********************************Media query pour le header******************************/
 @media all and (min-width: 992px) and (max-width: 1200px){
 	#zone-recherche{
@@ -108,6 +123,13 @@ body{
 		left : 14%;
 	}
 }
+
+@media all and (max-width: 480px){
+	.resultat-recherche-hide{
+		display :none;
+	}
+}
+
 /*****************************************************************************************/
 
 section {
@@ -173,7 +195,8 @@ section {
 }
 /*****************************************************************************************/
 
-#row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville, #row-activite, #row-localisation-activite, #row-infos-pratiques-activite, #row-ajout-avis {
+#row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville, #row-activite, #row-localisation-activite, #row-infos-pratiques-activite, #row-ajout-avis, 
+#row-resultat-recherche-ville, #row-resultat-recherche-activite {
 	margin-left:0px;
 	margin-right:0px;
 }
@@ -235,7 +258,8 @@ section {
 	margin-bottom : 10px;
 }
 
-#activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite, #titre-description-activite, #localisation-activite, #infos-pratiques-activite, #avis-activite {
+#activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite, #titre-description-activite, #localisation-activite, #infos-pratiques-activite, #avis-activite,
+#titre-resultat-recherche-ville, #titre-resultat-recherche-activite {
 	font-size: 1.5em;
 	border-bottom: 3px solid grey;
 	padding-top :5px;
@@ -310,7 +334,7 @@ section {
 }
 /*****************************************************************************************/
 
-#activites-ville {
+#activites-ville, #resultat-recherche-ville, #resultat-recherche-activite {
 	padding-top:2px;
 	padding-bottom:2px;
 	padding-left:0px;

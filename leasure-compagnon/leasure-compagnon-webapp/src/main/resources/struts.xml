@@ -69,6 +69,11 @@
 			<result name="error">/jsp/erreur.jsp</result>
 		</action>
 		
+		<!-- Action recherche_ville_activite -->	
+		<action name="recherche_ville_activite" class="com.leasurecompagnon.appliweb.webapp.action.GestionRechercheAction"  method="doRechercheVilleActivite">
+			<result name="success">/jsp/recherche/resultatrecherche.jsp</result>
+		</action>		
+				
 		<!-- Action page_ajout_avis -->	
 		<action name="page_ajout_avis" class="com.leasurecompagnon.appliweb.webapp.action.GestionAjoutAvisAction"  method="doAjoutAvis">
 			<interceptor-ref name="AuthenticatedStack" />
@@ -169,4 +174,17 @@
        		<result type="redirectAction">index</result>
       	</action>		
 	</package>
+	
+	 <!-- ===== Package pour les actions AJAX ===== -->
+    <package name="ajax" extends="struts-default, json-default">
+
+        <!-- Action renvoyant la liste de l'ensemble des noms de villes et d'activités. -->
+        <action name="appel_ajax_getListVilleActivite" class="com.leasurecompagnon.appliweb.webapp.action.GestionAppelAjaxAction" method="doAjaxGetListVilleActivite">
+            <result name="success" type="json">
+            	<param name="root">listVilleActivite</param>
+            </result>
+            <result name="error">/jsp/erreur.jsp</result>
+        </action>
+    </package>
+	
 </struts>

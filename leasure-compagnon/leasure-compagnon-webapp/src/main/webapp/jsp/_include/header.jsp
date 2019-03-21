@@ -58,11 +58,12 @@
 			<!-- Pas besoin de formulaire Struts ici. -->
 			<form action="recherche_ville_activite" method="POST">
 				<div class="input-group">
-					<input type="text" autocomplete="off" class="form-control input-lg" name="titre" placeholder="Recherche une ville ou une activité..."/>
+					<input id="zone-recherche-input" type="text" autocomplete="off" class="form-control input-lg" name="nomRecherche" placeholder="Recherche une ville ou une activité..."/>
 					<span class="input-group-btn">
 						<button class="btn btn-default btn-lg" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-				</div>
+					</span>				
+				</div>	
+				<div id="suggestions" class="input-group form-control input-lg"></div>		
 			</form>
 		</div>
 	</div>
@@ -76,5 +77,49 @@
 	
 	<!-- Fichier Javascript pour les appels asynchrones -->
 	<script src="js/ajax.js"></script>
-
+	
+	<script>	
+		var listSuggestions;
+		
+		//URL de l'action struts
+		var urlActionStruts = "<s:url action="appel_ajax_getListVilleActivite"/>";
+		
+		//Appel asynchrone pour récupérer la liste de l'ensemble des noms de villes et d'activités.
+		ajaxGet(urlActionStruts, function(reponseActionStruts){
+			console.log("Réponse du serveur JSON : "+reponseActionStruts);
+			listSuggestions=JSON.parse(reponseActionStruts);
+			console.log("Réponse du serveur JS: "+reponseActionStruts);
+		});
+		
+		var zoneRechercheElt=document.getElementById("zone-recherche-input");
+		var suggestionsElt=document.getElementById("suggestions");
+		
+		//On ajoute l'EventListener pour la saisie en temps réel.
+		zoneRechercheElt.addEventListener("input",function(event){
+			suggestionsElt.innerHTML="";
+			var affichageSuggestions=false;
+			var countNbElement=0;
+			listSuggestions.forEach(function(suggestion){
+				//On affiche au maximum 8 suggestions.
+				if(event.target.value.length!==0 && suggestion.toLowerCase().indexOf(event.target.value.toLowerCase())!==-1 && countNbElement<8){
+					suggestionsElt.style.visibility="visible";
+					var divElt=document.createElement("div");
+					divElt.classList.add("suggestion");
+					divElt.textContent=suggestion;
+					divElt.addEventListener("click",function(event1){
+						zoneRechercheElt.value=divElt.textContent;
+						suggestionsElt.innerHTML="";
+						suggestionsElt.style.visibility="hidden";
+					});
+									
+					suggestionsElt.appendChild(divElt);
+					affichageSuggestions=true;
+					countNbElement++;
+				}
+			});	
+			if(!affichageSuggestions){
+				suggestionsElt.style.visibility="hidden";
+			}
+		});
+	</script>
 </header>
