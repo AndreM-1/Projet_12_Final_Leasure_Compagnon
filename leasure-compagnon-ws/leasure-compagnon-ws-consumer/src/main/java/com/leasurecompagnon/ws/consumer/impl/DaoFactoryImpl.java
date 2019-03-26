@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import com.leasurecompagnon.ws.consumer.contract.DaoFactory;
 import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.CoordonneeGPSDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DepartementDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.FormulaireContactDao;
@@ -56,6 +57,9 @@ public class DaoFactoryImpl implements DaoFactory{
 	
 	@Inject
 	private PhotoDao photoDao;
+	
+	@Inject
+	private CoordonneeGPSDao coordonneeGPSDao;
 
 	
 	@Override
@@ -116,5 +120,10 @@ public class DaoFactoryImpl implements DaoFactory{
 	@Override
 	public PhotoDao getPhotoDao() {
 		return photoDao;
+	}
+
+	@Override
+	public CoordonneeGPSDao getCoordonneeGPSDao() {
+		return coordonneeGPSDao;
 	}
 }

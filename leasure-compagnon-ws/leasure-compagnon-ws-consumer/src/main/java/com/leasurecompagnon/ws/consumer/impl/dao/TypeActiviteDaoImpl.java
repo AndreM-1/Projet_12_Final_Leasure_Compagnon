@@ -9,9 +9,12 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.leasurecompagnon.ws.consumer.contract.dao.TypeActiviteDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.TypeActiviteRM;
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.TypeActivite;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
@@ -67,7 +70,23 @@ public class TypeActiviteDaoImpl extends AbstractDaoImpl implements TypeActivite
 		if(vListTypeActivite.size()!=0)
 			return vListTypeActivite;
 		else 
-			throw new NotFoundException ("Aucun type d'activité pour l'activité demandée");
+			throw new NotFoundException ("Aucun type d'activité pour l'activité demandée");	
+	}
+	
+	@Override
+	public void insertTypeActivite(Activite activite) {
+		LOGGER.info("Méthode insertTypeActivite(Activite activite)");
+		String vSQL="INSERT INTO public.activite_type_activite(activite_id,type_activite_id) VALUES (:activiteId, :typeActiviteId)";
 		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		int activiteId= activite.getId();
+		for(TypeActivite vTypeActivite : activite.getListTypeActivite()) {
+			vParams.addValue("activiteId", activiteId);
+			vParams.addValue("typeActiviteId", vTypeActivite.getId());
+			vJdbcTemplate.update(vSQL, vParams);
+		}
 	}
 }

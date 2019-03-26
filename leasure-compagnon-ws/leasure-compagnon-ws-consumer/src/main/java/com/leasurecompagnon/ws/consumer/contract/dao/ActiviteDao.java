@@ -91,4 +91,16 @@ public interface ActiviteDao {
 	 */
 	Activite getActivite(String nomActivite) throws NotFoundException;
 
+	/**
+	 * Méthode permettent d'enregistrer une activité dans la table correspondante en base de données.
+	 * @param activite : Le bean de type {@link Activite}
+	 */
+	void insertActivite(Activite activite);
+
+	/**
+	 * Méthode permettant de récupérer la valeur la plus récente de la séquence liée à la table activite suite à l'enregistrement d'une activité en base de données.
+	 * @return La valeur la plus récente de la séquence liée à la table activite.
+	 */
+	int getSequenceActivite();
+
 }

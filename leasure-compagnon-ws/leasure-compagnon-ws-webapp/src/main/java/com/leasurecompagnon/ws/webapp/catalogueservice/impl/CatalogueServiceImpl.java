@@ -20,6 +20,7 @@ import com.leasurecompagnon.ws.model.bean.catalogue.Ville;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutActiviteFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutActiviteFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault_Exception;
@@ -444,7 +445,14 @@ public class CatalogueServiceImpl implements CatalogueService{
 	
 	@Override
 	public void ajoutActivite(Activite activite) throws AjoutActiviteFault_Exception {
-		// TODO Auto-generated method stub
-		
+		LOGGER.info("Méthode ajoutActivite(Activite activite)");
+		try {
+			managerFactory.getActiviteManager().ajoutActivite(activite);
+		} catch (FunctionalException fExc) {
+			LOGGER.info(fExc.getMessage());
+			AjoutActiviteFault ajoutActiviteFault = new AjoutActiviteFault();
+			ajoutActiviteFault.setFaultMessageErreur(fExc.getMessage());
+			throw new AjoutActiviteFault_Exception(fExc.getMessage(),ajoutActiviteFault);
+		}	
 	}
 }

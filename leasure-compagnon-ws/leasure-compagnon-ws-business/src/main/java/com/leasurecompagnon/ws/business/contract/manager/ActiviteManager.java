@@ -94,4 +94,11 @@ public interface ActiviteManager {
 	 */
 	Activite getActivite(String nomActivite) throws NotFoundException;
 
+	/**
+	 * Méthode permettant à un utilisateur d'ajouter une activité qui sera enregistrée en base de données.
+	 * @param activite : Le bean de type {@link Activite}
+	 * @throws FunctionalException
+	 */
+	void ajoutActivite(Activite activite) throws FunctionalException;
+
 }

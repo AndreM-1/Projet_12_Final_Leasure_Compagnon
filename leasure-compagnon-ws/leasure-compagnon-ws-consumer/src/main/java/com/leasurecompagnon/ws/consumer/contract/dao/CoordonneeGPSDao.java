@@ -1,5 +1,6 @@
 package com.leasurecompagnon.ws.consumer.contract.dao;
 
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.CoordonneeGPS;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 
@@ -25,4 +26,11 @@ public interface CoordonneeGPSDao {
 	 * @throws NotFoundException
 	 */
 	CoordonneeGPS getCoordonneeGPSActivite(int activiteId) throws NotFoundException;
+
+	/**
+	 * Méthode permettant d'enregistrer les coordonnées GPS dans la table correspondante en base de données
+	 * suite à l'ajout d'une activité.
+	 * @param activite : Le bean de type {@link Activite}
+	 */
+	void insertCoordonneeGPSActivite(Activite activite);
 }

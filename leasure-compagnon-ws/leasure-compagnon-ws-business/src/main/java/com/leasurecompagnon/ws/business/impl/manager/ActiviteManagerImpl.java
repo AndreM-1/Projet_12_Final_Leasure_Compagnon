@@ -6,6 +6,8 @@ import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.leasurecompagnon.ws.business.contract.manager.ActiviteManager;
 import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
@@ -137,5 +139,39 @@ public class ActiviteManagerImpl extends AbstractManager implements ActiviteMana
 			throw new NotFoundException(e.getMessage());
 		}
 		return activite;
+	}
+	
+	@Override
+	public void ajoutActivite(Activite activite) throws FunctionalException {
+		LOGGER.info("Méthode ajoutActivite(Activite activite)");
+		
+		//Début de la transaction.
+		TransactionStatus vTransactionStatus= getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		//On ajoute en base de données les informations relatives à la table activité.
+		getDaoFactory().getActiviteDao().insertActivite(activite);
+		
+		//On récupère la valeur de la dernière séquence de la table activité que l'on met dans le bean activité.
+		int activiteId=getDaoFactory().getActiviteDao().getSequenceActivite();
+		LOGGER.warn("Activité Id : "+activiteId);
+		activite.setId(activiteId);
+		
+		//On ajoute en base de données les informations relatives aux coordonnées GPS de l'activité.
+		getDaoFactory().getCoordonneeGPSDao().insertCoordonneeGPSActivite(activite);
+		
+		//On ajoute en base de données les informations relatives aux photos de l'activité.
+		try {
+			getDaoFactory().getPhotoDao().insertPhotoActivite(activite);
+		} catch (FunctionalException e) {
+			LOGGER.info(e.getMessage());
+			getPlatformTransactionManager().rollback(vTransactionStatus);
+			throw new FunctionalException(e.getMessage());
+		}
+		
+		//Finalement, on ajoute en base de données les informations relatives au mapping entre l'activité et le type d'activités.
+		getDaoFactory().getTypeActiviteDao().insertTypeActivite(activite);
+		
+		//Finalement, on commit la transaction si tout s'est bien passé.
+		getPlatformTransactionManager().commit(vTransactionStatus);	
 	}
 }

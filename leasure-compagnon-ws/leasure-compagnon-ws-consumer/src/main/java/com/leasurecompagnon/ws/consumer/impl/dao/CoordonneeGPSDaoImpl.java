@@ -8,9 +8,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.leasurecompagnon.ws.consumer.contract.dao.CoordonneeGPSDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.CoordonneeGPSRM;
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.CoordonneeGPS;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 
@@ -46,5 +49,20 @@ public class CoordonneeGPSDaoImpl extends AbstractDaoImpl implements CoordonneeG
 			return vListCoordonneeGPS.get(0);
 		else
 			throw new NotFoundException("Aucune coordonnée GPS pour l'activité demandée");
+	}
+	
+	@Override
+	public void insertCoordonneeGPSActivite(Activite activite) {
+		LOGGER.info("Méthode insertCoordonneeGPSActivite(Activite activite)");
+		String vSQL="INSERT INTO public.coordonnee_gps(latitude,longitude,activite_id) VALUES (:latitude, :longitude, :activiteId)";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("latitude", activite.getCoordonnee().getLatitude());
+		vParams.addValue("longitude", activite.getCoordonnee().getLongitude());
+		vParams.addValue("activiteId", activite.getId());
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		vJdbcTemplate.update(vSQL, vParams);
 	}
 }

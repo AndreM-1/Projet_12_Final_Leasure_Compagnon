@@ -2,6 +2,7 @@ package com.leasurecompagnon.ws.consumer.contract.dao;
 
 import java.util.List;
 
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.TypeActivite;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
@@ -35,5 +36,12 @@ public interface TypeActiviteDao {
 	 * @throws NotFoundException
 	 */
 	List<TypeActivite> getListTypeActivite(int activiteId) throws NotFoundException;
+
+	/**
+	 * Méthode permettant d'enregistrer les informations relatives au mapping entre l'activité et le type d'activités dans la table correspondante
+	 *  en base de données suite à l'ajout d'une activité.
+	 * @param activite : Le bean de type {@link Activite}
+	 */
+	void insertTypeActivite(Activite activite);
 
 }

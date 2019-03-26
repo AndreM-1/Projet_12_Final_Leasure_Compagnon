@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.leasurecompagnon.ws.consumer.contract.dao.PhotoDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.PhotoRM;
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
@@ -87,6 +88,30 @@ public class PhotoDaoImpl extends AbstractDaoImpl implements PhotoDao{
 		} catch (DuplicateKeyException vEx) {
 			LOGGER.info("L'utilisateur a déjà une photo en base de données");
 			throw new FunctionalException("L'utilisateur a déjà une photo en base de données");
+		}
+	}
+	
+	@Override
+	public void insertPhotoActivite(Activite activite) throws FunctionalException {
+		LOGGER.info("Méthode insertPhotoActivite(Activite activite)");
+		String vSQL="INSERT INTO public.photo(nom_photo,provenance_photo,type_photo,activite_id) VALUES (:nomPhoto,:provenancePhoto,:typePhoto,:activiteId)";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		int activiteId= activite.getId();
+		for(Photo vPhoto : activite.getListPhotoActivite()) {
+			vParams.addValue("nomPhoto", vPhoto.getNomPhoto());
+			vParams.addValue("provenancePhoto", vPhoto.getProvenancePhoto());
+			vParams.addValue("typePhoto", vPhoto.getTypePhoto());
+			vParams.addValue("activiteId", activiteId);
+			try {
+				vJdbcTemplate.update(vSQL, vParams);
+			} catch (DuplicateKeyException e) {
+				LOGGER.info("Désolé, mais une demande d'ajout pour cette activité dans la ville demandée a été effectuée aujourd'hui même.");
+				throw new FunctionalException("Désolé, mais une demande d'ajout pour cette activité dans la ville demandée a été effectuée aujourd'hui même.");
+			}
 		}
 	}
 }

@@ -1,11 +1,13 @@
 package com.leasurecompagnon.ws.consumer.impl.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -204,7 +206,7 @@ public class ActiviteDaoImpl extends AbstractDaoImpl implements ActiviteDao {
 	@Override
 	public List<String> getListNomActivite() throws TechnicalException {
 		LOGGER.info("Méthode getListNomActivite()");
-		String vSQL="SELECT * FROM public.activite ORDER BY id ASC";
+		String vSQL="SELECT * FROM public.activite WHERE statut_activite_avis_id = 4 ORDER BY id ASC";
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		RowMapper<Activite> vRowMapper=new ActiviteRM(typeActiviteDao,dureeDao,saisonDao,statutActiviteDao,coordonneeGPSDao,photoDao,utilisateurDao,villeDao,avisDao);
 		List<Activite> vListActivite;
@@ -311,5 +313,37 @@ public class ActiviteDaoImpl extends AbstractDaoImpl implements ActiviteDao {
 			return vListActivite.get(0);
 		else
 			throw new NotFoundException("Aucune activité ne correspond au nom demandé");	
+	}
+	
+	@Override
+	public void insertActivite(Activite activite) {
+		LOGGER.info("Méthode insertActivite(Activite activite)");
+		String vSQL ="INSERT INTO public.activite(nom_activite, description, adresse, lien_horaire_ouverture, date_demande_ajout, utilisateur_id, ville_id, duree_id, saison_id, "
+				+ "statut_activite_avis_id) VALUES (:nomActivite, :description, :adresse, :lienHoraireOuverture, :dateDemandeAjout, :utilisateurId, :villeId, :dureeId, :saisonId, "
+				+ ":statutActiviteAvisId)";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("nomActivite", activite.getNomActivite());
+		vParams.addValue("description", activite.getDescription());
+		vParams.addValue("adresse", StringUtils.isEmpty(activite.getAdresse())?null:activite.getAdresse());
+		vParams.addValue("lienHoraireOuverture", StringUtils.isEmpty(activite.getLienHoraireOuverture())?null:activite.getLienHoraireOuverture());
+		vParams.addValue("dateDemandeAjout", new Date());
+		vParams.addValue("utilisateurId", activite.getUtilisateur().getId());
+		vParams.addValue("villeId", activite.getVille().getId());
+		vParams.addValue("dureeId", activite.getDuree().getId());
+		vParams.addValue("saisonId", activite.getSaison().getId());
+		vParams.addValue("statutActiviteAvisId", 1);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		vJdbcTemplate.update(vSQL, vParams);		
+	}
+	
+	@Override
+	public int getSequenceActivite() {
+		String vSQL="SELECT CURRVAL('activite_id_seq')";
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		int sequenceActivite = vJdbcTemplate.queryForObject(vSQL, Integer.class);
+		return sequenceActivite;
 	}
 }

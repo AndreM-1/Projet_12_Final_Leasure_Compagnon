@@ -2,6 +2,7 @@ package com.leasurecompagnon.ws.consumer.contract.dao;
 
 import java.util.List;
 
+import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
@@ -47,4 +48,11 @@ public interface PhotoDao {
 	 */
 	void insertPhotoUtilisateur(String nomPhoto, String provenancePhoto, String typePhoto, int utilisateurId) throws FunctionalException;
 
+	/**
+	 * Méthode permettant d'enregistrer les photos dans la table correspondante en base de données
+	 * suite à l'ajout d'une activité.
+	 * @param activite : Le bean de type {@link Activite}
+	 * @throws FunctionalException
+	 */
+	void insertPhotoActivite(Activite activite) throws FunctionalException;
 }

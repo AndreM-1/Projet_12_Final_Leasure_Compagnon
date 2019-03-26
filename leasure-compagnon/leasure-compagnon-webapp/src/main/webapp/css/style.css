@@ -196,12 +196,12 @@ section {
 /*****************************************************************************************/
 
 #row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville, #row-activite, #row-localisation-activite, #row-infos-pratiques-activite, #row-ajout-avis, 
-#row-resultat-recherche-ville, #row-resultat-recherche-activite {
+#row-resultat-recherche-ville, #row-resultat-recherche-activite, #row-ajout-activite {
 	margin-left:0px;
 	margin-right:0px;
 }
 
-#div-connexion, #div-form-contact, #div-ajout-avis {
+#div-connexion, #div-form-contact, #div-ajout-avis, #div-ajout-activite {
 	border:1px solid grey;
 	margin-top:15px;
 	margin-bottom:10px;
@@ -380,7 +380,6 @@ section {
 	border-radius:60px;
 }
 
-
 /********************************Media query pour la page permettant d'afficher le détail d'une activité ****************/
 @media all and (min-width: 992px){
 	#para-description-activite {
@@ -400,9 +399,19 @@ section {
 		text-align:center;
 	}
 }
-
-
 /*************************************************************************************************************************/
+
+#div-message-erreur{
+	color: #D34A5C;
+	background-color: #FFE0F9;
+	padding-top :15px;
+	padding-bottom : 15px;
+	padding-left :15px;
+	padding-right :15px;
+	border-radius : 5px;
+}
+
+
 footer{
 	margin-bottom:5px;
 	height : 60px;

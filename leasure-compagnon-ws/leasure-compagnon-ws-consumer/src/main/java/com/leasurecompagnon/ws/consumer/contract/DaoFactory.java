@@ -2,6 +2,7 @@ package com.leasurecompagnon.ws.consumer.contract;
 
 import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.CoordonneeGPSDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DepartementDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.DureeDao;
 import com.leasurecompagnon.ws.consumer.contract.dao.FormulaireContactDao;
@@ -42,5 +43,7 @@ public interface DaoFactory {
 	FormulaireContactDao getFormulaireContactDao();
 
 	PhotoDao getPhotoDao();
+
+	CoordonneeGPSDao getCoordonneeGPSDao();
 
 }
