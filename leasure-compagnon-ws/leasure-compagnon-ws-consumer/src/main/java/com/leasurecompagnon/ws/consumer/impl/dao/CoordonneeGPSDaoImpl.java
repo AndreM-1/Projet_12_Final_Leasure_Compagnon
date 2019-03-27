@@ -6,6 +6,7 @@ import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -16,6 +17,7 @@ import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.CoordonneeGPSRM
 import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.CoordonneeGPS;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
+import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 @Named
 public class CoordonneeGPSDaoImpl extends AbstractDaoImpl implements CoordonneeGPSDao {
@@ -64,5 +66,24 @@ public class CoordonneeGPSDaoImpl extends AbstractDaoImpl implements CoordonneeG
 		
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		vJdbcTemplate.update(vSQL, vParams);
+	}
+	
+	@Override
+	public void deleteCoordonneeGPSActivite(int activiteId) throws TechnicalException {
+		LOGGER.info("Méthode deleteCoordonneeGPSActivite(int activiteId)");
+		String vSQL="DELETE FROM public.coordonnee_gps WHERE activite_id=:activiteId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("activiteId", activiteId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}	
 	}
 }

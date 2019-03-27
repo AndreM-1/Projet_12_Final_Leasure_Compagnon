@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.leasurecompagnon.appliweb.business.contract.manager.ActiviteManager;
 import com.leasurecompagnon.appliweb.model.bean.catalogue.Activite;
 import com.leasurecompagnon.appliweb.model.exception.AjoutActiviteFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.DeleteActiviteFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteNomFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteFault_Exception;
@@ -19,6 +20,7 @@ import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleFault_E
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleNomFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleTAFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListNomActiviteFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.UpdateStatutActiviteFault_Exception;
 
 
 @Named
@@ -147,6 +149,28 @@ public class ActiviteManagerImpl extends AbstractManager implements ActiviteMana
 		} catch (AjoutActiviteFault_Exception e) {
 			LOGGER.info(e.getMessage());
 			throw new AjoutActiviteFault_Exception(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void updateStatutActivite (int activiteId, int statutActiviteId, String dateAModifier) throws UpdateStatutActiviteFault_Exception {
+		LOGGER.info("Méthode updateStatutActivite (int activiteId, int statutActiviteId, String dateAModifier)");
+		try {
+			getDaoFactory().getActiviteDao().updateStatutActivite(activiteId, statutActiviteId, dateAModifier);
+		} catch (UpdateStatutActiviteFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			throw new UpdateStatutActiviteFault_Exception(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void deleteActivite (int activiteId) throws DeleteActiviteFault_Exception {
+		LOGGER.info("Méthode deleteActivite (int activiteId)");
+		try {
+			getDaoFactory().getActiviteDao().deleteActivite(activiteId);
+		} catch (DeleteActiviteFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			throw new DeleteActiviteFault_Exception(e.getMessage());
 		}
 	}
 }

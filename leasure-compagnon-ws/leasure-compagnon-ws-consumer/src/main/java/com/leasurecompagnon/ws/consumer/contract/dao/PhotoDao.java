@@ -6,6 +6,7 @@ import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
+import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 /**
  * Interface PhotoDao
@@ -55,4 +56,11 @@ public interface PhotoDao {
 	 * @throws FunctionalException
 	 */
 	void insertPhotoActivite(Activite activite) throws FunctionalException;
+
+	/**
+	 * Méthode permettant de supprimer les informations relatives aux photos de l'activité.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @throws TechnicalException
+	 */
+	void deletePhotoActivite(int activiteId) throws TechnicalException;
 }

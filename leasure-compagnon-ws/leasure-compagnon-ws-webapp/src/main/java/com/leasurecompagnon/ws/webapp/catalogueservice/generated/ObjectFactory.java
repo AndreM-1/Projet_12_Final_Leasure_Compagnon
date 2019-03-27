@@ -629,4 +629,100 @@ public class ObjectFactory {
         return new AjoutAvisFault();
     }
 
+    /**
+     * Create an instance of {@link UpdateStatutActivite }
+     * 
+     */
+    public UpdateStatutActivite createUpdateStatutActivite() {
+        return new UpdateStatutActivite();
+    }
+
+    /**
+     * Create an instance of {@link UpdateStatutActiviteResponse }
+     * 
+     */
+    public UpdateStatutActiviteResponse createUpdateStatutActiviteResponse() {
+        return new UpdateStatutActiviteResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateStatutActiviteFault }
+     * 
+     */
+    public UpdateStatutActiviteFault createUpdateStatutActiviteFault() {
+        return new UpdateStatutActiviteFault();
+    }
+
+    /**
+     * Create an instance of {@link DeleteActivite }
+     * 
+     */
+    public DeleteActivite createDeleteActivite() {
+        return new DeleteActivite();
+    }
+
+    /**
+     * Create an instance of {@link DeleteActiviteResponse }
+     * 
+     */
+    public DeleteActiviteResponse createDeleteActiviteResponse() {
+        return new DeleteActiviteResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteActiviteFault }
+     * 
+     */
+    public DeleteActiviteFault createDeleteActiviteFault() {
+        return new DeleteActiviteFault();
+    }
+
+    /**
+     * Create an instance of {@link UpdateStatutAvis }
+     * 
+     */
+    public UpdateStatutAvis createUpdateStatutAvis() {
+        return new UpdateStatutAvis();
+    }
+
+    /**
+     * Create an instance of {@link UpdateStatutAvisResponse }
+     * 
+     */
+    public UpdateStatutAvisResponse createUpdateStatutAvisResponse() {
+        return new UpdateStatutAvisResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateStatutAvisFault }
+     * 
+     */
+    public UpdateStatutAvisFault createUpdateStatutAvisFault() {
+        return new UpdateStatutAvisFault();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAvis }
+     * 
+     */
+    public DeleteAvis createDeleteAvis() {
+        return new DeleteAvis();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAvisResponse }
+     * 
+     */
+    public DeleteAvisResponse createDeleteAvisResponse() {
+        return new DeleteAvisResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAvisFault }
+     * 
+     */
+    public DeleteAvisFault createDeleteAvisFault() {
+        return new DeleteAvisFault();
+    }
+
 }

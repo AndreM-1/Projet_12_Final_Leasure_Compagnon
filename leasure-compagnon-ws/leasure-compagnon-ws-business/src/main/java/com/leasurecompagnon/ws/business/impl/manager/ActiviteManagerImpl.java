@@ -174,4 +174,54 @@ public class ActiviteManagerImpl extends AbstractManager implements ActiviteMana
 		//Finalement, on commit la transaction si tout s'est bien passé.
 		getPlatformTransactionManager().commit(vTransactionStatus);	
 	}
+	
+	@Override
+	public void updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier) throws TechnicalException {
+		LOGGER.info("Méthode updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier)");
+		
+		//Utilisation d'un TransactionStatus. On a besoin de lever une TechnicalException,
+		//ce qui n'est pas possible avec l'utilisation d'une classe anonyme du transaction template.
+		TransactionStatus vTransactionStatus= getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			getDaoFactory().getActiviteDao().updateStatutActivite(activiteId,statutActiviteId,dateAModifier);
+			getPlatformTransactionManager().commit(vTransactionStatus);
+		} catch (TechnicalException e) {
+			LOGGER.info(e.getMessage());
+			getPlatformTransactionManager().rollback(vTransactionStatus);
+			throw new TechnicalException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void deleteActivite(int activiteId) throws TechnicalException {
+		LOGGER.info("Méthode deleteActivite(int activiteId)");
+		
+		//Utilisation d'un TransactionStatus. On a besoin de lever une TechnicalException,
+		//ce qui n'est pas possible avec l'utilisation d'une classe anonyme du transaction template.
+		TransactionStatus vTransactionStatus= getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			//On va supprimer les données de toutes les tables qui référencent l'activité à supprimer.
+			
+			//On commence par supprimer les informations relatives au mapping entre l'activité et le type d'activités.
+			getDaoFactory().getTypeActiviteDao().deleteTypeActivite(activiteId);
+			
+			//On supprime ensuite les informations relatives aux photos de l'activité.
+			getDaoFactory().getPhotoDao().deletePhotoActivite(activiteId);
+			
+			//On supprime ensuite les informations relatives aux coordonnées GPS de l'activité.
+			getDaoFactory().getCoordonneeGPSDao().deleteCoordonneeGPSActivite(activiteId);
+			
+			//Et finalement, on supprime les informations relatives à l'activité dans la table correspondante.
+			getDaoFactory().getActiviteDao().deleteActivite(activiteId);
+			
+			getPlatformTransactionManager().commit(vTransactionStatus);
+			
+		} catch (TechnicalException e) {
+			LOGGER.info(e.getMessage());
+			getPlatformTransactionManager().rollback(vTransactionStatus);
+			throw new TechnicalException(e.getMessage());
+		}	
+	}
 }

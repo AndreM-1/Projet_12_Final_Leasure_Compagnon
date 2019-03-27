@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.leasurecompagnon.appliweb.model.bean.catalogue.Avis;
 import com.leasurecompagnon.appliweb.model.exception.AjoutAvisFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.DeleteAvisFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListAvisUtilisateurFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.UpdateStatutAvisFault_Exception;
 
 /**
  * Interface AvisDao
@@ -31,5 +33,20 @@ public interface AvisDao {
 	 * @throws AjoutAvisFault_Exception
 	 */
 	void ajoutAvis(String commentaire, String appreciation, int utilisateurId, int activiteId) throws AjoutAvisFault_Exception;
+
+	/**
+	 * Méthode permettant de supprimer un avis de la base de données.
+	 * @param avisId : L'identifiant de l'avis.
+	 * @throws DeleteAvisFault_Exception
+	 */
+	void deleteAvis(int avisId) throws DeleteAvisFault_Exception;
+
+	/**
+	 * Méthode permettant de mettre à jour le statut de l'avis pour un avis donné.
+	 * @param avisId : L'identifiant de l'avis.
+	 * @param statutAvisId : L'identifiant du statut de l'avis.
+	 * @throws UpdateStatutAvisFault_Exception
+	 */
+	void updateStatutAvis(int avisId, int statutAvisId) throws UpdateStatutAvisFault_Exception;
 
 }

@@ -44,4 +44,11 @@ public interface TypeActiviteDao {
 	 */
 	void insertTypeActivite(Activite activite);
 
+	/**
+	 * Méthode permettant de supprimer les informations relatives au mapping entre l'activité et le type d'activités pour une activité donnée.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @throws TechnicalException
+	 */
+	void deleteTypeActivite(int activiteId) throws TechnicalException;
+
 }

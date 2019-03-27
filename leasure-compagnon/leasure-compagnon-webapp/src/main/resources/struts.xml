@@ -169,6 +169,37 @@
 			<result name="error">/jsp/erreur.jsp</result>
 		</action>	
 		
+		<!-- Action "moderation_activite_avis" -->
+		<action name="moderation_activite_avis" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doModerationActiviteAvis">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success">/jsp/moderation/moderationactivitesavis.jsp</result>
+		</action>	
+		
+		<!-- Action "moderation_avis" -->
+		<action name="moderation_avis" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doListAvisModeration">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="input">/jsp/moderation/moderationavis.jsp</result>
+			<result name="success">/jsp/moderation/moderationavis.jsp</result>
+		</action>		
+		
+		<!-- Action "validation_avis" -->
+		<action name="validation_avis" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doValidationAvis">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success" type="redirectAction">moderation_avis</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>	
+		
+		<!-- Action "refus_avis" -->
+		<action name="refus_avis" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doRefusAvis">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success" type="redirectAction">moderation_avis</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>						
+		
 		
 		<!-- Actions connexion/deconnexion -->
 		<action name="connexion" class="com.leasurecompagnon.appliweb.webapp.action.GestionConnexionAction" method="doLogin">

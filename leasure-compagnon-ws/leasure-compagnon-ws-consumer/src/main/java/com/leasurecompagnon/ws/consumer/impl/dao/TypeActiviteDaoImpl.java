@@ -89,4 +89,23 @@ public class TypeActiviteDaoImpl extends AbstractDaoImpl implements TypeActivite
 			vJdbcTemplate.update(vSQL, vParams);
 		}
 	}
+	
+	@Override
+	public void deleteTypeActivite(int activiteId) throws TechnicalException {
+		LOGGER.info("Méthode deleteTypeActivite(int activiteId)");
+		String vSQL="DELETE FROM public.activite_type_activite WHERE activite_id=:activiteId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("activiteId", activiteId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}
+	}
 }

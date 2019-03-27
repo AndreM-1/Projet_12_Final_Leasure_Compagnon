@@ -103,4 +103,21 @@ public interface ActiviteDao {
 	 */
 	int getSequenceActivite();
 
+	/**
+	 * Méthode permettant de mettre à jour le statut de l'activité ainsi que la date de modération ou de mise
+	 * en ligne pour une activité donnée.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @param statutActiviteId : L'identifiant du statut de l'activité.
+	 * @param dateAModifier : La date à mettre à jour.
+	 * @throws TechnicalException
+	 */
+	void updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier) throws TechnicalException;
+
+	/**
+	 * Méthode permettant de supprimer une activité de la base de données.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @throws TechnicalException
+	 */
+	void deleteActivite(int activiteId) throws TechnicalException;
+
 }

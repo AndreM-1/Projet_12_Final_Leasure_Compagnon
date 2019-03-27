@@ -13,6 +13,7 @@ import com.leasurecompagnon.ws.business.contract.manager.AvisManager;
 import com.leasurecompagnon.ws.model.bean.catalogue.Avis;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
+import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 @Named
 public class AvisManagerImpl extends AbstractManager implements AvisManager{
@@ -59,4 +60,39 @@ public class AvisManagerImpl extends AbstractManager implements AvisManager{
 		getPlatformTransactionManager().commit(vTransactionStatus);		
 	}
 	
+	@Override
+	public void updateStatutAvis(int avisId, int statutAvisId) throws TechnicalException {
+		LOGGER.info("Méthode updateStatutAvis(int avisId, int statutAvisId)");
+		
+		//Utilisation d'un TransactionStatus. On a besoin de lever une TechnicalException,
+		//ce qui n'est pas possible avec l'utilisation d'une classe anonyme du transaction template.
+		TransactionStatus vTransactionStatus= getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			getDaoFactory().getAvisDao().updateStatutAvis(avisId, statutAvisId);
+			getPlatformTransactionManager().commit(vTransactionStatus);
+		} catch (TechnicalException e) {
+			LOGGER.info(e.getMessage());
+			getPlatformTransactionManager().rollback(vTransactionStatus);
+			throw new TechnicalException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void deleteAvis(int avisId) throws TechnicalException {
+		LOGGER.info("Méthode deleteAvis(int avisId)");
+		
+		//Utilisation d'un TransactionStatus. On a besoin de lever une TechnicalException,
+		//ce qui n'est pas possible avec l'utilisation d'une classe anonyme du transaction template.
+		TransactionStatus vTransactionStatus= getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			getDaoFactory().getAvisDao().deleteAvis(avisId);
+			getPlatformTransactionManager().commit(vTransactionStatus);
+		} catch (TechnicalException e) {
+			LOGGER.info(e.getMessage());
+			getPlatformTransactionManager().rollback(vTransactionStatus);
+			throw new TechnicalException(e.getMessage());
+		}
+	}
 }

@@ -657,6 +657,110 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
+            <xsd:element name="updateStatutActivite">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="activiteId" type="xsd:int"
+            				minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="statutActiviteId"
+            				type="xsd:int" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            			<xsd:element name="dateAModifier"
+            				type="xsd:string" minOccurs="1" maxOccurs="1">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            
+              <xsd:element name="updateStatutActiviteResponse">
+            	<xsd:complexType>
+
+            	</xsd:complexType>
+            </xsd:element>
+
+              <xsd:element name="updateStatutActiviteFault">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="faultMessageErreur"
+              				type="xsd:string" minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteActivite">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="activiteId" type="xsd:int" minOccurs="1" maxOccurs="1"></xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteActiviteResponse">
+              	<xsd:complexType>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteActiviteFault">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="faultMessageErreur"
+              				type="xsd:string" minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="updateStatutAvis">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="avisId" type="xsd:int"
+              				minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              			<xsd:element name="statutAvisId"
+              				type="xsd:int" minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="updateStatutAvisResponse">
+              	<xsd:complexType>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="updateStatutAvisFault">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="faultMessageErreur"
+              				type="xsd:string" minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteAvis">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="avisId" type="xsd:int" minOccurs="1" maxOccurs="1"></xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteAvisResponse">
+              	<xsd:complexType>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="deleteAvisFault">
+              	<xsd:complexType>
+              		<xsd:sequence>
+
+              			<xsd:element name="faultMessageErreur"
+              				type="xsd:string" minOccurs="1" maxOccurs="1">
+              			</xsd:element>
+              		</xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="getListVilleRequest">
@@ -884,6 +988,42 @@
   <wsdl:message name="ajoutAvisFault">
   	<wsdl:part name="parameters" element="tns:ajoutAvisFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="updateStatutActiviteRequest">
+  	<wsdl:part name="parameters" element="tns:updateStatutActivite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutActiviteResponse">
+  	<wsdl:part name="parameters" element="tns:updateStatutActiviteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutActiviteFault">
+  	<wsdl:part name="parameters" element="tns:updateStatutActiviteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteActiviteRequest">
+  	<wsdl:part name="parameters" element="tns:deleteActivite"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteActiviteResponse">
+  	<wsdl:part name="parameters" element="tns:deleteActiviteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteActiviteFault">
+  	<wsdl:part name="parameters" element="tns:deleteActiviteFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAvisRequest">
+  	<wsdl:part name="parameters" element="tns:updateStatutAvis"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAvisResponse">
+  	<wsdl:part name="parameters" element="tns:updateStatutAvisResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatutAvisFault">
+  	<wsdl:part name="parameters" element="tns:updateStatutAvisFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAvisRequest">
+  	<wsdl:part name="parameters" element="tns:deleteAvis"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAvisResponse">
+  	<wsdl:part name="parameters" element="tns:deleteAvisResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAvisFault">
+  	<wsdl:part name="parameters" element="tns:deleteAvisFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="CatalogueService">
     <wsdl:operation name="getListVille">
       <wsdl:input message="tns:getListVilleRequest"/>
@@ -1006,6 +1146,26 @@
     	<wsdl:input message="tns:ajoutAvisRequest"></wsdl:input>
     	<wsdl:output message="tns:ajoutAvisResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:ajoutAvisFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="updateStatutActivite">
+    	<wsdl:input message="tns:updateStatutActiviteRequest"></wsdl:input>
+    	<wsdl:output message="tns:updateStatutActiviteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:updateStatutActiviteFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="deleteActivite">
+    	<wsdl:input message="tns:deleteActiviteRequest"></wsdl:input>
+    	<wsdl:output message="tns:deleteActiviteResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:deleteActiviteFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="updateStatutAvis">
+    	<wsdl:input message="tns:updateStatutAvisRequest"></wsdl:input>
+    	<wsdl:output message="tns:updateStatutAvisResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:updateStatutAvisFault"></wsdl:fault>
+        </wsdl:operation>
+    <wsdl:operation name="deleteAvis">
+    	<wsdl:input message="tns:deleteAvisRequest"></wsdl:input>
+    	<wsdl:output message="tns:deleteAvisResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:deleteAvisFault"></wsdl:fault>
         </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CatalogueServiceSOAP"
@@ -1301,6 +1461,57 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="ajoutAvis">
+  		<soap:operation soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="updateStatutActivite">
+  		<soap:operation
+  			soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="deleteActivite">
+  		<soap:operation
+  			soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="updateStatutAvis">
+  		<soap:operation
+  			soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="deleteAvis">
   		<soap:operation
   			soapAction="" />
   		<wsdl:input>

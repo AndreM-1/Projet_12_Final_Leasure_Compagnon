@@ -346,4 +346,49 @@ public class ActiviteDaoImpl extends AbstractDaoImpl implements ActiviteDao {
 		int sequenceActivite = vJdbcTemplate.queryForObject(vSQL, Integer.class);
 		return sequenceActivite;
 	}
+	
+	@Override
+	public void updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier) throws TechnicalException {
+		LOGGER.info("Méthode updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier)");
+		String vSQL ="";
+		
+		if(dateAModifier.equals("DATE_MODERATION_ADMIN"))
+			vSQL="UPDATE public.activite SET date_moderation_admin=:dateModerationAdmin, statut_activite_avis_id=:statutActiviteId WHERE id=:activiteId";
+		else
+			vSQL="UPDATE public.activite SET date_mise_en_ligne=:dateMiseEnLigne, statut_activite_avis_id=:statutActiviteId WHERE id=:activiteId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("dateModerationAdmin", new Date());
+		vParams.addValue("dateMiseEnLigne", new Date());
+		vParams.addValue("statutActiviteId", statutActiviteId);
+		vParams.addValue("activiteId", activiteId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}
+	}	
+	
+	@Override
+	public void deleteActivite(int activiteId) throws TechnicalException {
+		LOGGER.info("Méthode deleteActivite(int activiteId)");
+		String vSQL="DELETE FROM public.activite WHERE id=:activiteId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("activiteId", activiteId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}	
+	}
 }

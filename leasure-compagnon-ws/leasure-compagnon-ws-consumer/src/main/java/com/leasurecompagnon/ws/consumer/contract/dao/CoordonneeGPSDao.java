@@ -3,6 +3,7 @@ package com.leasurecompagnon.ws.consumer.contract.dao;
 import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.CoordonneeGPS;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
+import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 /**
  * Interface CoordonneeGPSDao
@@ -33,4 +34,11 @@ public interface CoordonneeGPSDao {
 	 * @param activite : Le bean de type {@link Activite}
 	 */
 	void insertCoordonneeGPSActivite(Activite activite);
+
+	/**
+	 * Méthode permettant de supprimer les informations relatives aux coordonnées GPS de l'activité.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @throws TechnicalException
+	 */
+	void deleteCoordonneeGPSActivite(int activiteId) throws TechnicalException;
 }

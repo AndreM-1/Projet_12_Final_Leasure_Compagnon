@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -19,6 +20,7 @@ import com.leasurecompagnon.ws.consumer.contract.dao.UtilisateurDao;
 import com.leasurecompagnon.ws.consumer.impl.rowmapper.catalogue.AvisRM;
 import com.leasurecompagnon.ws.model.bean.catalogue.Avis;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
+import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 @Named
 public class AvisDaoImpl extends AbstractDaoImpl implements AvisDao {
@@ -61,7 +63,12 @@ public class AvisDaoImpl extends AbstractDaoImpl implements AvisDao {
 	@Override
 	public List<Avis> getListAvisUtilisateur(int utilisateurId, String statutAvis) throws NotFoundException {
 		LOGGER.info("Méthode getListAvisUtilisateur(int utilisateurId, String statutAvis)");
-		String vSQL="SELECT * FROM public.avis WHERE utilisateur_id ="+utilisateurId;
+		//A noter la subtilité WHERE 1=1 pour inclure la clause WHERE dès le départ.
+		String vSQL="SELECT * FROM public.avis WHERE 1=1";
+		
+		if(utilisateurId>=0)
+			vSQL+=" AND utilisateur_id = "+utilisateurId;
+		
 		switch(statutAvis) {
 		case "ECDM" :
 			vSQL+=" AND statut_activite_avis_id = 1";
@@ -103,4 +110,46 @@ public class AvisDaoImpl extends AbstractDaoImpl implements AvisDao {
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		vJdbcTemplate.update(vSQL, vParams);	
 	}	
+	
+	@Override
+	public void updateStatutAvis(int avisId, int statutAvisId) throws TechnicalException {
+		LOGGER.info("Méthode updateStatutAvis(int avisId, int statutAvisId)");
+		String vSQL ="UPDATE public.avis SET date_moderation_admin_avis=:dateModerationAdminAvis, date_mise_en_ligne_avis=:dateMiseEnLigneAvis, "
+				+ "statut_activite_avis_id=:statutAvisId WHERE id=:avisId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		//On va prendre le même nom pour cet identifiant.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("dateModerationAdminAvis", new Date());
+		vParams.addValue("dateMiseEnLigneAvis", new Date());
+		vParams.addValue("statutAvisId", statutAvisId);
+		vParams.addValue("avisId", avisId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}	
+	}
+	
+	@Override
+	public void deleteAvis(int avisId) throws TechnicalException {
+		LOGGER.info("Méthode deleteAvis(int avisId)");
+		String vSQL="DELETE FROM public.avis WHERE id=:avisId";
+		
+		//On définit une MapSqlParameterSource dans laquelle on va mapper la valeur de nos paramètres d'entrée à un identifiant de type String.
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("avisId", avisId);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DataAccessException e) {
+			LOGGER.info(e.getMessage());
+			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
+		}		
+	}
 }

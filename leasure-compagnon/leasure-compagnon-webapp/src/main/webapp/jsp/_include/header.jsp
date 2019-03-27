@@ -36,7 +36,9 @@
 								<s:if test="#session.user.administrateur==true">
 									<li><s:a action="visu_formulaire_contact">Formulaires de contact</s:a></li>
 									<li class="divider"></li>
-								</s:if>
+									<li><s:a action="moderation_activite_avis">Modération</s:a></li>
+									<li class="divider"></li>
+								</s:if>															
 								<li><s:a action="deconnexion">Déconnexion</s:a></li>
 							</ul>
 						</li>

@@ -25,6 +25,10 @@ import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutActiviteFa
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.AjoutAvisFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.CatalogueService;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.DeleteActiviteFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.DeleteActiviteFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.DeleteAvisFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.DeleteAvisFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetActiviteNomFault;
@@ -71,6 +75,10 @@ import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetTypeActivite
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetTypeActiviteFault_Exception;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetVilleFault;
 import com.leasurecompagnon.ws.webapp.catalogueservice.generated.GetVilleFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.UpdateStatutActiviteFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.UpdateStatutActiviteFault_Exception;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.UpdateStatutAvisFault;
+import com.leasurecompagnon.ws.webapp.catalogueservice.generated.UpdateStatutAvisFault_Exception;
 
 public class CatalogueServiceImpl implements CatalogueService{
 	
@@ -454,5 +462,58 @@ public class CatalogueServiceImpl implements CatalogueService{
 			ajoutActiviteFault.setFaultMessageErreur(fExc.getMessage());
 			throw new AjoutActiviteFault_Exception(fExc.getMessage(),ajoutActiviteFault);
 		}	
+	}
+
+	@Override
+	public void updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier)
+			throws UpdateStatutActiviteFault_Exception {
+		LOGGER.info("Méthode updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier)");
+		try {
+			managerFactory.getActiviteManager().updateStatutActivite(activiteId, statutActiviteId, dateAModifier);
+		} catch (TechnicalException tExc) {
+			LOGGER.info(tExc.getMessage());
+			UpdateStatutActiviteFault updateStatutActiviteFault = new UpdateStatutActiviteFault();
+			updateStatutActiviteFault.setFaultMessageErreur(tExc.getMessage());
+			throw new UpdateStatutActiviteFault_Exception(tExc.getMessage(),updateStatutActiviteFault);
+		}
+	}
+	
+	@Override
+	public void deleteActivite(int activiteId) throws DeleteActiviteFault_Exception {
+		LOGGER.info("Méthode deleteActivite(int activiteId)");
+		try {
+			managerFactory.getActiviteManager().deleteActivite(activiteId);
+		} catch (TechnicalException tExc) {
+			LOGGER.info(tExc.getMessage());
+			DeleteActiviteFault deleteActiviteFault = new DeleteActiviteFault();
+			deleteActiviteFault.setFaultMessageErreur(tExc.getMessage());
+			throw new DeleteActiviteFault_Exception(tExc.getMessage(),deleteActiviteFault);
+		}
+	}
+
+	@Override
+	public void updateStatutAvis(int avisId, int statutAvisId) throws UpdateStatutAvisFault_Exception {
+		LOGGER.info("Méthode updateStatutAvis(int avisId, int statutAvisId)");
+		try {
+			managerFactory.getAvisManager().updateStatutAvis(avisId,statutAvisId);
+		} catch (TechnicalException tExc) {
+			LOGGER.info(tExc.getMessage());
+			UpdateStatutAvisFault updateStatutAvisFault = new UpdateStatutAvisFault();
+			updateStatutAvisFault.setFaultMessageErreur(tExc.getMessage());
+			throw new UpdateStatutAvisFault_Exception(tExc.getMessage(),updateStatutAvisFault);
+		}	
+	}
+
+	@Override
+	public void deleteAvis(int avisId) throws DeleteAvisFault_Exception {
+		LOGGER.info("Méthode deleteAvis(int avisId)");
+		try {
+			managerFactory.getAvisManager().deleteAvis(avisId);
+		} catch (TechnicalException tExc) {
+			LOGGER.info(tExc.getMessage());
+			DeleteAvisFault deleteAvisFault = new DeleteAvisFault();
+			deleteAvisFault.setFaultMessageErreur(tExc.getMessage());
+			throw new DeleteAvisFault_Exception(tExc.getMessage(),deleteAvisFault);
+		}
 	}
 }

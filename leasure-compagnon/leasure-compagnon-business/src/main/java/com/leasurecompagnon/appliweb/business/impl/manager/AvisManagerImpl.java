@@ -10,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import com.leasurecompagnon.appliweb.business.contract.manager.AvisManager;
 import com.leasurecompagnon.appliweb.model.bean.catalogue.Avis;
 import com.leasurecompagnon.appliweb.model.exception.AjoutAvisFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.DeleteAvisFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListAvisUtilisateurFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.UpdateStatutAvisFault_Exception;
 
 @Named
 public class AvisManagerImpl extends AbstractManager implements AvisManager {
@@ -40,6 +42,28 @@ public class AvisManagerImpl extends AbstractManager implements AvisManager {
 		} catch (AjoutAvisFault_Exception e) {
 			LOGGER.info(e.getMessage());
 			throw new AjoutAvisFault_Exception(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void updateStatutAvis(int avisId, int statutAvisId) throws UpdateStatutAvisFault_Exception {
+		LOGGER.info("Méthode updateStatutAvis(int avisId, int statutAvisId)"); 
+		try {
+			getDaoFactory().getAvisDao().updateStatutAvis(avisId, statutAvisId);
+		} catch (UpdateStatutAvisFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			throw new UpdateStatutAvisFault_Exception(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void deleteAvis(int avisId) throws DeleteAvisFault_Exception {
+		LOGGER.info("Méthode deleteAvis(int avisId)");
+		try {
+			getDaoFactory().getAvisDao().deleteAvis(avisId);
+		} catch (DeleteAvisFault_Exception e) {
+			LOGGER.info(e.getMessage());
+			throw new DeleteAvisFault_Exception(e.getMessage());
 		}
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.leasurecompagnon.appliweb.model.bean.catalogue.Activite;
 import com.leasurecompagnon.appliweb.model.exception.AjoutActiviteFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.DeleteActiviteFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetActiviteNomFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteFault_Exception;
@@ -13,6 +14,7 @@ import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleFault_E
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleNomFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListActiviteVilleTAFault_Exception;
 import com.leasurecompagnon.appliweb.model.exception.GetListNomActiviteFault_Exception;
+import com.leasurecompagnon.appliweb.model.exception.UpdateStatutActiviteFault_Exception;
 
 /**
  * Interface ActiviteManager
@@ -105,4 +107,21 @@ public interface ActiviteManager {
 	 * @throws GetListActiviteFault_Exception
 	 */
 	List<Activite> getListActivite(int nbActivite, String statutActivite) throws GetListActiviteFault_Exception;
+
+	/**
+	 * Méthode permettant de supprimer l'ensemble des informations relatives à une activité de la base de données.
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @throws DeleteActiviteFault_Exception
+	 */
+	void deleteActivite(int activiteId) throws DeleteActiviteFault_Exception;
+
+	/**
+	 * Méthode permettant de mettre à jour le statut de l'activité ainsi que la date de modération ou de mise 
+	 * en ligne pour une activité donnée. 
+	 * @param activiteId : L'identifiant de l'activité.
+	 * @param statutActiviteId : L'identifiant du statut de l'activité.
+	 * @param dateAModifier : La date à mettre à jour.
+	 * @throws UpdateStatutActiviteFault_Exception
+	 */
+	void updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier) throws UpdateStatutActiviteFault_Exception;
 }

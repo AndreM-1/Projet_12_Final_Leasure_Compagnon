@@ -259,19 +259,19 @@ section {
 }
 
 #activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite, #titre-description-activite, #localisation-activite, #infos-pratiques-activite, #avis-activite,
-#titre-resultat-recherche-ville, #titre-resultat-recherche-activite {
+#titre-resultat-recherche-ville, #titre-resultat-recherche-activite, #titre-moderation-activites-avis {
 	font-size: 1.5em;
 	border-bottom: 3px solid grey;
 	padding-top :5px;
 	padding-bottom :5px;
 }
 
-#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a  {
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a, #titre-moderation-activites-avis a {
 	text-decoration: none;
 	color: #181818;
 }
 
-#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a : hover {
+#activites-avis-utilisateur a, #visu-form-contact-utilisateur a, #titre-type-activite a, #titre-moderation-activites-avis a : hover {
 	color: #181818;
 }
 
@@ -409,6 +409,11 @@ section {
 	padding-left :15px;
 	padding-right :15px;
 	border-radius : 5px;
+}
+
+#bloc-validation-refus-avis {
+	border-top : 1px solid #746DFF;
+	padding-top :14px;
 }
 
 
