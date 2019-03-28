@@ -196,7 +196,7 @@ section {
 /*****************************************************************************************/
 
 #row-connexion,#row-creation-compte, #row-form-contact, #row-activites-ville, #row-activite, #row-localisation-activite, #row-infos-pratiques-activite, #row-ajout-avis, 
-#row-resultat-recherche-ville, #row-resultat-recherche-activite, #row-ajout-activite {
+#row-resultat-recherche-ville, #row-resultat-recherche-activite, #row-ajout-activite, #row-type-activite-moderation, #row-provenance-photo-moderation {
 	margin-left:0px;
 	margin-right:0px;
 }
@@ -259,7 +259,7 @@ section {
 }
 
 #activites-avis-utilisateur, #visu-form-contact-utilisateur, #titre-type-activite, #titre-description-activite, #localisation-activite, #infos-pratiques-activite, #avis-activite,
-#titre-resultat-recherche-ville, #titre-resultat-recherche-activite, #titre-moderation-activites-avis {
+#titre-resultat-recherche-ville, #titre-resultat-recherche-activite, #titre-moderation-activites-avis, #type-activite-moderation, #provenance-photo-moderation {
 	font-size: 1.5em;
 	border-bottom: 3px solid grey;
 	padding-top :5px;
@@ -415,6 +415,37 @@ section {
 	border-top : 1px solid #746DFF;
 	padding-top :14px;
 }
+
+#bloc-visu-detail-activite-moderation {
+	margin-top : 5px;
+	border-top : 1px solid #746DFF;
+	padding-top :14px;
+}
+
+#bloc-validation-refus-activite {
+	margin-top : 5px;
+	margin-left:0px;
+	margin-right:0px;
+	border-top : 1px solid grey;
+	padding-top :14px;
+	padding-bottom:14px;
+}
+
+
+/********************************Media query pour les pages de modération d'activités et d'avis ***************************/
+@media all and (max-width: 650px){
+	#code-postal-moderation-activite, #ville-moderation-activite {
+		display : none;
+	}
+}
+
+@media all and (max-width: 500px){
+	#adresse-moderation-activite{
+		display : none;
+	}
+}
+/*************************************************************************************************************************/
+
 
 
 footer{

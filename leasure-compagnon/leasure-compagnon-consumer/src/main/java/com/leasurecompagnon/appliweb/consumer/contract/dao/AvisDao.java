@@ -17,7 +17,7 @@ public interface AvisDao {
 
 	/**
 	 * Méthode permettant de renvoyer la liste des avis d'un utilisateur en fonction de leur statut.
-	 * @param utilisateurId : L'identifiant de l'utilisateur.
+	 * @param utilisateurId : L'identifiant de l'utilisateur. Une valeur de -1 permet de sélectionner tous les utilisateurs.
 	 * @param statutAvis : Le statut de l'avis.
 	 * @return List
 	 * @throws GetListAvisUtilisateurFault_Exception

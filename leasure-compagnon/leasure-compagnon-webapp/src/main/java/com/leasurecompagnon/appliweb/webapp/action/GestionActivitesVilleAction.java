@@ -235,18 +235,24 @@ public class GestionActivitesVilleAction extends ActionSupport {
 		try {
 			//On récupère l'activité choisie.
 			activite = managerFactory.getActiviteManager().getActivite(activiteId);
-					
-			activiteAppliWeb = new ActiviteAppliWeb();
 			
-			//on récupère le bean Activite, le nombre d'avis et la moyenne des avis.
-			activiteAppliWeb.setActivite(activite);
-			activiteAppliWeb.setNombreAvis(activite.getListAvis().size());
-			double vAppreciationMoyenneDouble=0.0d;
-			vAppreciationMoyenneDouble=calculAppreciationMoyenneActivite(activite);
-			activiteAppliWeb.setAppreciationMoyenneDouble(vAppreciationMoyenneDouble);		
-			latitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLatitude());
-			longitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLongitude());
-			vResult=ActionSupport.SUCCESS;
+			if(activite.getStatutActivite().getStatutActiviteAvis().equals("Mise en ligne")) {
+				activiteAppliWeb = new ActiviteAppliWeb();
+				
+				//on récupère le bean Activite, le nombre d'avis et la moyenne des avis.
+				activiteAppliWeb.setActivite(activite);
+				activiteAppliWeb.setNombreAvis(activite.getListAvis().size());
+				double vAppreciationMoyenneDouble=0.0d;
+				vAppreciationMoyenneDouble=calculAppreciationMoyenneActivite(activite);
+				activiteAppliWeb.setAppreciationMoyenneDouble(vAppreciationMoyenneDouble);		
+				latitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLatitude());
+				longitude = String.valueOf(activiteAppliWeb.getActivite().getCoordonnee().getLongitude());
+				vResult=ActionSupport.SUCCESS;	
+			}else {
+				this.addActionError("Aucune activité trouvée.");
+				vResult=ActionSupport.ERROR;
+			}
+
 		} catch (GetActiviteFault_Exception e) {
 			LOGGER.info("Aucune activité trouvée. Veuillez nous excuser pour ce problème technique.");
 			this.addActionError("Aucune activité trouvée. Veuillez nous excuser pour ce problème technique.");

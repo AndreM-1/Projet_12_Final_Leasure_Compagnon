@@ -42,7 +42,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="div-activites">
 							<div class="row">				
 								<div class="col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">							
-									<s:a action="">
+									<s:a action="moderation_activite">
 										<img src="jsp/assets/images/img_activite_1.jpg" alt="Image activité" class="img-responsive" id="image-activites">
 									</s:a>								
 								</div>												

@@ -198,8 +198,39 @@
 			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
 			<result name="success" type="redirectAction">moderation_avis</result>
 			<result name="error">/jsp/erreur.jsp</result>
-		</action>						
+		</action>	
 		
+		<!-- Action "moderation_activite" -->
+		<action name="moderation_activite" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doListActiviteModeration">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="input">/jsp/moderation/moderationactivites.jsp</result>
+			<result name="success">/jsp/moderation/moderationactivites.jsp</result>
+		</action>	
+		
+		<!-- Action page_detail_activite_moderation_admin -->	
+		<action name="page_detail_activite_moderation_admin" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction" method="doDetailActiviteModerationAdmin">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success">/jsp/moderation/detailactivitemoderationadmin.jsp</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>					
+		
+		<!-- Action "validation_activite" -->
+		<action name="validation_activite" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doValidationActivite">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success" type="redirectAction">moderation_activite</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>
+		
+		<!-- Action "refus_activite" -->
+		<action name="refus_activite" class="com.leasurecompagnon.appliweb.webapp.action.GestionModerationAction"  method="doRefusActivite">
+			<interceptor-ref name="AuthenticatedStack" />
+			<result name="refus-acces-page-profil" type="redirectAction">connexion</result>
+			<result name="success" type="redirectAction">moderation_activite</result>
+			<result name="error">/jsp/erreur.jsp</result>
+		</action>
 		
 		<!-- Actions connexion/deconnexion -->
 		<action name="connexion" class="com.leasurecompagnon.appliweb.webapp.action.GestionConnexionAction" method="doLogin">
