@@ -130,14 +130,16 @@
 					
 					divMessageErreurElt.style.display="none";
 					
-					provenancePhotoElts.forEach(function(provenancePhotoElt){
-						provenancePhotoElt.value="-1";
-					});
+					for(var i=0;i<provenancePhotoElts.length;i++){
+						provenancePhotoElts[i].value="-1";
+						
+					}
 					
-					lienProvenancePhotoElts.forEach(function(lienProvenancePhotoElt){
-						lienProvenancePhotoElt.value="";
-					});
-					
+					for(var i=0;i<lienProvenancePhotoElts.length;i++){
+						lienProvenancePhotoElts[i].value="";
+						
+					}
+						
 					divLienProvenancePhotoEltUn.style.display="none";
 					divLienProvenancePhotoEltDeux.style.display="none";
 					divLienProvenancePhotoEltTrois.style.display="none";
@@ -258,18 +260,18 @@
 						}
 											
 						//Vérification que les trois photos ont bien été uploadés.
-						fileUploadElts.forEach(function(fileUploadElt){
-							if(fileUploadElt.value.length===0){
+						for(var i=0; i<fileUploadElts.length;i++){
+							if(fileUploadElts[i].value.length===0){
 								verifUploadPhoto=false;
 							}
-						});
-						
+						}
+					
 						//Vérification des éléments de type Select pour la provenance de la photo.
-						provenancePhotoElts.forEach(function(provenancePhotoElt){
-							if(provenancePhotoElt.value==="-1"){
+						for(var i=0;i<provenancePhotoElts.length;i++){
+							if(provenancePhotoElts[i].value==="-1"){
 								verifSelectProvenancePhoto=false;
 							}
-						});
+						}
 												
 						//Vérification que le lien vers la photo d'origine pour chaque photo n'est pas vide ou supérieure au nombre de caractères autorisée.
 						if(divLienProvenancePhotoEltUn.style.display==="block" &&  (lienProvenancePhotoEltUn.value.trim().length===0 || lienProvenancePhotoEltUn.value.length>300)){

@@ -3,7 +3,6 @@
     font-family: 'aliceregular';
     src: url('polices/Alice-Regular-webfont.eot');
     src: url('polices/Alice-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('polices/Alice-Regular-webfont.woff2') format('woff2'),
          url('polices/Alice-Regular-webfont.woff') format('woff'),
          url('polices/Alice-Regular-webfont.ttf') format('truetype'),
          url('polices/Alice-Regular-webfont.svg#aliceregular') format('svg');
