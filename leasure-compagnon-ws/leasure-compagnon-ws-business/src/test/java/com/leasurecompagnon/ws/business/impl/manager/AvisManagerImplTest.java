@@ -25,6 +25,7 @@ import com.leasurecompagnon.ws.consumer.contract.dao.AvisDao;
 import com.leasurecompagnon.ws.model.bean.catalogue.Avis;
 import com.leasurecompagnon.ws.model.bean.catalogue.StatutActiviteAvis;
 import com.leasurecompagnon.ws.model.bean.utilisateur.Utilisateur;
+import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
 
 /**
@@ -131,5 +132,81 @@ public class AvisManagerImplTest {
 		when(avisDaoMock.getListAvisUtilisateur(utilisateurId, statutAvis)).thenThrow(new NotFoundException("Aucun avis avec le statut souhaité pour "
 				+ "l'utilisateur demandé ou aucun avis posté par l'utilisateur"));
 		avisManagerImpl.getListAvisUtilisateur(utilisateurId, statutAvis);
+	}
+	
+	/**
+	 * Test de la méthode insertAvis(String commentaire, String appreciation, int utilisateurId, int activiteId) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void insertAvisCase1() throws Exception {
+		String commentaire="Commentaire test";
+		String appreciation="Excellent"; 
+		int utilisateurId=1; 
+		int activiteId=1;
+		avisManagerImpl.insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+	}
+	
+	/**
+	 * Test de la méthode insertAvis(String commentaire, String appreciation, int utilisateurId, int activiteId) dans le cas où aucune appreciation n'a été sélectionnée.
+	 * On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertAvisCase2() throws Exception {
+		String commentaire="Commentaire test";
+		String appreciation="-1"; 
+		int utilisateurId=1; 
+		int activiteId=1;
+		avisManagerImpl.insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+	}
+	
+	/**
+	 * Test de la méthode insertAvis(String commentaire, String appreciation, int utilisateurId, int activiteId) dans le cas où le champ appreciation n'a pas été renseigné correctement.
+	 * On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertAvisCase3() throws Exception {
+		String commentaire="Commentaire test";
+		String appreciation="   "; 
+		int utilisateurId=1; 
+		int activiteId=1;
+		avisManagerImpl.insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+	}
+	
+	/**
+	 * Test de la méthode insertAvis(String commentaire, String appreciation, int utilisateurId, int activiteId) dans le cas où le champ commentaire n'a pas été renseigné correctement.
+	 * On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertAvisCase4() throws Exception {
+		String commentaire="";
+		String appreciation="Excellent"; 
+		int utilisateurId=1; 
+		int activiteId=1;
+		avisManagerImpl.insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+	}
+	
+	/**
+	 * Test de la méthode updateStatutAvis(int avisId, int statutAvisId) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void updateStatutAvisCase1() throws Exception {
+		int avisId=1;
+		int statutAvisId=2;
+		avisManagerImpl.updateStatutAvis(avisId, statutAvisId);
+	}
+	
+	/**
+	 * Test de la méthode deleteAvis(int avisId) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void deleteAvisCase1() throws Exception {
+		int avisId=1;
+		avisManagerImpl.deleteAvis(avisId);
 	}
 }

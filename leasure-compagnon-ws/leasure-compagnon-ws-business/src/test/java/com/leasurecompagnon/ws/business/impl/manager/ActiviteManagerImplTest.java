@@ -17,6 +17,9 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import com.leasurecompagnon.ws.business.contract.manager.ActiviteManager;
 import com.leasurecompagnon.ws.consumer.contract.DaoFactory;
 import com.leasurecompagnon.ws.consumer.contract.dao.ActiviteDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.CoordonneeGPSDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.PhotoDao;
+import com.leasurecompagnon.ws.consumer.contract.dao.TypeActiviteDao;
 import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.StatutActiviteAvis;
 import com.leasurecompagnon.ws.model.bean.catalogue.TypeActivite;
@@ -38,6 +41,9 @@ public class ActiviteManagerImplTest {
 	private static TransactionStatus transactionStatusMock=mock(TransactionStatus.class);
 	private static DefaultTransactionDefinition defaultTransactionDefinitionMock=mock(DefaultTransactionDefinition.class);
 	private static ActiviteDao activiteDaoMock=mock(ActiviteDao.class);
+	private static CoordonneeGPSDao coordonneeGPSDaoMock=mock(CoordonneeGPSDao.class);
+	private static PhotoDao photoDaoMock=mock(PhotoDao.class);
+	private static TypeActiviteDao typeActiviteDaoMock=mock(TypeActiviteDao.class);
 	private ActiviteManager activiteManagerImpl = new ActiviteManagerImpl(); 
 
 	@BeforeClass
@@ -46,6 +52,9 @@ public class ActiviteManagerImplTest {
 		AbstractManager.setPlatformTransactionManager(platformTransactionManagerMock);
 		when(platformTransactionManagerMock.getTransaction(defaultTransactionDefinitionMock)).thenReturn(transactionStatusMock);
 		when(daoFactoryMock.getActiviteDao()).thenReturn(activiteDaoMock); 
+		when(daoFactoryMock.getCoordonneeGPSDao()).thenReturn(coordonneeGPSDaoMock);
+		when(daoFactoryMock.getPhotoDao()).thenReturn(photoDaoMock);
+		when(daoFactoryMock.getTypeActiviteDao()).thenReturn(typeActiviteDaoMock);
 	}
 
 	/**
@@ -372,5 +381,39 @@ public class ActiviteManagerImplTest {
 		String nomActivite="Activité Test";
 		when(activiteDaoMock.getActivite(nomActivite)).thenThrow(new NotFoundException("Aucune activité ne correspond au nom demandé"));
 		activiteManagerImpl.getActivite(nomActivite);
+	}
+	
+	/**
+	 * Test de la méthode ajoutActivite(Activite activite) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void ajoutActiviteCase1() throws Exception {
+		int sequenceActivite=26;
+		Activite vActivite=createActiviteExpected();
+		when(activiteDaoMock.getSequenceActivite()).thenReturn(sequenceActivite);
+		activiteManagerImpl.ajoutActivite(vActivite);
+	}
+	
+	/**
+	 * Test de la méthode updateStatutActivite(int activiteId, int statutActiviteId, String dateAModifier) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void updateStatutActiviteCase1() throws Exception {
+		int activiteId=26;
+		int statutActiviteId=2;
+		String dateAModifier="DATE_MODERATION_ADMIN";
+		activiteManagerImpl.updateStatutActivite(activiteId, statutActiviteId, dateAModifier);
+	}
+	
+	/**
+	 * Test de la méthode deleteActivite(int activiteId) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void deleteActiviteCase1() throws Exception {
+		int activiteId=26;
+		activiteManagerImpl.deleteActivite(activiteId);
 	}
 }

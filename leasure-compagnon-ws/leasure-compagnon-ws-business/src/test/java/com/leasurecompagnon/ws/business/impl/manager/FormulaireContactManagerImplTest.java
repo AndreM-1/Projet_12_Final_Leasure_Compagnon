@@ -23,6 +23,7 @@ import com.leasurecompagnon.ws.business.contract.manager.FormulaireContactManage
 import com.leasurecompagnon.ws.consumer.contract.DaoFactory;
 import com.leasurecompagnon.ws.consumer.contract.dao.FormulaireContactDao;
 import com.leasurecompagnon.ws.model.bean.formulairecontact.FormulaireContact;
+import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 /**
@@ -95,5 +96,95 @@ public class FormulaireContactManagerImplTest {
 	public void getListFormulaireContactCase2() throws Exception {
 		when(formulaireContactDaoMock.getListFormulaireContact()).thenThrow(new TechnicalException("Erreur technique lors de l'accès en base de données."));
 		formulaireContactManagerImpl.getListFormulaireContact();
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas nominal.
+	 * On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test
+	public void insertFormulaireContactCase1() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet="Proposer une amélioration";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas où le champ nomNa
+	 * n'a pas été renseigné correctement. On s'attend à lever une exception de type {@link FunctionalException}. 
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertFormulaireContactCase2() throws Exception {
+		String nomNa="   ";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet="Proposer une amélioration";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas où le champ adresseMailNa
+	 * n'a pas été renseigné correctement. On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertFormulaireContactCase3() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="";
+		String objet="Proposer une amélioration";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas où aucun objet n'a été sélectionné.
+	 * On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertFormulaireContactCase4() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet="-1";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas où le champ objet
+	 * n'a pas été renseigné correctement. On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertFormulaireContactCase5() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet=" ";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+	}
+	
+	/**
+	 * Test de la méthode insertFormulaireContact(String nomNa, String adresseMailNa, String objet, String message, int utilisateurId) dans le cas où le champ message
+	 * n'a pas été renseigné correctement. On s'attend à lever une exception de type {@link FunctionalException}.
+	 * @throws Exception
+	 */
+	@Test(expected = FunctionalException.class)
+	public void insertFormulaireContactCase6() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet="Proposer une amélioration";
+		String message="";
+		int utilisateurId=-1;
+		formulaireContactManagerImpl.insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
 	}
 }

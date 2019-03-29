@@ -3,6 +3,7 @@ package com.leasurecompagnon.ws.testbusiness.business;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -23,15 +24,18 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.leasurecompagnon.ws.model.bean.catalogue.Activite;
 import com.leasurecompagnon.ws.model.bean.catalogue.Avis;
+import com.leasurecompagnon.ws.model.bean.catalogue.CoordonneeGPS;
 import com.leasurecompagnon.ws.model.bean.catalogue.Departement;
 import com.leasurecompagnon.ws.model.bean.catalogue.Duree;
 import com.leasurecompagnon.ws.model.bean.catalogue.Pays;
+import com.leasurecompagnon.ws.model.bean.catalogue.Photo;
 import com.leasurecompagnon.ws.model.bean.catalogue.Region;
 import com.leasurecompagnon.ws.model.bean.catalogue.Saison;
 import com.leasurecompagnon.ws.model.bean.catalogue.TypeActivite;
 import com.leasurecompagnon.ws.model.bean.catalogue.Ville;
 import com.leasurecompagnon.ws.model.bean.formulairecontact.FormulaireContact;
 import com.leasurecompagnon.ws.model.bean.utilisateur.Utilisateur;
+import com.leasurecompagnon.ws.model.exception.NotFoundException;
 import com.leasurecompagnon.ws.model.exception.TechnicalException;
 
 /**
@@ -438,6 +442,135 @@ public class TestIntegration extends BusinessTestCase {
 		assertEquals("La prénom de l'utilisateur est erroné.",prenom,vUtilisateurBDD.getPrenom());
 	}
 	
+	
+	/**
+	 * Méthode qui permet de tester l'ajout en base de données pour les beans de type {@link Activite}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testInsertActivite() throws Exception {
+		
+		//On définit le bean activité attendu.
+		Activite vActiviteExpected= new Activite();
+		vActiviteExpected.setNomActivite("Le Fabuleux Village des Flottins");
+		vActiviteExpected.setDescription("Depuis 2007, la ville d'Evian toute entière se métamorphose au plein coeur de l'hiver, à la période des fêtes...");
+		vActiviteExpected.setAdresse("Place Charles de Gaulle");
+		vActiviteExpected.setLienHoraireOuverture("");
+		
+		Utilisateur vUtilisateurExpected = new Utilisateur();
+		vUtilisateurExpected.setId(1);
+		vActiviteExpected.setUtilisateur(vUtilisateurExpected);
+		
+		Ville vVilleExpected = new Ville();
+		vVilleExpected.setId(5);
+		vActiviteExpected.setVille(vVilleExpected);
+		
+		Duree vDuree = new Duree();
+		vDuree.setId(9);
+		vActiviteExpected.setDuree(vDuree);
+		
+		Saison vSaison = new Saison();
+		vSaison.setId(4);
+		vActiviteExpected.setSaison(vSaison);
+		
+		CoordonneeGPS vCoordonneeGPS = new CoordonneeGPS();
+		vCoordonneeGPS.setLatitude(46.400800);
+		vCoordonneeGPS.setLongitude(6.588610);
+		vActiviteExpected.setCoordonnee(vCoordonneeGPS);
+		
+		Photo vPhotoActivite1 = new Photo();
+		vPhotoActivite1.setNomPhoto("jsp/assets/images/evian-les-bains/evian-les-bains_le-fabuleux-village-des-flottins-1_2019-03-29.jpg");
+		vPhotoActivite1.setProvenancePhoto("Personnelle");
+		vPhotoActivite1.setTypePhoto("Activité photo principale");
+		
+		Photo vPhotoActivite2 = new Photo();
+		vPhotoActivite2.setNomPhoto("jsp/assets/images/evian-les-bains/evian-les-bains_le-fabuleux-village-des-flottins-2_2019-03-29.jpg");
+		vPhotoActivite2.setProvenancePhoto("Libre de droits");
+		vPhotoActivite2.setTypePhoto("Activité photo secondaire");
+		
+		Photo vPhotoActivite3 = new Photo();
+		vPhotoActivite3.setNomPhoto("jsp/assets/images/evian-les-bains/evian-les-bains_le-fabuleux-village-des-flottins-3_2019-03-29.jpg");
+		vPhotoActivite3.setProvenancePhoto("https://www.flickr.com/photos/jomenager/31350098324/");
+		vPhotoActivite3.setTypePhoto("Activité photo secondaire");
+		
+		List<Photo> vListPhotoActivite = new ArrayList<>();
+		vListPhotoActivite.add(vPhotoActivite1);
+		vListPhotoActivite.add(vPhotoActivite2);
+		vListPhotoActivite.add(vPhotoActivite3);
+		
+		vActiviteExpected.getListPhotoActivite().addAll(vListPhotoActivite);
+		
+		TypeActivite vTypeActivite1 = new TypeActivite();
+		vTypeActivite1.setId(1);
+		
+		TypeActivite vTypeActivite2 = new TypeActivite();
+		vTypeActivite2.setId(2);
+		
+		List<TypeActivite> vListTypeActivite = new ArrayList<>();
+		vListTypeActivite.add(vTypeActivite1);
+		vListTypeActivite.add(vTypeActivite2);
+		
+		vActiviteExpected.getListTypeActivite().addAll(vListTypeActivite);
+		
+		getManagerFactory().getActiviteManager().ajoutActivite(vActiviteExpected);
+		
+		Activite vActiviteBDD = getManagerFactory().getActiviteManager().getActivite(vActiviteExpected.getId());
+		assertNotNull("Le bean activité retourné ne doit pas être nul.",vActiviteBDD);
+		assertEquals("Le nom de l'activité est erroné.",vActiviteExpected.getNomActivite(),vActiviteBDD.getNomActivite());
+		assertEquals("La description de l'activité est erroné.",vActiviteExpected.getDescription(),vActiviteBDD.getDescription());
+		assertEquals("L'utilisateur est erroné.",vActiviteExpected.getUtilisateur().getId(),vActiviteBDD.getUtilisateur().getId());
+	}
+	
+	/**
+	 *  Méthode qui permet de tester l'ajout en base de données pour les beans de type {@link Avis}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testInsertAvis() throws Exception {
+		String commentaire="Commentaire de l'utilisateur";
+		String appreciation="Excellent";
+		int utilisateurId=1;
+		int activiteId=1;
+		
+		getManagerFactory().getAvisManager().insertAvis(commentaire, appreciation, utilisateurId, activiteId);
+		
+		List<Avis> vListAvisBDD = getManagerFactory().getAvisManager().getListAvisUtilisateur(utilisateurId, "ECDM");
+		assertNotNull("Le liste d'avis retournée ne doit pas être nulle.",vListAvisBDD);
+		assertEquals("La taille de la liste d'avis retournée est erronée.",1,vListAvisBDD.size());
+		assertEquals("Le commentaire de l'avis est erroné.",commentaire,vListAvisBDD.get(0).getCommentaire());
+		assertEquals("L'appréciation de l'avis est erroné.",appreciation,vListAvisBDD.get(0).getAppreciation());
+	}
+	
+	/**
+	 * Méthode qui permet de tester l'ajout en base de données pour les beans de type {@link FormulaireContact}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testInsertFormulaireContact() throws Exception {
+		String nomNa="Anderson";
+		String adresseMailNa="gillian.anderson@gmail.com";
+		String objet="Proposer une amélioration";
+		String message="Amélioration à proposer.";
+		int utilisateurId=-1;
+		getManagerFactory().getFormulaireContactManager().insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+		
+		List<FormulaireContact> vListFormulaireContactBDD = getManagerFactory().getFormulaireContactManager().getListFormulaireContact();
+		assertNotNull("La liste de formulaires de contact ne doit pas être nulle.",vListFormulaireContactBDD);
+		assertEquals("La taille de la liste de formulaires de contact est erronée.",7,vListFormulaireContactBDD.size());
+		
+		nomNa="Martin D";
+		adresseMailNa="andre.monnier@hotmail.fr";
+		objet="Proposer une amélioration";
+		message="Amélioration à proposer.";
+		utilisateurId=2;
+		
+		getManagerFactory().getFormulaireContactManager().insertFormulaireContact(nomNa, adresseMailNa, objet, message, utilisateurId);
+		
+		vListFormulaireContactBDD = getManagerFactory().getFormulaireContactManager().getListFormulaireContact();
+		assertNotNull("La liste de formulaires de contact ne doit pas être nulle.",vListFormulaireContactBDD);
+		assertEquals("La taille de la liste de formulaires de contact est erronée.",8,vListFormulaireContactBDD.size());
+	}
+	
 	/**
 	 * Méthode qui permet de tester la mise à jour de la base de données pour les beans de type {@link Utilisateur}.
 	 * @throws Exception
@@ -492,5 +625,74 @@ public class TestIntegration extends BusinessTestCase {
 		vUtilisateurBDD = getManagerFactory().getUtilisateurManager().getUtilisateur(id);
 		assertNotNull("Le bean utilisateur retourné ne doit pas être nul.",vUtilisateurBDD);
 		assertEquals("La ville de l'utilisateur est erronée.",envoiMailInformatif,vUtilisateurBDD.isEnvoiMailInformatif());	
+	}
+	
+	/**
+	 * Méthode qui permet de tester la mise à jour de la base de données pour les beans de type {@link Activite}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testUpdateStatutActivite() throws Exception {
+		int activiteId = 1; 
+		int statutActiviteId = 2; 
+		String dateAModifier = "DATE_MODERATION_ADMIN";
+		
+		getManagerFactory().getActiviteManager().updateStatutActivite(activiteId, statutActiviteId, dateAModifier);
+		Activite vActiviteBDD = getManagerFactory().getActiviteManager().getActivite(activiteId);
+		assertNotNull("Le bean activité retourné ne doit pas être nul.",vActiviteBDD);
+		assertEquals("L'identifiant du statut de l'activité est erroné.",statutActiviteId,vActiviteBDD.getStatutActivite().getId());
+		
+		activiteId = 1; 
+		statutActiviteId = 4; 
+		dateAModifier = "DATE_MEL";
+		getManagerFactory().getActiviteManager().updateStatutActivite(activiteId, statutActiviteId, dateAModifier);
+		vActiviteBDD = getManagerFactory().getActiviteManager().getActivite(activiteId);
+		assertNotNull("Le bean activité retourné ne doit pas être nul.",vActiviteBDD);
+		assertEquals("L'identifiant du statut de l'activité est erroné.",statutActiviteId,vActiviteBDD.getStatutActivite().getId());
+	}
+	
+	
+	/**
+	 * Méthode qui permet de tester la mise à jour de la base de données pour les beans de type {@link Avis}.
+	 * @throws Exception
+	 */
+	@Test
+	public void testUpdateStatutAvis() throws Exception {
+		int avisId=1;
+		int statutAvisId = 4;
+		int utilisateurId=2;
+		getManagerFactory().getAvisManager().updateStatutAvis(avisId, statutAvisId);
+		
+		List<Avis> vListAvisBDD = getManagerFactory().getAvisManager().getListAvisUtilisateur(utilisateurId, "MEL");
+		assertNotNull("Le liste d'avis retournée ne doit pas être nulle.",vListAvisBDD);
+		assertEquals("La taille de la liste d'avis retournée est erronée.",9,vListAvisBDD.size());
+	}
+	
+	/**
+	 * Méthode qui permet de tester la suppression de la base de données pour les beans de type {@link Activite}.
+	 * Une fois l'activité supprimée, on ne doit plus la retrouver en base de données.
+	 * On s'attend donc à lever une exception de type {@link NotFoundException}.
+	 * @throws Exception
+	 */
+	@Test(expected = NotFoundException.class)
+	public void testDeleteActivite() throws Exception {
+		//On sélectionne une activité qui n'a pas d'avis.
+		int activiteId = 25;
+		getManagerFactory().getActiviteManager().deleteActivite(activiteId);
+		getManagerFactory().getActiviteManager().getActivite(activiteId);
+	}
+	
+	/**
+	 * Méthode qui permet de tester la suppression de la base de données pour les beans de type {@link Avis}
+	 * @throws Exception
+	 */
+	@Test
+	public void testDeleteAvis() throws Exception {
+		int avisId = 1;
+		getManagerFactory().getAvisManager().deleteAvis(avisId);
+		
+		List<Avis> vListAvisBDD = getManagerFactory().getAvisManager().getListAvisUtilisateur(-1, "MEL");
+		assertNotNull("Le liste d'avis retournée ne doit pas être nulle.",vListAvisBDD);
+		assertEquals("La taille de la liste d'avis retournée est erronée.",19,vListAvisBDD.size());
 	}
 }
