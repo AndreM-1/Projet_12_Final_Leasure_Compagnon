@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/FormulaireContactService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="FormulaireContactService" targetNamespace="http://www.example.org/FormulaireContactService/">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/FormulaireContactService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:Q1="http://www.example.org/beans/" targetNamespace="http://www.example.org/FormulaireContactService/">
+            
+  <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact?xsd=../beans.xsd"/>
+            
+  <xsd:element name="envoiFormulaireContact">
+        
+    <xsd:complexType>
+          
+      <xsd:sequence>
+          	
+        <xsd:element maxOccurs="1" minOccurs="1" name="nomNa" type="xsd:string"/>
+          	
+        <xsd:element maxOccurs="1" minOccurs="1" name="adresseMailNa" type="xsd:string">
+          	</xsd:element>
+          	
+        <xsd:element maxOccurs="1" minOccurs="1" name="objet" type="xsd:string">
+          	</xsd:element>
+          	
+        <xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string">
+          	</xsd:element>
+          	
+        <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"/>
+          
+      </xsd:sequence>
+        
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="envoiFormulaireContactResponse">
+        
+    <xsd:complexType>
+
+        </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="envoiFormulaireContactFault">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+      			</xsd:element>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListFormulaireContact">
+      	
+    <xsd:complexType>
+
+      	</xsd:complexType>
+      
+  </xsd:element>
+            
+  <xsd:element name="getListFormulaireContactResponse">
+            	
+    <xsd:complexType>
+            		
+      <xsd:sequence>
+            			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="formulaireContact" type="Q1:FormulaireContact"/>
+            		
+      </xsd:sequence>      
+            	
+    </xsd:complexType>
+            
+  </xsd:element>
+            
+  <xsd:element name="getListFormulaireContactFault">
+	         	
+    <xsd:complexType>
+		      		
+      <xsd:sequence>
+		      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+		      			</xsd:element>
+		      		
+      </xsd:sequence>
+	      		
+    </xsd:complexType>         
+            
+  </xsd:element>
+        
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="envoiFormulaireContactRequest">
+    <wsdl:part element="tns:envoiFormulaireContact" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactFault">
+    <wsdl:part element="tns:getListFormulaireContactFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactRequest">
+    <wsdl:part element="tns:getListFormulaireContact" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListFormulaireContactResponse">
+    <wsdl:part element="tns:getListFormulaireContactResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactResponse">
+    <wsdl:part element="tns:envoiFormulaireContactResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="envoiFormulaireContactFault">
+    <wsdl:part element="tns:envoiFormulaireContactFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FormulaireContactService">
+    <wsdl:operation name="envoiFormulaireContact">
+      <wsdl:input message="tns:envoiFormulaireContactRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:envoiFormulaireContactResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:envoiFormulaireContactFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <wsdl:input message="tns:getListFormulaireContactRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListFormulaireContactResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListFormulaireContactFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FormulaireContactServiceSoapBinding" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FormulaireContactServiceSOAP" type="tns:FormulaireContactService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envoiFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListFormulaireContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FormulaireContactService">
+    <wsdl:port binding="tns:FormulaireContactServiceSOAP" name="FormulaireContactServiceSOAP">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="FormulaireContactServiceService">
+    <wsdl:port binding="tns:FormulaireContactServiceSoapBinding" name="FormulaireContactServicePort">
+      <soap:address location="http://localhost:8080/leasure-compagnon-ws-webapp/ws/formulairecontact"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
