@@ -158,6 +158,27 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="getListUtilisateur">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="optEnvoiMailInformatif" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="utilisateur" type="Q1:Utilisateur"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="updateCoordUtilisateurRequest">
@@ -166,8 +187,14 @@
   <wsdl:message name="getUtilisateurRequest">
     <wsdl:part element="tns:getUtilisateur" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListUtilisateurResponse">
+    <wsdl:part element="tns:getListUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="authentifierUtilisateurRequest">
     <wsdl:part element="tns:authentifierUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurRequest">
+    <wsdl:part element="tns:getListUtilisateur" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateParametresUtilisateurRequest">
     <wsdl:part element="tns:updateParametresUtilisateur" name="parameters"></wsdl:part>
@@ -198,6 +225,9 @@
   </wsdl:message>
   <wsdl:message name="creerCompteUtilisateurFault">
     <wsdl:part element="tns:creerCompteUtilisateurFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurFault">
+    <wsdl:part element="tns:getListUtilisateurFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateMdpUtilisateurFault">
     <wsdl:part element="tns:updateMdpUtilisateurFault" name="parameters"></wsdl:part>
@@ -258,6 +288,11 @@
       <wsdl:input message="tns:updatePhotoUtilisateurRequest"></wsdl:input>
       <wsdl:output message="tns:updatePhotoUtilisateurResponse"></wsdl:output>
       <wsdl:fault message="tns:updatePhotoUtilisateurFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <wsdl:input message="tns:getListUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:getListUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListUtilisateurFault" name="fault"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UtilisateurServiceSOAP" type="tns:UtilisateurService">
@@ -346,6 +381,18 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UtilisateurServiceSoapBinding" type="tns:UtilisateurService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -422,6 +469,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="updatePhotoUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
@@ -655,7 +714,14 @@
          <utilisateurId>?</utilisateurId>\r
       </util:updatePhotoUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="fada85dd-944c-41ab-9056-160ace3058a5" wsaVersion="NONE" name="UtilisateurServiceSOAP" type="wsdl" bindingName="{http://www.example.org/UtilisateurService/}UtilisateurServiceSOAP" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UtilisateurService" targetNamespace="http://www.example.org/UtilisateurService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/UtilisateurService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/></con:call></con:operation><con:operation id="327cff80-4285-4d11-9833-a63156e19428" isOneWay="false" action="" name="getListUtilisateur" bindingOperationName="getListUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="503c1f03-3e44-496c-a0f9-007f1350b7fb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <util:getListUtilisateur>\r
+         <optEnvoiMailInformatif>?</optEnvoiMailInformatif>\r
+      </util:getListUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/getListUtilisateurRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="fada85dd-944c-41ab-9056-160ace3058a5" wsaVersion="NONE" name="UtilisateurServiceSOAP" type="wsdl" bindingName="{http://www.example.org/UtilisateurService/}UtilisateurServiceSOAP" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl"><con:part><con:url>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UtilisateurService" targetNamespace="http://www.example.org/UtilisateurService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/UtilisateurService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.example.org/UtilisateurService/" xmlns:Q1="http://www.example.org/beans/">
       <xsd:import namespace="http://www.example.org/beans/" schemaLocation="http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur?xsd=../beans.xsd"/>
@@ -814,6 +880,27 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="getListUtilisateur">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="optEnvoiMailInformatif" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="utilisateur" type="Q1:Utilisateur"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="updateCoordUtilisateurRequest">
@@ -822,8 +909,14 @@
   <wsdl:message name="getUtilisateurRequest">
     <wsdl:part element="tns:getUtilisateur" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListUtilisateurResponse">
+    <wsdl:part element="tns:getListUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="authentifierUtilisateurRequest">
     <wsdl:part element="tns:authentifierUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurRequest">
+    <wsdl:part element="tns:getListUtilisateur" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateParametresUtilisateurRequest">
     <wsdl:part element="tns:updateParametresUtilisateur" name="parameters"></wsdl:part>
@@ -854,6 +947,9 @@
   </wsdl:message>
   <wsdl:message name="creerCompteUtilisateurFault">
     <wsdl:part element="tns:creerCompteUtilisateurFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurFault">
+    <wsdl:part element="tns:getListUtilisateurFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateMdpUtilisateurFault">
     <wsdl:part element="tns:updateMdpUtilisateurFault" name="parameters"></wsdl:part>
@@ -914,6 +1010,11 @@
       <wsdl:input message="tns:updatePhotoUtilisateurRequest"></wsdl:input>
       <wsdl:output message="tns:updatePhotoUtilisateurResponse"></wsdl:output>
       <wsdl:fault message="tns:updatePhotoUtilisateurFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <wsdl:input message="tns:getListUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:getListUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:getListUtilisateurFault" name="fault"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UtilisateurServiceSOAP" type="tns:UtilisateurService">
@@ -1002,6 +1103,18 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UtilisateurServiceSoapBinding" type="tns:UtilisateurService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -1078,6 +1191,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="updatePhotoUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
@@ -1311,4 +1436,11 @@
          <utilisateurId>5</utilisateurId>\r
       </util:updatePhotoUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/updatePhotoUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="dcfc5c9d-c7b8-45d4-b490-004e64be7fbf" isOneWay="false" action="" name="getListUtilisateur" bindingOperationName="getListUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e3edccc1-4951-452b-907f-ed0541b1c605" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/leasure-compagnon-ws-webapp/ws/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <util:getListUtilisateur>\r
+         <optEnvoiMailInformatif>OPT_ACTIVE</optEnvoiMailInformatif>\r
+      </util:getListUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/getListUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

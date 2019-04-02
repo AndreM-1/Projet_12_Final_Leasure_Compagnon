@@ -1,5 +1,7 @@
 package com.leasurecompagnon.ws.webapp.utilisateurservice.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -16,6 +18,8 @@ import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.AuthentifierU
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.AuthentifierUtilisateurFault_Exception;
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.CreerCompteUtilisateurFault;
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.CreerCompteUtilisateurFault_Exception;
+import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.GetListUtilisateurFault;
+import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.GetListUtilisateurFault_Exception;
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.GetUtilisateurFault;
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.GetUtilisateurFault_Exception;
 import com.leasurecompagnon.ws.webapp.utilisateurservice.generated.UpdateCoordUtilisateurFault;
@@ -35,6 +39,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	// ----- Paramètres
 	private Utilisateur utilisateur;
+	private List<Utilisateur> listUtilisateur;
 
 	//Définition du LOGGER
 	private static final Logger LOGGER=(Logger) LogManager.getLogger(UtilisateurServiceImpl.class);
@@ -178,5 +183,20 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 			updatePhotoUtilisateurFault.setFaultMessageErreur(fExc.getMessage());
 			throw new UpdatePhotoUtilisateurFault_Exception(fExc.getMessage(),updatePhotoUtilisateurFault);
 		}
+	}
+
+	@Override
+	public List<Utilisateur> getListUtilisateur(String optEnvoiMailInformatif)
+			throws GetListUtilisateurFault_Exception {
+		LOGGER.info("Méthode getListUtilisateur(String optEnvoiMailInformatif)");
+		try {
+			listUtilisateur= managerFactory.getUtilisateurManager().getListUtilisateur(optEnvoiMailInformatif);
+		} catch (NotFoundException nfExc) {
+			LOGGER.info(nfExc.getMessage());
+			GetListUtilisateurFault getListUtilisateurFault = new GetListUtilisateurFault();
+			getListUtilisateurFault.setFaultMessageErreur(nfExc.getMessage());
+			throw new GetListUtilisateurFault_Exception(nfExc.getMessage(),getListUtilisateurFault);
+		}
+		return listUtilisateur;
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import com.leasurecompagnon.ws.batch.generated.catalogueservice.CatalogueService;
+import com.leasurecompagnon.ws.batch.generated.utilisateurservice.UtilisateurService;
 
 
 
@@ -26,6 +27,8 @@ public abstract class AbstractEnvoiMail {
 	
 	private CatalogueService catalogueService;
 	
+	private UtilisateurService utilisateurService;
+	
 	/**
 	 * Méthode permettant de récupérer un objet de type {@link CatalogueService}
 	 * @return Un objet de type {@link CatalogueService}
@@ -37,6 +40,19 @@ public abstract class AbstractEnvoiMail {
         factory.setServiceClass(CatalogueService.class);
         catalogueService=(CatalogueService)factory.create();
 		return catalogueService;
+	}
+	
+	/**
+	 * Méthode permettant de récupérer un objet de type {@link UtilisateurService}
+	 * @return Un objet de type {@link UtilisateurService}
+	 */
+	protected UtilisateurService getUtilisateurService() {
+		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+		LOGGER.warn("Adresse Web service -  UtilisateurService : "+configuration.getAdresseUtilisateurService());
+        factory.setAddress(configuration.getAdresseUtilisateurService());
+        factory.setServiceClass(UtilisateurService.class);
+        utilisateurService=(UtilisateurService)factory.create();
+		return utilisateurService;
 	}
 	
 	

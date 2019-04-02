@@ -238,6 +238,32 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+      <xsd:element name="getListUtilisateur">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="optEnvoiMailInformatif" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="utilisateur" type="Q1:Utilisateur" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getListUtilisateurFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="faultMessageErreur"
+      				type="xsd:string" minOccurs="1" maxOccurs="1">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="authentifierUtilisateurRequest">
@@ -303,6 +329,15 @@
   <wsdl:message name="updatePhotoUtilisateurFault">
   	<wsdl:part name="parameters" element="tns:updatePhotoUtilisateurFault"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListUtilisateurRequest">
+  	<wsdl:part name="parameters" element="tns:getListUtilisateur"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurResponse">
+  	<wsdl:part name="parameters" element="tns:getListUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurFault">
+  	<wsdl:part name="parameters" element="tns:getListUtilisateurFault"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="UtilisateurService">
     <wsdl:operation name="authentifierUtilisateur">
       <wsdl:input message="tns:authentifierUtilisateurRequest"/>
@@ -339,27 +374,30 @@
     	<wsdl:output message="tns:updatePhotoUtilisateurResponse"></wsdl:output>
             <wsdl:fault name="fault" message="tns:updatePhotoUtilisateurFault"></wsdl:fault>
         </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+    	<wsdl:input message="tns:getListUtilisateurRequest"></wsdl:input>
+    	<wsdl:output message="tns:getListUtilisateurResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:getListUtilisateurFault"></wsdl:fault>
+        </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UtilisateurServiceSOAP"
   	type="tns:UtilisateurService">
   	<soap:binding style="document"
   		transport="http://schemas.xmlsoap.org/soap/http" />
   	<wsdl:operation name="authentifierUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
-   		<wsdl:fault name="fault">
+  		<wsdl:fault name="fault">
   			<soap:fault use="literal" name="fault" />
-  		</wsdl:fault>  		
+  		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="creerCompteUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -371,8 +409,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="updateCoordUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -384,8 +421,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="getUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -397,8 +433,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="updateMdpUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -410,8 +445,7 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="updateParametresUtilisateur">
-  		<soap:operation
-  			soapAction="" />
+  		<soap:operation soapAction="" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -423,6 +457,18 @@
   		</wsdl:fault>
   	</wsdl:operation>
   	<wsdl:operation name="updatePhotoUtilisateur">
+  		<soap:operation soapAction="" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  		<wsdl:fault name="fault">
+  			<soap:fault use="literal" name="fault" />
+  		</wsdl:fault>
+  	</wsdl:operation>
+  	<wsdl:operation name="getListUtilisateur">
   		<soap:operation
   			soapAction="" />
   		<wsdl:input>

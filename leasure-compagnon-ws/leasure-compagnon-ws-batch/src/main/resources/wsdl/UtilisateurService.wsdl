@@ -366,6 +366,52 @@
     </xsd:complexType>
       
   </xsd:element>
+      
+  <xsd:element name="getListUtilisateur">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="optEnvoiMailInformatif" type="xsd:string"/>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListUtilisateurResponse">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="utilisateur" type="Q1:Utilisateur"/>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
+      
+  <xsd:element name="getListUtilisateurFault">
+      	
+    <xsd:complexType>
+      		
+      <xsd:sequence>
+
+      			
+        <xsd:element maxOccurs="1" minOccurs="1" name="faultMessageErreur" type="xsd:string">
+      			</xsd:element>
+      		
+      </xsd:sequence>
+      	
+    </xsd:complexType>
+      
+  </xsd:element>
     
 </xsd:schema>
   </wsdl:types>
@@ -377,8 +423,16 @@
     <wsdl:part element="tns:getUtilisateur" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getListUtilisateurResponse">
+    <wsdl:part element="tns:getListUtilisateurResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="authentifierUtilisateurRequest">
     <wsdl:part element="tns:authentifierUtilisateur" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurRequest">
+    <wsdl:part element="tns:getListUtilisateur" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateParametresUtilisateurRequest">
@@ -419,6 +473,10 @@
   </wsdl:message>
   <wsdl:message name="creerCompteUtilisateurFault">
     <wsdl:part element="tns:creerCompteUtilisateurFault" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListUtilisateurFault">
+    <wsdl:part element="tns:getListUtilisateurFault" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateMdpUtilisateurFault">
@@ -510,6 +568,14 @@
       <wsdl:fault message="tns:updatePhotoUtilisateurFault" name="fault">
     </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <wsdl:input message="tns:getListUtilisateurRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getListUtilisateurResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:getListUtilisateurFault" name="fault">
+    </wsdl:fault>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UtilisateurServiceSOAP" type="tns:UtilisateurService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -597,6 +663,18 @@
         <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UtilisateurServiceSoapBinding" type="tns:UtilisateurService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -673,6 +751,18 @@
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="updatePhotoUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getListUtilisateur">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>

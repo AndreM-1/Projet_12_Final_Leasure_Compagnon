@@ -1,10 +1,13 @@
 package com.leasurecompagnon.ws.business.impl.manager;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -585,6 +588,33 @@ public class UtilisateurManagerImplTest {
 		int utilisateurId=2;
 		boolean envoiMailInformatif =true;
 		utilisateurManagerImpl.updateParametresUtilisateur(utilisateurId, envoiMailInformatif);
-		
+	}
+	
+	/**
+	 * Test de la méthode getListUtilisateur(String optEnvoiMailInformatif) dans le cas nominal.
+	 * @throws Exception
+	 */
+	@Test
+	public void getListUtilisateurCase1() throws Exception {
+		List<Utilisateur> vListUtilisateurExpected = new ArrayList<>();
+		vListUtilisateurExpected.add(createUtilisateurExpected());
+		String optEnvoiMailInformatif="OPT_ACTIVE";
+		when(utilisateurDaoMock.getListUtilisateur(optEnvoiMailInformatif)).thenReturn(vListUtilisateurExpected);
+		List<Utilisateur> vListUtilisateur = utilisateurManagerImpl.getListUtilisateur(optEnvoiMailInformatif);
+		assertNotNull("La liste d'utilisateurs retournée ne doit pas être nulle.",vListUtilisateur);
+		assertEquals("La taille de la liste d'utilisateurs est erronée.",1,vListUtilisateur.size());
+	}
+	
+	/**
+	 * Test de la méthode getListUtilisateur(String optEnvoiMailInformatif) dans le cas où aucun utilisateur n'a la valeur d'option
+	 * d'envoi mail informatif demandé. On s'attend à lever une exception de type {@link NotFoundException}.
+	 * @throws Exception
+	 */
+	@Test(expected = NotFoundException.class)
+	public void getListUtilisateurCase2() throws Exception {
+		String optEnvoiMailInformatif="OPT_DESACTIVE";
+		when(utilisateurDaoMock.getListUtilisateur(optEnvoiMailInformatif))
+		.thenThrow(new NotFoundException("Aucun utilisateur avec la valeur d'option d'envoi mail informatif demandé."));
+		utilisateurManagerImpl.getListUtilisateur(optEnvoiMailInformatif);
 	}
 }

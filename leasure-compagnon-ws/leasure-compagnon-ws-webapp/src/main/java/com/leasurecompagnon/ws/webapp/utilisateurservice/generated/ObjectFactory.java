@@ -197,4 +197,28 @@ public class ObjectFactory {
         return new UpdatePhotoUtilisateurFault();
     }
 
+    /**
+     * Create an instance of {@link GetListUtilisateur }
+     * 
+     */
+    public GetListUtilisateur createGetListUtilisateur() {
+        return new GetListUtilisateur();
+    }
+
+    /**
+     * Create an instance of {@link GetListUtilisateurResponse }
+     * 
+     */
+    public GetListUtilisateurResponse createGetListUtilisateurResponse() {
+        return new GetListUtilisateurResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetListUtilisateurFault }
+     * 
+     */
+    public GetListUtilisateurFault createGetListUtilisateurFault() {
+        return new GetListUtilisateurFault();
+    }
+
 }

@@ -371,7 +371,13 @@ public class TestIntegration extends BusinessTestCase {
 		String adresseMail = "andre.monnier@hotmail.fr";
 		String motDePasse ="M@rt1R@778?";
 		vUtilisateurBDD=getManagerFactory().getUtilisateurManager().getUtilisateur(adresseMail, motDePasse);
-		assertNotNull("Le bean utilisateur retourné ne doit pas être nul.",vUtilisateurBDD);	
+		assertNotNull("Le bean utilisateur retourné ne doit pas être nul.",vUtilisateurBDD);
+		
+		//Méthode getListUtilisateur(String optEnvoiMailInformatif)
+		String optEnvoiMailInformatif = "OPT_ACTIVE";
+		List<Utilisateur> vListUtilisateurBDD=getManagerFactory().getUtilisateurManager().getListUtilisateur(optEnvoiMailInformatif);
+		assertNotNull("La liste d'utilisateurs ne doit pas être nulle.",vListUtilisateurBDD);
+		assertEquals("La taille de la liste d'utilisateurs est erronée.",4,vListUtilisateurBDD.size());
 	}
 	
 	/**

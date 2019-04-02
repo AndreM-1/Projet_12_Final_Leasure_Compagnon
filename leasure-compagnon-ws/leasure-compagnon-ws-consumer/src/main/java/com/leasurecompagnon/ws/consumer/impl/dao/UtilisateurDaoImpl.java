@@ -172,4 +172,31 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 			throw new TechnicalException("Erreur technique lors de l'accès en base de données.");
 		}
 	}
+	
+	@Override
+	public List<Utilisateur> getListUtilisateur(String optEnvoiMailInformatif) throws NotFoundException {
+		LOGGER.info("Méthode getListUtilisateur(String optEnvoiMailInformatif)");
+		//A noter la subtilité WHERE 1=1 pour inclure la clause WHERE dès le départ.
+		String vSQL="SELECT * FROM public.utilisateur WHERE 1=1";
+		
+		switch(optEnvoiMailInformatif) {
+		case "OPT_ACTIVE" : 
+			vSQL+=" AND envoi_mail_informatif=true";
+			break;
+		case "OPT_DESACTIVE" : 
+			vSQL+=" AND envoi_mail_informatif=false";
+			break;
+		default :
+			LOGGER.info("Pas de traitement à effectuer dans la boucle switch");
+		}
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		RowMapper<Utilisateur> vRowMapper=new UtilisateurRM(photoDao);
+		List<Utilisateur> vListUtilisateur = vJdbcTemplate.query(vSQL, vRowMapper);
+		
+		if(vListUtilisateur.size()!=0)
+			return vListUtilisateur;
+		else
+			throw new NotFoundException("Aucun utilisateur avec la valeur d'option d'envoi mail informatif demandé.");
+	}
 }

@@ -1,5 +1,6 @@
 package com.leasurecompagnon.ws.business.impl.manager;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,7 @@ import com.leasurecompagnon.ws.model.exception.TechnicalException;
 public class UtilisateurManagerImpl extends AbstractManager implements UtilisateurManager {
 
 	private Utilisateur utilisateur;
+	private List<Utilisateur> listUtilisateur;
 	private static final int SALT_LENGTH = 30;
 
 	//Définition du LOGGER
@@ -309,4 +311,17 @@ public class UtilisateurManagerImpl extends AbstractManager implements Utilisate
 			throw new TechnicalException(e.getMessage());
 		}
 	}
+	
+	@Override
+	public List<Utilisateur> getListUtilisateur(String optEnvoiMailInformatif) throws NotFoundException {
+		LOGGER.info("Méthode getListUtilisateur(String optEnvoiMailInformatif)");
+		try {
+			listUtilisateur = getDaoFactory().getUtilisateurDao().getListUtilisateur(optEnvoiMailInformatif);
+		} catch (NotFoundException e) {
+			LOGGER.info(e.getMessage());
+			throw new NotFoundException(e.getMessage());
+		}
+		return listUtilisateur;
+	}
+	
 }

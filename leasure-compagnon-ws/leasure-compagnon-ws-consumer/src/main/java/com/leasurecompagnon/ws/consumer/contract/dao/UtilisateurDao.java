@@ -1,5 +1,7 @@
 package com.leasurecompagnon.ws.consumer.contract.dao;
 
+import java.util.List;
+
 import com.leasurecompagnon.ws.model.bean.utilisateur.Utilisateur;
 import com.leasurecompagnon.ws.model.exception.FunctionalException;
 import com.leasurecompagnon.ws.model.exception.NotFoundException;
@@ -56,5 +58,13 @@ public interface UtilisateurDao {
 	 * @throws TechnicalException
 	 */
 	void updateParametresUtilisateur(int id, boolean envoiMailInformatif) throws TechnicalException;
+
+	/**
+	 * Méthode permettant de récupérer une liste d'utilisateurs en fonction de l'option d'envoi de mails informatifs.
+	 * @param optEnvoiMailInformatif : L'option d'envoi de mails informatifs.
+	 * @return List
+	 * @throws NotFoundException
+	 */
+	List<Utilisateur> getListUtilisateur(String optEnvoiMailInformatif) throws NotFoundException;
 
 }
