@@ -15,7 +15,12 @@ import com.leasurecompagnon.ws.batch.generated.catalogueservice.CatalogueService
 import com.leasurecompagnon.ws.batch.generated.utilisateurservice.UtilisateurService;
 
 
-
+/**
+ * Classe abstraite permettant de définir des méthodes retournant des objets de type {@link CatalogueService} et {@link UtilisateurService}.
+ * Et aussi une méthode permettant d'envoyer des mails.
+ * @author André Monnier
+ *
+ */
 public abstract class AbstractEnvoiMail {
 
 	//Définition du LOGGER

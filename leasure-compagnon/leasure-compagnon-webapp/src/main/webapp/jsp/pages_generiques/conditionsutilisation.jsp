@@ -41,7 +41,6 @@
 						<li class="text-justify">De préférence, les informations renseignées, photos comprises, doivent être pertinentes.</li>						
 					</ul>					
 					<p class="text-justify">Les activités feront l'objet d'une modération par l'administrateur avant d'être mises en ligne.</p>
-					<p class="text-justify">L'administrateur pourra procéder à des corrections mineures (peu de fautes d'orthographes, mauvais choix du type d'activités, etc...)</p>
 					<p class="text-justify">Suivant le non respect d'une ou plusieurs conditions précédentes, l'administrateur pourra valider ou refuser la mise en ligne de l'activité.</p>
 					<p class="text-justify">Dans tous les cas, vous recevrez un mail de confirmation ou de refus à ce sujet.</p>
 				</div>

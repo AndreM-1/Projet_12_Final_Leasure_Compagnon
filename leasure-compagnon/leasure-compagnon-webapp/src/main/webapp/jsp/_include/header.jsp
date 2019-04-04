@@ -60,7 +60,7 @@
 			<!-- Pas besoin de formulaire Struts ici. -->
 			<form action="recherche_ville_activite" method="POST">
 				<div class="input-group">
-					<input id="zone-recherche-input" type="text" autocomplete="off" class="form-control input-lg" name="nomRecherche" placeholder="Recherche une ville ou une activité..."/>
+					<input id="zone-recherche-input" type="text" autocomplete="off" class="form-control input-lg" name="nomRecherche" placeholder="Rechercher une ville ou une activité..."/>
 					<span class="input-group-btn">
 						<button class="btn btn-default btn-lg" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 					</span>				

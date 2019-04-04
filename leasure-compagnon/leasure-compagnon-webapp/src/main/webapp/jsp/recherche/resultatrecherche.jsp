@@ -15,7 +15,7 @@
 				<h1 class="text-center">Résultat de la recherche</h1>
 				
 				<!-- Résultat de la recherche pour les villes. -->
-				<h2 id="titre-resultat-recherche-ville">Ville</h2>
+				<h2 id="titre-resultat-recherche-ville">Villes</h2>
 				<s:property value="messageInformatifVille"/>
 				<s:iterator value="listVille">
 					<div class="row" id="row-resultat-recherche-ville">
