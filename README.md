@@ -48,7 +48,7 @@ Le fichier leasure-compagnon-webapp.war\META-INF\context.xml contient les adress
 
 Le module batch figure dans l'application relative aux web services, mais il ne dépend que des modules model et technical. Il fera donc lui aussi appel aux web services.
 Le module batch permet d'envoyer divers types de mail aux usagers :
--   Des mails pour les tenir informer des dernières activités mises en ligne durant la semaine écoulée.
+-   Des mails pour les tenir informer des dernières activités mises en ligne.
 -	Des mails de confirmation ou de refus pour leur indiquer si le(s) activité(s) qu’ils ont postées ont été mises en ligne ou non.
 
 Voici les étapes à suivre pour déployer le module batch : 
